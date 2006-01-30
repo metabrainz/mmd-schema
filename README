@@ -1,0 +1,10 @@
+The MusicBrainz XML Metadata Schema
+-----------------------------------
+
+This directory contains schemas for the MusicBrainz XML Metadata Schema,
+which will be used in the MusicBrainz webservice. 
+
+Note that there is no official schema yet, it is still under development.
+
+--
+$Id$
