@@ -6,7 +6,12 @@
 	<relation-list target-type="Track">
 	    <relation type="Cover"
 		      direction="forward"
-		      target="31e1c0c4-967f-435e-b09a-35ee079ee234"/>
+		      target="31e1c0c4-967f-435e-b09a-35ee079ee234">
+                <track id="31e1c0c4-967f-435e-b09a-35ee079ee234">
+                    <title>Silent All These Years</title>
+		    <artist id="5bcd4eaa-fae7-465f-9f03-d005b959ed02"/>
+		</track>
+	    </relation>
 	</relation-list>
     </track>
 </metadata>
