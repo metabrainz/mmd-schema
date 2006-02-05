@@ -9,10 +9,10 @@
             <sort-name>Dylan, Bob</sort-name>
             <life-span begin="1941-05-24"/>
         </artist>
-        <release-info-list>
-            <info date="1965-08-30" country="US"/>
-            <info date="2004-03-29" country="GB"/>
-        </release-info-list>
+        <release-event-list>
+            <event date="1965-08-30" country="US"/>
+            <event date="2004-03-29" country="GB"/>
+        </release-event-list>
         <disc-list>
             <disc id="FftPVconhVin9JjU8gwBZh_YolU-"/>
             <disc id="9vVwJUkF27NqI9qSHClV_0U7s5w-"/>

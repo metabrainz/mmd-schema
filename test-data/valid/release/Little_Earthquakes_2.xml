@@ -8,11 +8,11 @@
             <sort-name>Amos, Tori</sort-name>
             <life-span begin="1963-08-22"/>
         </artist>
-        <release-info-list>
-            <info date="1992-01-13" country="GB"/>
-            <info date="1992-01-17" country="DE"/>
-            <info date="1992-02-25" country="US"/>
-        </release-info-list>
+        <release-event-list>
+            <event date="1992-01-13" country="GB"/>
+            <event date="1992-01-17" country="DE"/>
+            <event date="1992-02-25" country="US"/>
+        </release-event-list>
         <disc-list>
             <disc id="ILKp3.bZmvoMO7wSrq1cw7WatfA-"/>
             <disc id="ejdrdtX1ZyvCb0g6vfJejVaLIK8-"/>
