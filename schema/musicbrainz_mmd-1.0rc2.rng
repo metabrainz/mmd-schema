@@ -96,6 +96,11 @@
                 </element>
             </optional>
             <optional>
+                <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
                 <element name="life-span">
                     <optional>
                         <attribute name="begin">
