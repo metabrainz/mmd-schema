@@ -281,6 +281,16 @@
 
     <define name="def_alias">
         <element name="alias">
+            <optional>
+                <attribute name="type">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="script">
+                    <ref name="def_iso-15924"/>
+                </attribute>
+            </optional>
             <text/>
         </element>
     </define>
