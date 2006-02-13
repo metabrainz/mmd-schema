@@ -5,7 +5,7 @@
 	<duration>253466</duration>
 	<relation-list target-type="Track">
 	    <relation type="Cover"
-		      direction="forward"
+		      direction="backward"
 		      target="31e1c0c4-967f-435e-b09a-35ee079ee234">
                 <track id="31e1c0c4-967f-435e-b09a-35ee079ee234">
                     <title>Silent All These Years</title>
