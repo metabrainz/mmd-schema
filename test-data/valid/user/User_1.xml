@@ -5,9 +5,11 @@
 <metadata xmlns="http://musicbrainz.org/ns/mmd-1.0#"
           xmlns:ext="http://musicbrainz.org/ns/ext-1.0#">
 
-    <ext:user type="AutoEditor RelationshipEditor">
-        <name>matt</name>
-        <ext:nag show="false"/>
-    </ext:user>
+    <ext:user-list>
+        <ext:user type="AutoEditor RelationshipEditor">
+            <name>matt</name>
+            <ext:nag show="false"/>
+        </ext:user>
+    </ext:user-list>
 
 </metadata>
