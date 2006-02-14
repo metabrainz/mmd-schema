@@ -482,7 +482,7 @@
     </define>
 
 
-    <!-- A three-letter language code like 'GER', 'GER', etc. -->
+    <!-- An ISO-639-2/T language code like 'DEU', 'ENG', 'JPN' etc. -->
     <define name="def_iso-639">
         <data type="string">
             <param name="pattern">[A-Z]{3}</param>
