@@ -60,7 +60,7 @@
                 <duration>682506</duration>
             </track>
         </track-list>
-        <relation-list target-type="URL">
+        <relation-list target-type="Url">
             <relation type="Wikipedia" target="http://en.wikipedia.org/wiki/Highway_61_Revisited"/>
             <relation type="AmazonAsin" target="http://www.amazon.com/gp/product/B0000024SI"/>
         </relation-list>
