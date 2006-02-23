@@ -14,6 +14,7 @@
             <release id="02232360-337e-4a3f-ad20-6cdd4c34288c" type="Album Official">
                 <title>Little Earthquakes</title>
 		<artist id="c0b2500e-0cef-4130-869d-732b23ed9df5" type="Person"/>
+		<track-list offset="2"/>
 	    </release>
 	</release-list>
 	<trmid-list>
