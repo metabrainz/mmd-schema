@@ -7,6 +7,9 @@
             <name>Various Artists</name>
             <sort-name>Various Artists</sort-name>
         </artist>
+        <release-event-list>
+            <event country="EU" date="2000"/>
+        </release-event-list>
         <track-list>
             <track id="d54a42b4-2875-4f35-b215-6e08d666526f">
                 <title>Take a Look Around</title>
