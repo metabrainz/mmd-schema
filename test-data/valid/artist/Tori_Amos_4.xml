@@ -6,8 +6,9 @@
 	<disambiguation>yes, that one</disambiguation>
         <life-span begin="1963-08-22"/>
         <alias-list>
-            <alias>Myra Ellen Amos</alias>
-	    <alias>Torie Amos</alias><!-- misspelling! -->
+            <alias script="Latn">Myra Ellen Amos</alias>
+            <alias>Myra Amos</alias>
+            <alias type="Misspelling" script="Latn">Torie Amos</alias>
         </alias-list>
     </artist>
 </metadata>
