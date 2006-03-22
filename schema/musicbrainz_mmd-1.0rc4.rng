@@ -404,9 +404,11 @@
                     <attribute name="date">
                         <ref name="def_incomplete-date"/>
                     </attribute>
-                    <attribute name="country">
-                        <ref name="def_iso-3166"/>
-                    </attribute>
+                    <optional>
+                        <attribute name="country">
+                            <ref name="def_iso-3166"/>
+                        </attribute>
+                    </optional>
                 </element>
             </zeroOrMore>
         </element>
