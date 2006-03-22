@@ -1,0 +1,32 @@
+#! /bin/sh
+#
+# Validate the test data using xmlstarlet.
+#
+XMLSTARLET_BIN=xmlstarlet
+
+SCHEMA_FILE=schema/musicbrainz_mmd-1.0rc4.rng
+
+if [ ! -e "$SCHEMA_FILE" ]; then
+	echo "Error: schema file $SCHEMA_FILE does not exist"
+	exit 1
+fi
+
+VALID_BASE=test-data/valid
+INVALID_BASE=test-data/invalid
+
+NUM=`find "$VALID_BASE" -name "*.xml" | wc -l`
+
+echo "checking valid test data ($NUM files):"
+find "$VALID_BASE" -name "*.xml" \
+ | xargs "$XMLSTARLET_BIN" val -w -r "$SCHEMA_FILE" \
+ | grep -v ' - valid$'
+echo "done."
+
+NUM=`find "$INVALID_BASE" -name "*.xml" | wc -l`
+
+echo
+echo "checking invalid test data ($NUM files):"
+find "$INVALID_BASE" -name "*.xml" \
+ | xargs "$XMLSTARLET_BIN" val -w -r "$SCHEMA_FILE" \
+ | grep -v ' - invalid$'
+echo "done."
