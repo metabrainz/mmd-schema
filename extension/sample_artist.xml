@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- note the additional namespace declaration -->
+<metadata xmlns="http://musicbrainz.org/ns/mmd-1.0#"
+          xmlns:mf="http://mafr.de/ns/mmd-ext-1.0#">
+
+    <artist id="c0b2500e-0cef-4130-869d-732b23ed9df5" type="Person">
+        <name>Tori Amos</name>
+        <sort-name>Amos, Tori</sort-name>
+        <life-span begin="1963-08-22"/>
+        <release-list>
+        <!-- no releases listed -->
+        </release-list>
+
+	<!-- this is a validated extension -->
+	<mf:bio>Tori Amos (born Myra Ellen Amos on August 22, 1963) ...</mf:bio>
+    </artist>
+</metadata>

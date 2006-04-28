@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This example schema disables all extensions in MMD. -->
+
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+
+    <include href="../schema/musicbrainz_mmd-1.0rc5.rng">
+
+        <!-- disable extension of the metadata element -->
+        <define name="def_metadata-element_extension">
+            <empty/>
+        </define>
+
+        <!-- disable artist element and attribute extension -->
+        <define name="def_artist-element_extension">
+            <empty/>
+        </define>
+        <define name="def_artist-attribute_extension">
+            <empty/>
+        </define>
+
+        <!-- disable release element and attribute extension -->
+        <define name="def_release-element_extension">
+            <empty/>
+        </define>
+        <define name="def_release-attribute_extension">
+            <empty/>
+        </define>
+
+        <!-- disable artist element and attribute extension -->
+        <define name="def_track-element_extension">
+            <empty/>
+        </define>
+        <define name="def_track-attribute_extension">
+            <empty/>
+        </define>
+
+        <!-- don't allow a relation to point to an extension element -->
+        <define name="def_relation-element_extension">
+            <empty/>
+        </define>
+
+    </include>
+</grammar>
