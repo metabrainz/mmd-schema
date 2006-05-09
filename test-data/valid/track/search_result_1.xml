@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata xmlns="http://musicbrainz.org/ns/mmd-1.0#"
           xmlns:ext="http://musicbrainz.org/ns/ext-1.0#">
-    <track-list>
+    <track-list count="100" offset="0">
         <track id="748f2b79-8c50-4581-adb1-7708118a48fc" ext:score="100">
             <title>Little Earthquakes</title>
             <duration>457760</duration>
