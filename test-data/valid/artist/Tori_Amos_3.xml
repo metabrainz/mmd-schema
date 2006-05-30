@@ -14,6 +14,8 @@
 		     <sort-name>Hawley, Mark</sort-name>
 		</artist>
 	    </relation>
+        </relation-list>
+        <relation-list target-type="Url">
 	    <relation type="Discography"
 		      target="http://www.yessaid.com/albums.html"/>
 	    <relation type="Wikipedia"
