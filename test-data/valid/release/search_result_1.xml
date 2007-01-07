@@ -3,7 +3,7 @@
 <metadata xmlns="http://musicbrainz.org/ns/mmd-1.0#"
           xmlns:ext="http://musicbrainz.org/ns/ext-1.0#">
 
-    <release-list>
+    <release-list offset="0" count="234">
         <release id="290e10c5-7efc-4f60-ba2c-0dfc0208fbf5" type="Album Official" ext:score="100">
             <title>Under the Pink</title>
             <text-representation language="ENG" script="Latn"/>
