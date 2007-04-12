@@ -4,7 +4,7 @@
 #
 XMLSTARLET_BIN=xmlstarlet
 
-SCHEMA_FILE=schema/musicbrainz_mmd-1.0rc5.rng
+SCHEMA_FILE=schema/musicbrainz_mmd-1.1.rng
 
 if [ ! -e "$SCHEMA_FILE" ]; then
 	echo "Error: schema file $SCHEMA_FILE does not exist"
