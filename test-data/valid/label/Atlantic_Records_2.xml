@@ -7,5 +7,8 @@
         <disambiguation>fake</disambiguation>
         <country>US</country>
         <life-span begin="1947" end="2047"/>
+	<alias-list>
+	    <alias>Atlantic Rec.</alias>
+	</alias-list>
     </label>
 </metadata>
