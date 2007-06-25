@@ -380,12 +380,12 @@
 
     <define name="def_tag">
         <element name="tag">
-	    <optional>
-    		<attribute name="count">
-            	    <data type="nonNegativeInteger"/>
-        	</attribute>
-    	    </optional>
-    	    <text/>
+            <optional>
+                <attribute name="count">
+                    <data type="nonNegativeInteger"/>
+                </attribute>
+            </optional>
+            <text/>
         </element>
     </define>
 
@@ -649,7 +649,7 @@
         <element name="tag-list">
             <ref name="def_list-attributes"/>
             <zeroOrMore>
-        	<ref name="def_tag"/>
+                <ref name="def_tag"/>
             </zeroOrMore>
         </element>
     </define>
