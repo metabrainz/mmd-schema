@@ -589,6 +589,11 @@
                         </attribute>
                     </optional>
                     <optional>
+                        <attribute name="format">
+                            <data type="anyURI"/>
+                        </attribute>
+                    </optional>
+                    <optional>
                         <ref name="def_label-element"/>
                     </optional>
                 </element>

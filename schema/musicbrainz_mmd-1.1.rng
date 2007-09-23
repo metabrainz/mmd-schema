@@ -3,7 +3,7 @@
 <!-- ==================================================================
      $Id$
 
-     Relax NG Schema for MusicBrainz XML Metadata Version 1.0
+     Relax NG Schema for MusicBrainz XML Metadata Version 1.1
 
 
      This XML schema has been designed to represent music metadata.
