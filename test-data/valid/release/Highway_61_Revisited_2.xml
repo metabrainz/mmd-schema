@@ -8,5 +8,11 @@
 	    <tag count="40">folk rock</tag>
 	    <tag count="4">dylan</tag>
         </tag-list>
+        <user-tag-list>
+            <user-tag>rock</user-tag>  
+            <user-tag>foo</user-tag>  
+        </user-tag-list>
+        <rating votes-count="10">4.5</rating>
+        <user-rating>3</user-rating>
     </release>
 </metadata>

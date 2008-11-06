@@ -4,5 +4,10 @@
 	<title>Silent All These Years</title>
 	<duration>253466</duration>
 	<tag-list></tag-list>
+    <user-tag-list>
+        <user-tag>foo</user-tag>
+    </user-tag-list>
+    <rating votes-count="10">4.5</rating>
+    <user-rating>3</user-rating>
     </track>
 </metadata>

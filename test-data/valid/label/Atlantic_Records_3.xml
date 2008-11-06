@@ -7,5 +7,11 @@
 	    <tag>jazz</tag>
 	    <tag>blues</tag>
 	</tag-list>
+    <user-tag-list>
+        <user-tag>american</user-tag>  
+        <user-tag>jazz</user-tag>  
+    </user-tag-list>
+    <rating votes-count="10">4.5</rating>
+    <user-rating>3</user-rating>
     </label>
 </metadata>

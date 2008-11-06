@@ -8,5 +8,11 @@
             <tag count="40">romantic era</tag>  
             <tag count="120">composer</tag>  
         </tag-list>
+        <user-tag-list>
+            <user-tag>classical</user-tag>  
+            <user-tag>russian</user-tag>  
+        </user-tag-list>
+        <rating votes-count="10">4.5</rating>
+        <user-rating>3</user-rating>
     </artist>
 </metadata>
