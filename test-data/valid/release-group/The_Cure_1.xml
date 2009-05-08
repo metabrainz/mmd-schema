@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://musicbrainz.org/ns/mmd-1.0#" xmlns:ext="http://musicbrainz.org/ns/ext-1.0#">
+  <release-group id="c6a62b78-70f7-44f7-b159-064f6b7ba03a" type="Album">
+    <title>The Cure</title>
+    <release-list>
+      <release id="d984e1a3-7281-46bb-ad8b-1478a00f2fbf" type="Album Official">
+        <title>The Cure</title>
+        <text-representation language="ENG" script="Latn"/>
+        <asin>B0002CHGZI</asin>
+        <track-list offset="11"/>
+      </release>
+      <release id="c100a398-3132-48a8-a5fc-c3e908ac17dc" type="Album Official">
+        <title>The Cure</title>
+        <text-representation language="ENG" script="Latn"/>
+        <track-list offset="14"/>
+      </release>
+      <release id="24bec892-b21d-47d8-a288-dc6450152574" type="Album Official">
+        <title>The Cure</title>
+        <text-representation language="ENG" script="Latn"/>
+        <asin>B0002C9G7O</asin>
+        <track-list offset="12"/>
+      </release>
+      <release id="61a4ec51-fa34-4757-85d7-83231776ed14" type="Album Official">
+        <title>The Cure</title>
+        <text-representation language="ENG" script="Latn"/>
+        <asin>B00028HOFY</asin>
+        <track-list offset="10"/>
+      </release>
+    </release-list>
+  </release-group>
+</metadata>

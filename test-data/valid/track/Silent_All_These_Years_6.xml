@@ -3,6 +3,9 @@
     <track id="d6118046-407d-4e06-a1ba-49c399a4c42f">
 	<title>Silent All These Years</title>
 	<duration>253466</duration>
+	<isrc-list>
+          <isrc id="USPR37300012"/>
+	</isrc-list>
 	<tag-list></tag-list>
     <user-tag-list>
         <user-tag>foo</user-tag>

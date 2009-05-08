@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ==================================================================
+     $Id$
+
+     Relax NG Schema for MusicBrainz XML Metadata Version 1.4
+
+
+     This XML schema has been designed to represent music metadata.
+     Documentation and the latest revision can be found at
+
+        http://musicbrainz.org/development/mmd/
+
+
+     Copyright (c) 2006 Robert Kaye, Matthias Friedrich
+   
+     The schema is released under the Creative Commons 
+     Attribution-ShareAlike 2.5 license.
+
+     http://creativecommons.org/licenses/by-sa/2.5/
+
+     ================================================================== -->
+
+
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+         ns="http://musicbrainz.org/ns/mmd-1.0#">
+
+
+    <start>
+        <ref name="def_metadata-element"/>
+    </start>
+
+
+    <define name="def_metadata-element">
+        <element name="metadata">
+            <optional>
+                <attribute name="generator">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="created">
+                    <data type="dateTime"/>
+                </attribute>
+            </optional>
+
+            <optional>
+                <ref name="def_artist-element"/>
+            </optional>
+            <optional>
+                <ref name="def_release-element"/>
+            </optional>
+            <optional>
+                <ref name="def_release-group-element"/>
+            </optional>
+            <optional>
+                <ref name="def_track-element"/>
+            </optional>
+            <optional>
+                <ref name="def_label-element"/>
+            </optional>
+
+            <optional>
+                <ref name="def_artist-list"/>
+            </optional>
+            <optional>
+                <ref name="def_release-list"/>
+            </optional>
+            <optional>
+                <ref name="def_release-group-list"/>
+            </optional>
+            <optional>
+                <ref name="def_track-list"/>
+            </optional>
+            <optional>
+                <ref name="def_label-list"/>
+            </optional>
+                
+            <ref name="def_metadata-element_extension"/>
+        </element>
+    </define>
+
+
+    <define name="def_artist-element">
+        <element name="artist">
+            <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="type">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <ref name="def_artist-attribute_extension"/>
+
+            <optional>
+                <element name="name">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="sort-name">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="life-span">
+                    <optional>
+                        <attribute name="begin">
+                            <ref name="def_incomplete-date"/>
+                        </attribute>
+                    </optional>
+                    <optional>
+                        <attribute name="end">
+                            <ref name="def_incomplete-date"/>
+                        </attribute>
+                    </optional>
+                </element>
+            </optional>
+
+            <optional>
+                <ref name="def_alias-list"/>
+            </optional>
+            <optional>
+                <ref name="def_release-list"/>
+            </optional>
+            <optional>
+                <ref name="def_release-group-list"/>
+            </optional>
+            <zeroOrMore>
+                <ref name="def_relation-list"/>
+            </zeroOrMore>
+            <optional>
+                <ref name="def_tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_rating"/>
+            </optional>
+            <optional>
+                <ref name="def_user-rating"/>
+            </optional>
+
+            <ref name="def_artist-element_extension"/>
+        </element>
+    </define>
+
+
+    <define name="def_release-element">
+        <element name="release">
+            <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="type">
+                    <ref name="def_URI-list"/>
+                </attribute>
+            </optional>
+            <ref name="def_release-attribute_extension"/>
+
+            <optional>
+                <element name="title">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="text-representation">
+                    <optional>
+                        <attribute name="language">
+                            <ref name="def_iso-639"/>
+                        </attribute>
+                    </optional>
+                    <optional>
+                        <attribute name="script">
+                            <ref name="def_iso-15924"/>
+                        </attribute>
+                    </optional>
+                </element>
+            </optional>
+            <optional>
+                <element name="asin">
+                    <data type="string">
+                        <param name="pattern">[A-Z0-9]{10}</param>
+                    </data>
+                </element>
+            </optional>
+            <optional>
+                <ref name="def_artist-element"/>
+            </optional>
+
+            <optional>
+                <ref name="def_release-event-list"/>
+            </optional>
+            <optional>
+                <ref name="def_disc-list"/>
+            </optional>
+            <optional>
+                <ref name="def_puid-list"/>
+            </optional>
+            <optional>
+                <ref name="def_track-list"/>
+            </optional>
+            <zeroOrMore>
+                <ref name="def_relation-list"/>
+            </zeroOrMore>
+            <optional>
+                <ref name="def_tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_rating"/>
+            </optional>
+            <optional>
+                <ref name="def_user-rating"/>
+            </optional>
+
+            <ref name="def_release-element_extension"/>
+        </element>
+    </define>
+
+
+    <define name="def_release-group-element">
+        <element name="release-group">
+            <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="type">
+                    <ref name="def_URI-list"/>
+                </attribute>
+            </optional>
+            <ref name="def_release-group-attribute_extension"/>
+
+            <optional>
+                <element name="title">
+                    <text/>
+                </element>
+            </optional>
+
+            <optional>
+                <ref name="def_release-list"/>
+            </optional>
+
+            <ref name="def_release-group-element_extension"/>
+        </element>
+    </define>
+
+
+    <define name="def_track-element">
+        <element name="track">
+            <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <ref name="def_track-attribute_extension"/>
+
+            <optional>
+                <element name="title">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="duration">
+                    <data type="nonNegativeInteger"/>
+                </element>
+            </optional>
+            <optional>
+                <element name="isrc-list">
+                    <zeroOrMore>
+                        <element name="isrc">
+                          <attribute name="id">
+                            <ref name="def_isrc" />
+                          </attribute>
+                        </element>
+                    </zeroOrMore>
+                </element>
+            </optional>
+            <optional>
+                <ref name="def_artist-element"/>
+            </optional>
+
+            <optional>
+                <ref name="def_release-list"/>
+            </optional>
+            <optional>
+                <ref name="def_release-group-list"/>
+            </optional>
+            <optional>
+                <ref name="def_puid-list"/>
+            </optional>
+            <zeroOrMore>
+                <ref name="def_relation-list"/>
+            </zeroOrMore>
+            <optional>
+                <ref name="def_tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_rating"/>
+            </optional>
+            <optional>
+                <ref name="def_user-rating"/>
+            </optional>
+
+            <ref name="def_track-element_extension"/>
+        </element>
+    </define>
+
+
+    <define name="def_label-element">
+        <element name="label">
+            <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="type">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <ref name="def_label-attribute_extension"/>
+
+            <optional>
+                <element name="name">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="sort-name">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="label-code">
+                    <data type="nonNegativeInteger"/>
+                </element>
+            </optional>
+            <optional>
+                <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="country">
+                    <ref name="def_iso-3166"/>
+                </element>
+            </optional>
+            <optional>
+                <element name="life-span">
+                    <optional>
+                        <attribute name="begin">
+                            <ref name="def_incomplete-date"/>
+                        </attribute>
+                    </optional>
+                    <optional>
+                        <attribute name="end">
+                            <ref name="def_incomplete-date"/>
+                        </attribute>
+                    </optional>
+                </element>
+            </optional>
+
+            <optional>
+                <ref name="def_alias-list"/>
+            </optional>
+            <optional>
+                <ref name="def_release-list"/>
+            </optional>
+            <optional>
+                <ref name="def_release-group-list"/>
+            </optional>
+            <zeroOrMore>
+                <ref name="def_relation-list"/>
+            </zeroOrMore>
+            <optional>
+                <ref name="def_tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_rating"/>
+            </optional>
+            <optional>
+                <ref name="def_user-rating"/>
+            </optional>
+
+            <ref name="def_label-element_extension"/>
+        </element>
+    </define>
+
+
+    <define name="def_relation-element">
+        <element name="relation">
+            <attribute name="type">
+                <data type="anyURI"/>
+            </attribute>
+            <attribute name="target">
+                <data type="anyURI"/>
+            </attribute>
+            <optional>
+                <attribute name="direction">
+                    <ref name="def_direction"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="attributes">
+                    <ref name="def_URI-list"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="begin">
+                    <ref name="def_incomplete-date"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="end">
+                    <ref name="def_incomplete-date"/>
+                </attribute>
+            </optional>
+
+            <optional>
+                <choice>
+                    <ref name="def_artist-element"/>
+                    <ref name="def_release-element"/>
+                    <ref name="def_track-element"/>
+
+                    <ref name="def_relation-element_extension"/>
+                </choice>
+            </optional>
+        </element>
+    </define>
+
+
+    <define name="def_alias">
+        <element name="alias">
+            <optional>
+                <attribute name="type">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="script">
+                    <ref name="def_iso-15924"/>
+                </attribute>
+            </optional>
+            <text/>
+        </element>
+    </define>
+
+
+    <define name="def_tag">
+        <element name="tag">
+            <optional>
+                <attribute name="count">
+                    <data type="nonNegativeInteger"/>
+                </attribute>
+            </optional>
+            <text/>
+        </element>
+    </define>
+
+
+    <define name="def_user-tag">
+        <element name="user-tag">
+            <text/>
+        </element>
+    </define>
+
+    <define name="def_rating">
+        <element name="rating">
+            <optional>
+                <attribute name="votes-count">
+                    <data type="nonNegativeInteger"/>
+                </attribute>
+            </optional>
+            <data type="float"/>
+        </element>
+    </define>
+
+
+    <define name="def_user-rating">
+        <element name="user-rating">
+            <data type="nonNegativeInteger"/>
+        </element>
+    </define>
+
+
+    <!--
+        This part defines the extensions elements and attributes.
+    -->
+
+    <define name="def_metadata-element_extension">
+        <optional>
+            <ref name="def_extension_element"/>
+        </optional>
+    </define>
+
+
+    <define name="def_artist-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_release-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_release-group-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_track-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_label-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_relation-element_extension">
+        <ref name="def_extension_element"/>
+    </define>
+
+
+    <define name="def_artist-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_release-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_release-group-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_track-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_label-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_extension_element">
+        <element>
+            <anyName>
+                <except>
+                    <nsName ns="http://musicbrainz.org/ns/mmd-1.0#"/>
+                    <nsName ns=""/>
+                </except>
+            </anyName>
+            <zeroOrMore>
+                <choice>
+                    <attribute>
+                        <anyName/>
+                    </attribute>
+                    <text/>
+                    <ref name="def_anything"/>
+                </choice>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_extension_attribute">
+	<attribute>
+	<anyName>
+            <except>
+                <nsName ns="http://musicbrainz.org/ns/mmd-1.0#"/>
+                <nsName ns=""/>
+            </except>
+	</anyName>
+	</attribute>
+    </define>
+
+
+    <define name="def_anything">
+        <element>
+            <anyName>
+                <except>
+                    <nsName ns=""/>
+                </except>
+            </anyName>
+            <zeroOrMore>
+                <choice>
+                    <attribute>
+                    <anyName/>
+                    </attribute>
+                    <text/>
+                    <ref name="def_anything"/>
+                </choice>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_artist-list">
+        <element name="artist-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_artist-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_release-list">
+        <element name="release-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_release-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_release-group-list">
+        <element name="release-group-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_release-group-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_alias-list">
+        <element name="alias-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_alias"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_track-list">
+        <element name="track-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_track-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_label-list">
+        <element name="label-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_label-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_release-event-list">
+        <element name="release-event-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <element name="event">
+                    <attribute name="date">
+                        <ref name="def_incomplete-date"/>
+                    </attribute>
+                    <optional>
+                        <attribute name="country">
+                            <ref name="def_iso-3166"/>
+                        </attribute>
+                    </optional>
+                    <optional>
+                        <attribute name="catalog-number">
+                            <text/>
+                        </attribute>
+                    </optional>
+                    <optional>
+                        <attribute name="barcode">
+                            <text/>
+                        </attribute>
+                    </optional>
+                    <optional>
+                        <attribute name="format">
+                            <data type="anyURI"/>
+                        </attribute>
+                    </optional>
+                    <optional>
+                        <ref name="def_label-element"/>
+                    </optional>
+                </element>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_disc-list">
+        <element name="disc-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <element name="disc">
+                    <attribute name="id">
+                        <data type="string">
+                            <param name="pattern">[a-zA-Z0-9._]{27}-</param>
+                        </data>
+                    </attribute>
+                    <optional>
+                        <attribute name="sectors">
+                            <data type="nonNegativeInteger"/>
+                        </attribute>
+                    </optional>
+                </element>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_puid-list">
+        <element name="puid-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <element name="puid">
+                    <attribute name="id">
+                        <ref name="def_uuid"/>
+                    </attribute>
+                </element>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_relation-list">
+        <element name="relation-list">
+            <attribute name="target-type">
+                <data type="anyURI"/>
+            </attribute>
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_relation-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_tag-list">
+        <element name="tag-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_tag"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_user-tag-list">
+        <element name="user-tag-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_user-tag"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_list-attributes">
+        <optional>
+            <attribute name="count">
+                <data type="nonNegativeInteger"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="offset">
+                <data type="nonNegativeInteger"/>
+            </attribute>
+        </optional>
+    </define>
+
+
+    <!-- A space separated list of URIs, relative ones are possible, too. -->
+    <define name="def_URI-list">
+        <list>
+            <oneOrMore>
+                <data type="anyURI"/>
+            </oneOrMore>
+        </list>
+    </define>
+
+
+    <!-- A date with varying precision in format 'YYYY-MM-DD'. -->
+    <define name="def_incomplete-date">
+        <data type="string">
+            <param name="pattern">[0-9]{4}(-[0-9]{2})?(-[0-9]{2})?</param>
+        </data>
+    </define>
+
+
+    <!-- A two-letter country code like 'DE', 'UK', 'FR' etc. -->
+    <define name="def_iso-3166">
+        <data type="string">
+            <param name="pattern">[A-Z]{2}</param>
+        </data>
+    </define>
+
+
+    <!-- An ISO-639-2/T language code like 'DEU', 'ENG', 'JPN' etc. -->
+    <define name="def_iso-639">
+        <data type="string">
+            <param name="pattern">[A-Z]{3}</param>
+        </data>
+    </define>
+
+
+    <!-- A four-letter script code like 'Latn', 'Cyrl', etc. -->
+    <define name="def_iso-15924">
+        <data type="string">
+            <param name="pattern">[A-Z][a-z]{3}</param>
+        </data>
+    </define>
+
+    <!-- An ISRC code: CCXXXYYNNNNN, with
+           CC    - two-letter ISO-3166-1 alpha 2 country code
+           XXX   - alphanumeric registrant code (organization)
+           YY    - year
+           NNNNN - 5-digit number
+    -->
+    <define name="def_isrc">
+        <data type="string">
+            <param name="pattern">[A-Z]{2}[A-Z0-9]{3}[0-9]{2}[0-9]{5}</param>
+        </data>
+    </define>
+
+
+    <!-- A 128 Bit UUID in its standard ASCII representation. -->
+    <define name="def_uuid">
+        <data type="string">
+            <param name="pattern">[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}</param>
+        </data>
+    </define>
+
+
+    <!-- Reading direction of a relation. Defaults to "both". -->
+    <define name="def_direction">
+        <choice>
+            <value>both</value>
+            <value>forward</value>
+            <value>backward</value>
+        </choice>
+    </define>
+
+</grammar>
