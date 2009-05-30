@@ -199,6 +199,11 @@
             <optional>
                 <ref name="def_artist-element"/>
             </optional>
+<!-- Should this be a release-group-list instead?
+            <optional>
+                <ref name="def_release-group-element"/>
+            </optional>
+-->
 
             <optional>
                 <ref name="def_release-event-list"/>
@@ -298,9 +303,6 @@
 
             <optional>
                 <ref name="def_release-list"/>
-            </optional>
-            <optional>
-                <ref name="def_release-group-list"/>
             </optional>
             <optional>
                 <ref name="def_puid-list"/>
