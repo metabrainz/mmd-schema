@@ -2,6 +2,11 @@
 <metadata xmlns="http://musicbrainz.org/ns/mmd-1.0#" xmlns:ext="http://musicbrainz.org/ns/ext-1.0#">
   <release-group id="c6a62b78-70f7-44f7-b159-064f6b7ba03a" type="Album">
     <title>The Cure</title>
+    <artist id="69ee3720-a7cb-4402-b48d-a02c366f2bcf" type="Group">
+      <name>The Cure</name>
+      <sort-name>Cure, The</sort-name>
+      <life-span begin="1977"/>
+    </artist>
     <release-list>
       <release id="d984e1a3-7281-46bb-ad8b-1478a00f2fbf" type="Album Official">
         <title>The Cure</title>

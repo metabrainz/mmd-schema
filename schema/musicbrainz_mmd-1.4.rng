@@ -257,6 +257,10 @@
             </optional>
 
             <optional>
+                <ref name="def_artist-element"/>
+            </optional>
+
+            <optional>
                 <ref name="def_release-list"/>
             </optional>
 
