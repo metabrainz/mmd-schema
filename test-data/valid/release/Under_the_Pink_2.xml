@@ -5,6 +5,9 @@
         <artist id="c0b2500e-0cef-4130-869d-732b23ed9df5">
             <name>Tori Amos</name>
         </artist>
+        <release-group id="ef2b891f-ca73-3e14-b38b-a68699dab8c4" type="Album">
+            <title>Under the Pink</title> 
+        </release-group>
         <track-list offset="1" count="12">
             <track id="0a984e3b-e38a-4b86-80be-f3a3eb1114ca">
                 <title>God</title>

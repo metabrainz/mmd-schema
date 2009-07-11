@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<metadata xmlns="http://musicbrainz.org/ns/mmd-1.0#" xmlns:ext="http://musicbrainz.org/ns/ext-1.0#">
+    <release-group-list count="3" offset="0">
+        <release-group id="963eac15-e3da-3a92-aa5c-2ec23bfb6ec2" type="Album" ext:score="100">
+            <title>Signal Morning</title>
+            <artist id="2dea8a55-623b-42bb-bda3-9fb784018b40">
+                <name>Circulatory System</name>
+            </artist>
+        </release-group>
+        <release-group id="0bd324a3-1c90-3bdb-8ca4-4101a580c62c" type="Album" ext:score="98">
+            <title>Circulatory System</title>
+            <artist id="2dea8a55-623b-42bb-bda3-9fb784018b40">
+                <name>Circulatory System</name>
+            </artist>
+        </release-group>
+        <release-group id="ea7d8352-7751-30be-8490-bb6df737f47c" type="Album" ext:score="90">
+            <title>Inside Views</title>
+            <artist id="2dea8a55-623b-42bb-bda3-9fb784018b40">
+                <name>Circulatory System</name>
+            </artist>
+        </release-group>
+    </release-group-list>
+</metadata>

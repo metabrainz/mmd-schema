@@ -8,6 +8,7 @@
             <release id="a7ccb022-f437-4492-8eee-8f85d85cdb96" type="Album Official">
                 <title>Strange Little Girls</title>
                 <asin>B00005NKYQ</asin>
+                <release-group id="a69a1574-dfe3-3e2a-b499-d26d5e916041"/>
                 <release-event-list>
                     <event date="2001-09-14" country="BE"/>
                     <event date="2001-09-14" country="FI"/>
@@ -28,6 +29,7 @@
                 <title>To Venus and Back (disc 1: Orbiting)</title>
                 <asin>B00001IVJS</asin>
                 <artist id="c0b2500e-0cef-4130-869d-732b23ed9df5"/>
+                <release-group id="1fd43909-8056-3805-b2f9-c663ce7e71e6"/>
                 <release-event-list>
                     <event date="1999-09-20" country="DE"/>
                     <event date="1999-09-20" country="GB"/>
@@ -39,6 +41,7 @@
                 <title>Under the Pink</title>
                 <asin>B000002IXU</asin>
                 <artist id="c0b2500e-0cef-4130-869d-732b23ed9df5"/>
+                <release-group id="ef2b891f-ca73-3e14-b38b-a68699dab8c4"/>
                 <release-event-list>
                     <event date="1994-01-28" country="DE"/>
                     <event date="1994-01-31" country="GB"/>
@@ -49,5 +52,16 @@
                 <disc-list count="4"/>
             </release>
         </release-list>
+        <release-group-list>
+            <release-group id="ef2b891f-ca73-3e14-b38b-a68699dab8c4" type="Album">
+                <title>Under the Pink</title>
+            </release-group>
+            <release-group id="1fd43909-8056-3805-b2f9-c663ce7e71e6" type="Album">
+                <title>To Venus and Back</title>
+            </release-group>
+            <release-group id="a69a1574-dfe3-3e2a-b499-d26d5e916041" type="Album">
+                <title>Strange Little Girls</title>
+            </release-group>
+        </release-group-list>
     </artist>
 </metadata>
