@@ -30,18 +30,19 @@ public class ObjectFactory {
     private final static QName _Disambiguation_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "disambiguation");
     private final static QName _Target_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "target");
     private final static QName _Language_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "language");
-    private final static QName _UserRating_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "user-rating");
     private final static QName _Attributes_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "attributes");
+    private final static QName _UserRating_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "user-rating");
     private final static QName _Status_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "status");
     private final static QName _CatalogNumber_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "catalog-number");
     private final static QName _SortName_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "sort-name");
     private final static QName _Barcode_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "barcode");
+    private final static QName _Format_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "format");
     private final static QName _Sectors_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "sectors");
     private final static QName _Script_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "script");
     private final static QName _Begin_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "begin");
     private final static QName _Title_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "title");
-    private final static QName _UserTag_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "user-tag");
     private final static QName _LabelCode_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "label-code");
+    private final static QName _UserTag_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "user-tag");
     private final static QName _Packaging_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "packaging");
     private final static QName _Name_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "name");
     private final static QName _Length_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "length");
@@ -61,11 +62,107 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link IsrcList }
+     * 
+     */
+    public IsrcList createIsrcList() {
+        return new IsrcList();
+    }
+
+    /**
+     * Create an instance of {@link Alias }
+     * 
+     */
+    public Alias createAlias() {
+        return new Alias();
+    }
+
+    /**
+     * Create an instance of {@link TagList }
+     * 
+     */
+    public TagList createTagList() {
+        return new TagList();
+    }
+
+    /**
+     * Create an instance of {@link Metadata }
+     * 
+     */
+    public Metadata createMetadata() {
+        return new Metadata();
+    }
+
+    /**
+     * Create an instance of {@link TrackList }
+     * 
+     */
+    public TrackList createTrackList() {
+        return new TrackList();
+    }
+
+    /**
+     * Create an instance of {@link Artist }
+     * 
+     */
+    public Artist createArtist() {
+        return new Artist();
+    }
+
+    /**
      * Create an instance of {@link Relation }
      * 
      */
     public Relation createRelation() {
         return new Relation();
+    }
+
+    /**
+     * Create an instance of {@link UserTagList }
+     * 
+     */
+    public UserTagList createUserTagList() {
+        return new UserTagList();
+    }
+
+    /**
+     * Create an instance of {@link Recording }
+     * 
+     */
+    public Recording createRecording() {
+        return new Recording();
+    }
+
+    /**
+     * Create an instance of {@link MediumList }
+     * 
+     */
+    public MediumList createMediumList() {
+        return new MediumList();
+    }
+
+    /**
+     * Create an instance of {@link Medium }
+     * 
+     */
+    public Medium createMedium() {
+        return new Medium();
+    }
+
+    /**
+     * Create an instance of {@link Rating }
+     * 
+     */
+    public Rating createRating() {
+        return new Rating();
+    }
+
+    /**
+     * Create an instance of {@link AliasList }
+     * 
+     */
+    public AliasList createAliasList() {
+        return new AliasList();
     }
 
     /**
@@ -77,11 +174,91 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Work }
+     * Create an instance of {@link Label }
      * 
      */
-    public Work createWork() {
-        return new Work();
+    public Label createLabel() {
+        return new Label();
+    }
+
+    /**
+     * Create an instance of {@link ArtistCredit }
+     * 
+     */
+    public ArtistCredit createArtistCredit() {
+        return new ArtistCredit();
+    }
+
+    /**
+     * Create an instance of {@link WorkList }
+     * 
+     */
+    public WorkList createWorkList() {
+        return new WorkList();
+    }
+
+    /**
+     * Create an instance of {@link Release }
+     * 
+     */
+    public Release createRelease() {
+        return new Release();
+    }
+
+    /**
+     * Create an instance of {@link LabelInfoList }
+     * 
+     */
+    public LabelInfoList createLabelInfoList() {
+        return new LabelInfoList();
+    }
+
+    /**
+     * Create an instance of {@link PuidList }
+     * 
+     */
+    public PuidList createPuidList() {
+        return new PuidList();
+    }
+
+    /**
+     * Create an instance of {@link LabelInfo }
+     * 
+     */
+    public LabelInfo createLabelInfo() {
+        return new LabelInfo();
+    }
+
+    /**
+     * Create an instance of {@link Track }
+     * 
+     */
+    public Track createTrack() {
+        return new Track();
+    }
+
+    /**
+     * Create an instance of {@link ReleaseGroup }
+     * 
+     */
+    public ReleaseGroup createReleaseGroup() {
+        return new ReleaseGroup();
+    }
+
+    /**
+     * Create an instance of {@link Puid }
+     * 
+     */
+    public Puid createPuid() {
+        return new Puid();
+    }
+
+    /**
+     * Create an instance of {@link RecordingList }
+     * 
+     */
+    public RecordingList createRecordingList() {
+        return new RecordingList();
     }
 
     /**
@@ -101,203 +278,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AliasList }
-     * 
-     */
-    public AliasList createAliasList() {
-        return new AliasList();
-    }
-
-    /**
-     * Create an instance of {@link IsrcList }
-     * 
-     */
-    public IsrcList createIsrcList() {
-        return new IsrcList();
-    }
-
-    /**
-     * Create an instance of {@link LabelInfo }
-     * 
-     */
-    public LabelInfo createLabelInfo() {
-        return new LabelInfo();
-    }
-
-    /**
-     * Create an instance of {@link Alias }
-     * 
-     */
-    public Alias createAlias() {
-        return new Alias();
-    }
-
-    /**
-     * Create an instance of {@link Disc }
-     * 
-     */
-    public Disc createDisc() {
-        return new Disc();
-    }
-
-    /**
-     * Create an instance of {@link PuidList }
-     * 
-     */
-    public PuidList createPuidList() {
-        return new PuidList();
-    }
-
-    /**
-     * Create an instance of {@link Recording }
-     * 
-     */
-    public Recording createRecording() {
-        return new Recording();
-    }
-
-    /**
-     * Create an instance of {@link WorkList }
-     * 
-     */
-    public WorkList createWorkList() {
-        return new WorkList();
-    }
-
-    /**
-     * Create an instance of {@link RecordingList }
-     * 
-     */
-    public RecordingList createRecordingList() {
-        return new RecordingList();
-    }
-
-    /**
-     * Create an instance of {@link Metadata }
-     * 
-     */
-    public Metadata createMetadata() {
-        return new Metadata();
-    }
-
-    /**
-     * Create an instance of {@link ReleaseGroup }
-     * 
-     */
-    public ReleaseGroup createReleaseGroup() {
-        return new ReleaseGroup();
-    }
-
-    /**
-     * Create an instance of {@link Release }
-     * 
-     */
-    public Release createRelease() {
-        return new Release();
-    }
-
-    /**
-     * Create an instance of {@link Rating }
-     * 
-     */
-    public Rating createRating() {
-        return new Rating();
-    }
-
-    /**
-     * Create an instance of {@link RelationList }
-     * 
-     */
-    public RelationList createRelationList() {
-        return new RelationList();
-    }
-
-    /**
-     * Create an instance of {@link Medium }
-     * 
-     */
-    public Medium createMedium() {
-        return new Medium();
-    }
-
-    /**
-     * Create an instance of {@link MediumList }
-     * 
-     */
-    public MediumList createMediumList() {
-        return new MediumList();
-    }
-
-    /**
-     * Create an instance of {@link ReleaseGroupList }
-     * 
-     */
-    public ReleaseGroupList createReleaseGroupList() {
-        return new ReleaseGroupList();
-    }
-
-    /**
-     * Create an instance of {@link ArtistCredit }
-     * 
-     */
-    public ArtistCredit createArtistCredit() {
-        return new ArtistCredit();
-    }
-
-    /**
-     * Create an instance of {@link DiscList }
-     * 
-     */
-    public DiscList createDiscList() {
-        return new DiscList();
-    }
-
-    /**
      * Create an instance of {@link TextRepresentation }
      * 
      */
     public TextRepresentation createTextRepresentation() {
         return new TextRepresentation();
-    }
-
-    /**
-     * Create an instance of {@link Track }
-     * 
-     */
-    public Track createTrack() {
-        return new Track();
-    }
-
-    /**
-     * Create an instance of {@link Label }
-     * 
-     */
-    public Label createLabel() {
-        return new Label();
-    }
-
-    /**
-     * Create an instance of {@link Puid }
-     * 
-     */
-    public Puid createPuid() {
-        return new Puid();
-    }
-
-    /**
-     * Create an instance of {@link LabelList }
-     * 
-     */
-    public LabelList createLabelList() {
-        return new LabelList();
-    }
-
-    /**
-     * Create an instance of {@link TrackList }
-     * 
-     */
-    public TrackList createTrackList() {
-        return new TrackList();
     }
 
     /**
@@ -309,6 +294,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DiscList }
+     * 
+     */
+    public DiscList createDiscList() {
+        return new DiscList();
+    }
+
+    /**
      * Create an instance of {@link Tag }
      * 
      */
@@ -317,27 +310,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Artist }
+     * Create an instance of {@link LabelList }
      * 
      */
-    public Artist createArtist() {
-        return new Artist();
+    public LabelList createLabelList() {
+        return new LabelList();
     }
 
     /**
-     * Create an instance of {@link UserTagList }
+     * Create an instance of {@link RelationList }
      * 
      */
-    public UserTagList createUserTagList() {
-        return new UserTagList();
+    public RelationList createRelationList() {
+        return new RelationList();
     }
 
     /**
-     * Create an instance of {@link TagList }
+     * Create an instance of {@link Disc }
      * 
      */
-    public TagList createTagList() {
-        return new TagList();
+    public Disc createDisc() {
+        return new Disc();
+    }
+
+    /**
+     * Create an instance of {@link ReleaseGroupList }
+     * 
+     */
+    public ReleaseGroupList createReleaseGroupList() {
+        return new ReleaseGroupList();
+    }
+
+    /**
+     * Create an instance of {@link Work }
+     * 
+     */
+    public Work createWork() {
+        return new Work();
     }
 
     /**
@@ -377,21 +386,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://musicbrainz.org/ns/mmd-2.0#", name = "user-rating")
-    public JAXBElement<BigInteger> createUserRating(BigInteger value) {
-        return new JAXBElement<BigInteger>(_UserRating_QNAME, BigInteger.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code <}{@link String }{@code >}{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://musicbrainz.org/ns/mmd-2.0#", name = "attributes")
     public JAXBElement<List<String>> createAttributes(List<String> value) {
         return new JAXBElement<List<String>>(_Attributes_QNAME, ((Class) List.class), null, ((List<String> ) value));
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://musicbrainz.org/ns/mmd-2.0#", name = "user-rating")
+    public JAXBElement<BigInteger> createUserRating(BigInteger value) {
+        return new JAXBElement<BigInteger>(_UserRating_QNAME, BigInteger.class, null, value);
     }
 
     /**
@@ -431,6 +440,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://musicbrainz.org/ns/mmd-2.0#", name = "format")
+    public JAXBElement<String> createFormat(String value) {
+        return new JAXBElement<String>(_Format_QNAME, String.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
      * 
      */
@@ -467,21 +485,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://musicbrainz.org/ns/mmd-2.0#", name = "user-tag")
-    public JAXBElement<String> createUserTag(String value) {
-        return new JAXBElement<String>(_UserTag_QNAME, String.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://musicbrainz.org/ns/mmd-2.0#", name = "label-code")
     public JAXBElement<BigInteger> createLabelCode(BigInteger value) {
         return new JAXBElement<BigInteger>(_LabelCode_QNAME, BigInteger.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://musicbrainz.org/ns/mmd-2.0#", name = "user-tag")
+    public JAXBElement<String> createUserTag(String value) {
+        return new JAXBElement<String>(_UserTag_QNAME, String.class, null, value);
     }
 
     /**

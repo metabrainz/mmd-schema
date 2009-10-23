@@ -34,6 +34,7 @@ import org.w3c.dom.Element;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}disambiguation" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}isrc-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}artist-credit" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}release-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}puid-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}relation-list" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}tag-list" minOccurs="0"/>
@@ -58,6 +59,7 @@ import org.w3c.dom.Element;
     "disambiguation",
     "isrcList",
     "artistCredit",
+    "releaseList",
     "puidList",
     "relationList",
     "tagList",
@@ -77,6 +79,8 @@ public class Recording {
     protected IsrcList isrcList;
     @XmlElement(name = "artist-credit")
     protected ArtistCredit artistCredit;
+    @XmlElement(name = "release-list")
+    protected ReleaseList releaseList;
     @XmlElement(name = "puid-list")
     protected PuidList puidList;
     @XmlElement(name = "relation-list")
@@ -215,6 +219,30 @@ public class Recording {
      */
     public void setArtistCredit(ArtistCredit value) {
         this.artistCredit = value;
+    }
+
+    /**
+     * Gets the value of the releaseList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ReleaseList }
+     *     
+     */
+    public ReleaseList getReleaseList() {
+        return releaseList;
+    }
+
+    /**
+     * Sets the value of the releaseList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ReleaseList }
+     *     
+     */
+    public void setReleaseList(ReleaseList value) {
+        this.releaseList = value;
     }
 
     /**

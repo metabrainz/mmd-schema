@@ -96,9 +96,8 @@
         <xs:element ref="mmd-2.0:date"/>
         <xs:element minOccurs="0" name="country" type="mmd-2.0:def_iso-3166"/>
         <xs:element minOccurs="0" ref="mmd-2.0:barcode"/>
-        <xs:element minOccurs="0" name="format" type="xs:anyURI"/>
         <xs:element minOccurs="0" ref="mmd-2.0:asin"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:label-info"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:label-info-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:medium-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
         <xs:group ref="mmd-2.0:def_release-element_extension"/>
@@ -135,6 +134,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:rating"/>
@@ -154,6 +154,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:puid-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
@@ -291,13 +292,14 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
         <xs:element minOccurs="0" ref="mmd-2.0:position"/>
-        <xs:element minOccurs="0" name="format" type="xs:string"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:format"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disc-list"/>
         <xs:element ref="mmd-2.0:track-list"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="position" type="xs:nonNegativeInteger"/>
+  <xs:element name="format" type="xs:string"/>
   <xs:element name="track">
     <xs:complexType>
       <xs:sequence>
@@ -439,6 +441,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:label"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="label-info-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:label-info"/>
       </xs:sequence>
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>

@@ -32,6 +32,7 @@ import org.w3c.dom.Element;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}title" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}artist-credit" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}release-list" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}relation-list" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}tag-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}user-tag-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}rating" minOccurs="0"/>
@@ -53,6 +54,7 @@ import org.w3c.dom.Element;
     "title",
     "artistCredit",
     "releaseList",
+    "relationList",
     "tagList",
     "userTagList",
     "rating",
@@ -67,6 +69,8 @@ public class ReleaseGroup {
     protected ArtistCredit artistCredit;
     @XmlElement(name = "release-list")
     protected ReleaseList releaseList;
+    @XmlElement(name = "relation-list")
+    protected List<RelationList> relationList;
     @XmlElement(name = "tag-list")
     protected TagList tagList;
     @XmlElement(name = "user-tag-list")
@@ -155,6 +159,35 @@ public class ReleaseGroup {
      */
     public void setReleaseList(ReleaseList value) {
         this.releaseList = value;
+    }
+
+    /**
+     * Gets the value of the relationList property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the relationList property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getRelationList().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link RelationList }
+     * 
+     * 
+     */
+    public List<RelationList> getRelationList() {
+        if (relationList == null) {
+            relationList = new ArrayList<RelationList>();
+        }
+        return this.relationList;
     }
 
     /**

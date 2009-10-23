@@ -38,9 +38,8 @@ import org.w3c.dom.Element;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}date"/>
  *         &lt;element name="country" type="{http://musicbrainz.org/ns/mmd-2.0#}def_iso-3166" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}barcode" minOccurs="0"/>
- *         &lt;element name="format" type="{http://www.w3.org/2001/XMLSchema}anyURI" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}asin" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}label-info" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}label-info-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}medium-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}relation-list" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_release-element_extension"/>
@@ -66,9 +65,8 @@ import org.w3c.dom.Element;
     "date",
     "country",
     "barcode",
-    "format",
     "asin",
-    "labelInfo",
+    "labelInfoList",
     "mediumList",
     "relationList",
     "defExtensionElement"
@@ -90,11 +88,9 @@ public class Release {
     protected String date;
     protected String country;
     protected String barcode;
-    @XmlSchemaType(name = "anyURI")
-    protected String format;
     protected String asin;
-    @XmlElement(name = "label-info")
-    protected List<LabelInfo> labelInfo;
+    @XmlElement(name = "label-info-list")
+    protected LabelInfoList labelInfoList;
     @XmlElement(name = "medium-list")
     protected MediumList mediumList;
     @XmlElement(name = "relation-list")
@@ -348,30 +344,6 @@ public class Release {
     }
 
     /**
-     * Gets the value of the format property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFormat() {
-        return format;
-    }
-
-    /**
-     * Sets the value of the format property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFormat(String value) {
-        this.format = value;
-    }
-
-    /**
      * Gets the value of the asin property.
      * 
      * @return
@@ -396,32 +368,27 @@ public class Release {
     }
 
     /**
-     * Gets the value of the labelInfo property.
+     * Gets the value of the labelInfoList property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the labelInfo property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getLabelInfo().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link LabelInfo }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link LabelInfoList }
+     *     
      */
-    public List<LabelInfo> getLabelInfo() {
-        if (labelInfo == null) {
-            labelInfo = new ArrayList<LabelInfo>();
-        }
-        return this.labelInfo;
+    public LabelInfoList getLabelInfoList() {
+        return labelInfoList;
+    }
+
+    /**
+     * Sets the value of the labelInfoList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link LabelInfoList }
+     *     
+     */
+    public void setLabelInfoList(LabelInfoList value) {
+        this.labelInfoList = value;
     }
 
     /**
