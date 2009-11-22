@@ -62,11 +62,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IsrcList }
+     * Create an instance of {@link RelationList }
      * 
      */
-    public IsrcList createIsrcList() {
-        return new IsrcList();
+    public RelationList createRelationList() {
+        return new RelationList();
+    }
+
+    /**
+     * Create an instance of {@link Release }
+     * 
+     */
+    public Release createRelease() {
+        return new Release();
     }
 
     /**
@@ -75,6 +83,150 @@ public class ObjectFactory {
      */
     public Alias createAlias() {
         return new Alias();
+    }
+
+    /**
+     * Create an instance of {@link UserTagList }
+     * 
+     */
+    public UserTagList createUserTagList() {
+        return new UserTagList();
+    }
+
+    /**
+     * Create an instance of {@link Rating }
+     * 
+     */
+    public Rating createRating() {
+        return new Rating();
+    }
+
+    /**
+     * Create an instance of {@link ArtistList }
+     * 
+     */
+    public ArtistList createArtistList() {
+        return new ArtistList();
+    }
+
+    /**
+     * Create an instance of {@link ReleaseGroup }
+     * 
+     */
+    public ReleaseGroup createReleaseGroup() {
+        return new ReleaseGroup();
+    }
+
+    /**
+     * Create an instance of {@link Label }
+     * 
+     */
+    public Label createLabel() {
+        return new Label();
+    }
+
+    /**
+     * Create an instance of {@link Work }
+     * 
+     */
+    public Work createWork() {
+        return new Work();
+    }
+
+    /**
+     * Create an instance of {@link Track }
+     * 
+     */
+    public Track createTrack() {
+        return new Track();
+    }
+
+    /**
+     * Create an instance of {@link PuidList }
+     * 
+     */
+    public PuidList createPuidList() {
+        return new PuidList();
+    }
+
+    /**
+     * Create an instance of {@link RecordingList }
+     * 
+     */
+    public RecordingList createRecordingList() {
+        return new RecordingList();
+    }
+
+    /**
+     * Create an instance of {@link LabelInfo }
+     * 
+     */
+    public LabelInfo createLabelInfo() {
+        return new LabelInfo();
+    }
+
+    /**
+     * Create an instance of {@link LabelList }
+     * 
+     */
+    public LabelList createLabelList() {
+        return new LabelList();
+    }
+
+    /**
+     * Create an instance of {@link Recording }
+     * 
+     */
+    public Recording createRecording() {
+        return new Recording();
+    }
+
+    /**
+     * Create an instance of {@link Medium }
+     * 
+     */
+    public Medium createMedium() {
+        return new Medium();
+    }
+
+    /**
+     * Create an instance of {@link DiscList }
+     * 
+     */
+    public DiscList createDiscList() {
+        return new DiscList();
+    }
+
+    /**
+     * Create an instance of {@link NameCredit }
+     * 
+     */
+    public NameCredit createNameCredit() {
+        return new NameCredit();
+    }
+
+    /**
+     * Create an instance of {@link MediumList }
+     * 
+     */
+    public MediumList createMediumList() {
+        return new MediumList();
+    }
+
+    /**
+     * Create an instance of {@link Puid }
+     * 
+     */
+    public Puid createPuid() {
+        return new Puid();
+    }
+
+    /**
+     * Create an instance of {@link IsrcList }
+     * 
+     */
+    public IsrcList createIsrcList() {
+        return new IsrcList();
     }
 
     /**
@@ -94,75 +246,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TrackList }
+     * Create an instance of {@link TextRepresentation }
      * 
      */
-    public TrackList createTrackList() {
-        return new TrackList();
-    }
-
-    /**
-     * Create an instance of {@link Artist }
-     * 
-     */
-    public Artist createArtist() {
-        return new Artist();
-    }
-
-    /**
-     * Create an instance of {@link Relation }
-     * 
-     */
-    public Relation createRelation() {
-        return new Relation();
-    }
-
-    /**
-     * Create an instance of {@link UserTagList }
-     * 
-     */
-    public UserTagList createUserTagList() {
-        return new UserTagList();
-    }
-
-    /**
-     * Create an instance of {@link Recording }
-     * 
-     */
-    public Recording createRecording() {
-        return new Recording();
-    }
-
-    /**
-     * Create an instance of {@link MediumList }
-     * 
-     */
-    public MediumList createMediumList() {
-        return new MediumList();
-    }
-
-    /**
-     * Create an instance of {@link Medium }
-     * 
-     */
-    public Medium createMedium() {
-        return new Medium();
-    }
-
-    /**
-     * Create an instance of {@link Rating }
-     * 
-     */
-    public Rating createRating() {
-        return new Rating();
-    }
-
-    /**
-     * Create an instance of {@link AliasList }
-     * 
-     */
-    public AliasList createAliasList() {
-        return new AliasList();
+    public TextRepresentation createTextRepresentation() {
+        return new TextRepresentation();
     }
 
     /**
@@ -174,35 +262,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Label }
+     * Create an instance of {@link Artist }
      * 
      */
-    public Label createLabel() {
-        return new Label();
-    }
-
-    /**
-     * Create an instance of {@link ArtistCredit }
-     * 
-     */
-    public ArtistCredit createArtistCredit() {
-        return new ArtistCredit();
-    }
-
-    /**
-     * Create an instance of {@link WorkList }
-     * 
-     */
-    public WorkList createWorkList() {
-        return new WorkList();
-    }
-
-    /**
-     * Create an instance of {@link Release }
-     * 
-     */
-    public Release createRelease() {
-        return new Release();
+    public Artist createArtist() {
+        return new Artist();
     }
 
     /**
@@ -214,51 +278,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PuidList }
+     * Create an instance of {@link AliasList }
      * 
      */
-    public PuidList createPuidList() {
-        return new PuidList();
-    }
-
-    /**
-     * Create an instance of {@link LabelInfo }
-     * 
-     */
-    public LabelInfo createLabelInfo() {
-        return new LabelInfo();
-    }
-
-    /**
-     * Create an instance of {@link Track }
-     * 
-     */
-    public Track createTrack() {
-        return new Track();
-    }
-
-    /**
-     * Create an instance of {@link ReleaseGroup }
-     * 
-     */
-    public ReleaseGroup createReleaseGroup() {
-        return new ReleaseGroup();
-    }
-
-    /**
-     * Create an instance of {@link Puid }
-     * 
-     */
-    public Puid createPuid() {
-        return new Puid();
-    }
-
-    /**
-     * Create an instance of {@link RecordingList }
-     * 
-     */
-    public RecordingList createRecordingList() {
-        return new RecordingList();
+    public AliasList createAliasList() {
+        return new AliasList();
     }
 
     /**
@@ -270,35 +294,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArtistList }
+     * Create an instance of {@link ReleaseGroupList }
      * 
      */
-    public ArtistList createArtistList() {
-        return new ArtistList();
-    }
-
-    /**
-     * Create an instance of {@link TextRepresentation }
-     * 
-     */
-    public TextRepresentation createTextRepresentation() {
-        return new TextRepresentation();
-    }
-
-    /**
-     * Create an instance of {@link NameCredit }
-     * 
-     */
-    public NameCredit createNameCredit() {
-        return new NameCredit();
-    }
-
-    /**
-     * Create an instance of {@link DiscList }
-     * 
-     */
-    public DiscList createDiscList() {
-        return new DiscList();
+    public ReleaseGroupList createReleaseGroupList() {
+        return new ReleaseGroupList();
     }
 
     /**
@@ -310,19 +310,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LabelList }
+     * Create an instance of {@link Relation }
      * 
      */
-    public LabelList createLabelList() {
-        return new LabelList();
+    public Relation createRelation() {
+        return new Relation();
     }
 
     /**
-     * Create an instance of {@link RelationList }
+     * Create an instance of {@link TrackList }
      * 
      */
-    public RelationList createRelationList() {
-        return new RelationList();
+    public TrackList createTrackList() {
+        return new TrackList();
+    }
+
+    /**
+     * Create an instance of {@link WorkList }
+     * 
+     */
+    public WorkList createWorkList() {
+        return new WorkList();
+    }
+
+    /**
+     * Create an instance of {@link ArtistCredit }
+     * 
+     */
+    public ArtistCredit createArtistCredit() {
+        return new ArtistCredit();
     }
 
     /**
@@ -331,22 +347,6 @@ public class ObjectFactory {
      */
     public Disc createDisc() {
         return new Disc();
-    }
-
-    /**
-     * Create an instance of {@link ReleaseGroupList }
-     * 
-     */
-    public ReleaseGroupList createReleaseGroupList() {
-        return new ReleaseGroupList();
-    }
-
-    /**
-     * Create an instance of {@link Work }
-     * 
-     */
-    public Work createWork() {
-        return new Work();
     }
 
     /**

@@ -98,6 +98,8 @@ public class Recording {
     @XmlAttribute
     @XmlSchemaType(name = "anyURI")
     protected String id;
+    @XmlAttribute(namespace = "http://musicbrainz.org/ns/ext#-2.0")
+    protected String score;
     @XmlAnyAttribute
     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
@@ -445,6 +447,30 @@ public class Recording {
      */
     public void setId(String value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the score property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getScore() {
+        return score;
+    }
+
+    /**
+     * Sets the value of the score property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setScore(String value) {
+        this.score = value;
     }
 
     /**
