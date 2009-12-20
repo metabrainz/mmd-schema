@@ -27,7 +27,6 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     private final static QName _Iswc_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "iswc");
-    private final static QName _Editor_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "editor");
     private final static QName _Category_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "category");
     private final static QName _Disambiguation_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "disambiguation");
     private final static QName _Target_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "target");
@@ -68,6 +67,38 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Puid }
+     * 
+     */
+    public Puid createPuid() {
+        return new Puid();
+    }
+
+    /**
+     * Create an instance of {@link Recording }
+     * 
+     */
+    public Recording createRecording() {
+        return new Recording();
+    }
+
+    /**
+     * Create an instance of {@link Medium }
+     * 
+     */
+    public Medium createMedium() {
+        return new Medium();
+    }
+
+    /**
+     * Create an instance of {@link FreedbDisc.TrackList.Track }
+     * 
+     */
+    public FreedbDisc.TrackList.Track createFreedbDiscTrackListTrack() {
+        return new FreedbDisc.TrackList.Track();
+    }
+
+    /**
      * Create an instance of {@link RecordingList }
      * 
      */
@@ -76,75 +107,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PuidList }
+     * Create an instance of {@link ArtistList }
      * 
      */
-    public PuidList createPuidList() {
-        return new PuidList();
+    public ArtistList createArtistList() {
+        return new ArtistList();
     }
 
     /**
-     * Create an instance of {@link ReleaseGroupList }
+     * Create an instance of {@link LabelInfo }
      * 
      */
-    public ReleaseGroupList createReleaseGroupList() {
-        return new ReleaseGroupList();
+    public LabelInfo createLabelInfo() {
+        return new LabelInfo();
     }
 
     /**
-     * Create an instance of {@link MediumList }
+     * Create an instance of {@link CdstubList }
      * 
      */
-    public MediumList createMediumList() {
-        return new MediumList();
+    public CdstubList createCdstubList() {
+        return new CdstubList();
     }
 
     /**
-     * Create an instance of {@link Medium.TrackList }
+     * Create an instance of {@link WorkList }
      * 
      */
-    public Medium.TrackList createMediumTrackList() {
-        return new Medium.TrackList();
-    }
-
-    /**
-     * Create an instance of {@link LabelInfoList }
-     * 
-     */
-    public LabelInfoList createLabelInfoList() {
-        return new LabelInfoList();
-    }
-
-    /**
-     * Create an instance of {@link Medium.TrackList.Track }
-     * 
-     */
-    public Medium.TrackList.Track createMediumTrackListTrack() {
-        return new Medium.TrackList.Track();
-    }
-
-    /**
-     * Create an instance of {@link AnnotationList }
-     * 
-     */
-    public AnnotationList createAnnotationList() {
-        return new AnnotationList();
-    }
-
-    /**
-     * Create an instance of {@link Alias }
-     * 
-     */
-    public Alias createAlias() {
-        return new Alias();
-    }
-
-    /**
-     * Create an instance of {@link Cdstub }
-     * 
-     */
-    public Cdstub createCdstub() {
-        return new Cdstub();
+    public WorkList createWorkList() {
+        return new WorkList();
     }
 
     /**
@@ -164,43 +155,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Recording }
+     * Create an instance of {@link Cdstub }
      * 
      */
-    public Recording createRecording() {
-        return new Recording();
-    }
-
-    /**
-     * Create an instance of {@link ArtistList }
-     * 
-     */
-    public ArtistList createArtistList() {
-        return new ArtistList();
-    }
-
-    /**
-     * Create an instance of {@link ReleaseList }
-     * 
-     */
-    public ReleaseList createReleaseList() {
-        return new ReleaseList();
-    }
-
-    /**
-     * Create an instance of {@link UserTagList }
-     * 
-     */
-    public UserTagList createUserTagList() {
-        return new UserTagList();
-    }
-
-    /**
-     * Create an instance of {@link FreedbDisc }
-     * 
-     */
-    public FreedbDisc createFreedbDisc() {
-        return new FreedbDisc();
+    public Cdstub createCdstub() {
+        return new Cdstub();
     }
 
     /**
@@ -212,67 +171,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FreedbDiscList }
+     * Create an instance of {@link ReleaseGroupList }
      * 
      */
-    public FreedbDiscList createFreedbDiscList() {
-        return new FreedbDiscList();
-    }
-
-    /**
-     * Create an instance of {@link FreedbDisc.TrackList.Track }
-     * 
-     */
-    public FreedbDisc.TrackList.Track createFreedbDiscTrackListTrack() {
-        return new FreedbDisc.TrackList.Track();
-    }
-
-    /**
-     * Create an instance of {@link Annotation }
-     * 
-     */
-    public Annotation createAnnotation() {
-        return new Annotation();
-    }
-
-    /**
-     * Create an instance of {@link TagList }
-     * 
-     */
-    public TagList createTagList() {
-        return new TagList();
-    }
-
-    /**
-     * Create an instance of {@link Label }
-     * 
-     */
-    public Label createLabel() {
-        return new Label();
-    }
-
-    /**
-     * Create an instance of {@link DiscList }
-     * 
-     */
-    public DiscList createDiscList() {
-        return new DiscList();
-    }
-
-    /**
-     * Create an instance of {@link Rating }
-     * 
-     */
-    public Rating createRating() {
-        return new Rating();
-    }
-
-    /**
-     * Create an instance of {@link RelationList }
-     * 
-     */
-    public RelationList createRelationList() {
-        return new RelationList();
+    public ReleaseGroupList createReleaseGroupList() {
+        return new ReleaseGroupList();
     }
 
     /**
@@ -284,59 +187,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TextRepresentation }
+     * Create an instance of {@link TagList }
      * 
      */
-    public TextRepresentation createTextRepresentation() {
-        return new TextRepresentation();
+    public TagList createTagList() {
+        return new TagList();
     }
 
     /**
-     * Create an instance of {@link Artist }
+     * Create an instance of {@link RelationList }
      * 
      */
-    public Artist createArtist() {
-        return new Artist();
+    public RelationList createRelationList() {
+        return new RelationList();
     }
 
     /**
-     * Create an instance of {@link LabelList }
+     * Create an instance of {@link Medium.TrackList.Track }
      * 
      */
-    public LabelList createLabelList() {
-        return new LabelList();
-    }
-
-    /**
-     * Create an instance of {@link ArtistCredit }
-     * 
-     */
-    public ArtistCredit createArtistCredit() {
-        return new ArtistCredit();
-    }
-
-    /**
-     * Create an instance of {@link AliasList }
-     * 
-     */
-    public AliasList createAliasList() {
-        return new AliasList();
-    }
-
-    /**
-     * Create an instance of {@link Tag }
-     * 
-     */
-    public Tag createTag() {
-        return new Tag();
-    }
-
-    /**
-     * Create an instance of {@link Disc }
-     * 
-     */
-    public Disc createDisc() {
-        return new Disc();
+    public Medium.TrackList.Track createMediumTrackListTrack() {
+        return new Medium.TrackList.Track();
     }
 
     /**
@@ -348,67 +219,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link WorkList }
+     * Create an instance of {@link TextRepresentation }
      * 
      */
-    public WorkList createWorkList() {
-        return new WorkList();
+    public TextRepresentation createTextRepresentation() {
+        return new TextRepresentation();
     }
 
     /**
-     * Create an instance of {@link CdstubList }
+     * Create an instance of {@link Disc }
      * 
      */
-    public CdstubList createCdstubList() {
-        return new CdstubList();
+    public Disc createDisc() {
+        return new Disc();
     }
 
     /**
-     * Create an instance of {@link LabelInfo }
+     * Create an instance of {@link FreedbDisc }
      * 
      */
-    public LabelInfo createLabelInfo() {
-        return new LabelInfo();
+    public FreedbDisc createFreedbDisc() {
+        return new FreedbDisc();
     }
 
     /**
-     * Create an instance of {@link Medium }
+     * Create an instance of {@link UserTagList }
      * 
      */
-    public Medium createMedium() {
-        return new Medium();
-    }
-
-    /**
-     * Create an instance of {@link Work }
-     * 
-     */
-    public Work createWork() {
-        return new Work();
-    }
-
-    /**
-     * Create an instance of {@link LifeSpan }
-     * 
-     */
-    public LifeSpan createLifeSpan() {
-        return new LifeSpan();
-    }
-
-    /**
-     * Create an instance of {@link Metadata }
-     * 
-     */
-    public Metadata createMetadata() {
-        return new Metadata();
-    }
-
-    /**
-     * Create an instance of {@link Puid }
-     * 
-     */
-    public Puid createPuid() {
-        return new Puid();
+    public UserTagList createUserTagList() {
+        return new UserTagList();
     }
 
     /**
@@ -420,21 +259,172 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link Metadata }
      * 
      */
-    @XmlElementDecl(namespace = "http://musicbrainz.org/ns/mmd-2.0#", name = "iswc")
-    public JAXBElement<String> createIswc(String value) {
-        return new JAXBElement<String>(_Iswc_QNAME, String.class, null, value);
+    public Metadata createMetadata() {
+        return new Metadata();
+    }
+
+    /**
+     * Create an instance of {@link PuidList }
+     * 
+     */
+    public PuidList createPuidList() {
+        return new PuidList();
+    }
+
+    /**
+     * Create an instance of {@link FreedbDiscList }
+     * 
+     */
+    public FreedbDiscList createFreedbDiscList() {
+        return new FreedbDiscList();
+    }
+
+    /**
+     * Create an instance of {@link LifeSpan }
+     * 
+     */
+    public LifeSpan createLifeSpan() {
+        return new LifeSpan();
+    }
+
+    /**
+     * Create an instance of {@link Medium.TrackList }
+     * 
+     */
+    public Medium.TrackList createMediumTrackList() {
+        return new Medium.TrackList();
+    }
+
+    /**
+     * Create an instance of {@link ReleaseList }
+     * 
+     */
+    public ReleaseList createReleaseList() {
+        return new ReleaseList();
+    }
+
+    /**
+     * Create an instance of {@link Alias }
+     * 
+     */
+    public Alias createAlias() {
+        return new Alias();
+    }
+
+    /**
+     * Create an instance of {@link LabelList }
+     * 
+     */
+    public LabelList createLabelList() {
+        return new LabelList();
+    }
+
+    /**
+     * Create an instance of {@link Artist }
+     * 
+     */
+    public Artist createArtist() {
+        return new Artist();
+    }
+
+    /**
+     * Create an instance of {@link ArtistCredit }
+     * 
+     */
+    public ArtistCredit createArtistCredit() {
+        return new ArtistCredit();
+    }
+
+    /**
+     * Create an instance of {@link Tag }
+     * 
+     */
+    public Tag createTag() {
+        return new Tag();
+    }
+
+    /**
+     * Create an instance of {@link LabelInfoList }
+     * 
+     */
+    public LabelInfoList createLabelInfoList() {
+        return new LabelInfoList();
+    }
+
+    /**
+     * Create an instance of {@link AliasList }
+     * 
+     */
+    public AliasList createAliasList() {
+        return new AliasList();
+    }
+
+    /**
+     * Create an instance of {@link MediumList }
+     * 
+     */
+    public MediumList createMediumList() {
+        return new MediumList();
+    }
+
+    /**
+     * Create an instance of {@link Work }
+     * 
+     */
+    public Work createWork() {
+        return new Work();
+    }
+
+    /**
+     * Create an instance of {@link DiscList }
+     * 
+     */
+    public DiscList createDiscList() {
+        return new DiscList();
+    }
+
+    /**
+     * Create an instance of {@link Label }
+     * 
+     */
+    public Label createLabel() {
+        return new Label();
+    }
+
+    /**
+     * Create an instance of {@link Rating }
+     * 
+     */
+    public Rating createRating() {
+        return new Rating();
+    }
+
+    /**
+     * Create an instance of {@link AnnotationList }
+     * 
+     */
+    public AnnotationList createAnnotationList() {
+        return new AnnotationList();
+    }
+
+    /**
+     * Create an instance of {@link Annotation }
+     * 
+     */
+    public Annotation createAnnotation() {
+        return new Annotation();
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://musicbrainz.org/ns/mmd-2.0#", name = "editor")
-    public JAXBElement<String> createEditor(String value) {
-        return new JAXBElement<String>(_Editor_QNAME, String.class, null, value);
+    @XmlElementDecl(namespace = "http://musicbrainz.org/ns/mmd-2.0#", name = "iswc")
+    public JAXBElement<String> createIswc(String value) {
+        return new JAXBElement<String>(_Iswc_QNAME, String.class, null, value);
     }
 
     /**

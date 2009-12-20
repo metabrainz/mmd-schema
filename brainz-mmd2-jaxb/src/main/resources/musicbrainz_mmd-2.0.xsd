@@ -28,7 +28,7 @@
            xmlns:mmd-2.0="http://musicbrainz.org/ns/mmd-2.0#">
   <xs:import schemaLocation="local.xsd"/>
   <xs:import namespace="http://musicbrainz.org/ns/ext#-2.0" schemaLocation="extensions.xsd"/>
-  <xs:element name="metadata">
+   <xs:element name="metadata">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:artist"/>
@@ -325,14 +325,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="mmd-2.0:entity"/>
-        <xs:element ref="mmd-2.0:editor"/>
         <xs:element ref="mmd-2.0:text"/>
+        <xs:group ref="mmd-2.0:def_annotation-element_extension"/>
       </xs:sequence>
       <xs:attribute name="type"/>
+      <xs:attributeGroup ref="mmd-2.0:def_annotation-attribute_extension"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="entity" type="xs:anyURI"/>
-  <xs:element name="editor" type="xs:string"/>
   <xs:element name="text" type="xs:string"/>
   <xs:element name="cdstub">
     <xs:complexType>
@@ -342,14 +342,16 @@
         <xs:element minOccurs="0" ref="mmd-2.0:barcode"/>
         <xs:element minOccurs="0" ref="mmd-2.0:comment"/>
         <xs:group ref="mmd-2.0:def_nonmb-track-list"/>
+        <xs:group ref="mmd-2.0:def_cdstub-element_extension"/>
       </xs:sequence>
-      <xs:attribute name="id">
+      <xs:attribute name="id" use="required">
         <xs:simpleType>
           <xs:restriction base="xs:string">
             <xs:pattern value="[a-zA-Z0-9._]{27}-"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
+      <xs:attributeGroup ref="mmd-2.0:def_cdstub-attribute_extension"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="comment" type="xs:string"/>
@@ -361,6 +363,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:category"/>
         <xs:element minOccurs="0" ref="mmd-2.0:year"/>
         <xs:group ref="mmd-2.0:def_nonmb-track-list"/>
+        <xs:group ref="mmd-2.0:def_freedb-disc-element_extension"/>
       </xs:sequence>
       <xs:attribute name="id">
         <xs:simpleType>
@@ -369,6 +372,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
+      <xs:attributeGroup ref="mmd-2.0:def_freedb-disc-attribute_extension"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="category" type="xs:string"/>
@@ -433,6 +437,21 @@
       <xs:group ref="mmd-2.0:def_extension_element"/>
     </xs:sequence>
   </xs:group>
+  <xs:group name="def_annotation-element_extension">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="def_cdstub-element_extension">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="def_freedb-disc-element_extension">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
+    </xs:sequence>
+  </xs:group>
   <xs:attributeGroup name="def_artist-attribute_extension">
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
@@ -449,6 +468,15 @@
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="def_work-attribute_extension">
+    <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="def_annotation-attribute_extension">
+    <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="def_cdstub-attribute_extension">
+    <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="def_freedb-disc-attribute_extension">
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
   <xs:group name="def_extension_element">
