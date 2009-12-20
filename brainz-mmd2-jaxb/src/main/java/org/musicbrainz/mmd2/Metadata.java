@@ -35,6 +35,9 @@ import org.w3c.dom.Element;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}recording-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}label-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}work-list" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}annotation-list" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}cdstub-list" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}freedb-disc-list" minOccurs="0"/>
  *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_metadata-element_extension"/>
  *       &lt;/sequence>
  *       &lt;attribute name="generator" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
@@ -60,6 +63,9 @@ import org.w3c.dom.Element;
     "recordingList",
     "labelList",
     "workList",
+    "annotationList",
+    "cdstubList",
+    "freedbDiscList",
     "any"
 })
 @XmlRootElement(name = "metadata")
@@ -84,6 +90,12 @@ public class Metadata {
     protected LabelList labelList;
     @XmlElement(name = "work-list")
     protected WorkList workList;
+    @XmlElement(name = "annotation-list")
+    protected AnnotationList annotationList;
+    @XmlElement(name = "cdstub-list")
+    protected CdstubList cdstubList;
+    @XmlElement(name = "freedb-disc-list")
+    protected FreedbDiscList freedbDiscList;
     @XmlAnyElement
     protected Element any;
     @XmlAttribute
@@ -379,6 +391,78 @@ public class Metadata {
      */
     public void setWorkList(WorkList value) {
         this.workList = value;
+    }
+
+    /**
+     * Gets the value of the annotationList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AnnotationList }
+     *     
+     */
+    public AnnotationList getAnnotationList() {
+        return annotationList;
+    }
+
+    /**
+     * Sets the value of the annotationList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AnnotationList }
+     *     
+     */
+    public void setAnnotationList(AnnotationList value) {
+        this.annotationList = value;
+    }
+
+    /**
+     * Gets the value of the cdstubList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link CdstubList }
+     *     
+     */
+    public CdstubList getCdstubList() {
+        return cdstubList;
+    }
+
+    /**
+     * Sets the value of the cdstubList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link CdstubList }
+     *     
+     */
+    public void setCdstubList(CdstubList value) {
+        this.cdstubList = value;
+    }
+
+    /**
+     * Gets the value of the freedbDiscList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FreedbDiscList }
+     *     
+     */
+    public FreedbDiscList getFreedbDiscList() {
+        return freedbDiscList;
+    }
+
+    /**
+     * Sets the value of the freedbDiscList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FreedbDiscList }
+     *     
+     */
+    public void setFreedbDiscList(FreedbDiscList value) {
+        this.freedbDiscList = value;
     }
 
     /**

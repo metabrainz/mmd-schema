@@ -23,12 +23,19 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}title" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}position" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}format" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}disc-list" minOccurs="0"/>
- *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_track-list"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}title"/>
+ *         &lt;element name="artist" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}category" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}year" minOccurs="0"/>
+ *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_nonmb-track-list"/>
  *       &lt;/sequence>
+ *       &lt;attribute name="id">
+ *         &lt;simpleType>
+ *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *             &lt;pattern value="[a-zA-Z0-9]{8}"/>
+ *           &lt;/restriction>
+ *         &lt;/simpleType>
+ *       &lt;/attribute>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -39,22 +46,23 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "title",
-    "position",
-    "format",
-    "discList",
+    "artist",
+    "category",
+    "year",
     "trackList"
 })
-@XmlRootElement(name = "medium")
-public class Medium {
+@XmlRootElement(name = "freedb-disc")
+public class FreedbDisc {
 
+    @XmlElement(required = true)
     protected String title;
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger position;
-    protected String format;
-    @XmlElement(name = "disc-list")
-    protected DiscList discList;
+    protected String artist;
+    protected String category;
+    protected String year;
     @XmlElement(name = "track-list", required = true)
-    protected Medium.TrackList trackList;
+    protected FreedbDisc.TrackList trackList;
+    @XmlAttribute
+    protected String id;
 
     /**
      * Gets the value of the title property.
@@ -81,75 +89,75 @@ public class Medium {
     }
 
     /**
-     * Gets the value of the position property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getPosition() {
-        return position;
-    }
-
-    /**
-     * Sets the value of the position property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setPosition(BigInteger value) {
-        this.position = value;
-    }
-
-    /**
-     * Gets the value of the format property.
+     * Gets the value of the artist property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getFormat() {
-        return format;
+    public String getArtist() {
+        return artist;
     }
 
     /**
-     * Sets the value of the format property.
+     * Sets the value of the artist property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setFormat(String value) {
-        this.format = value;
+    public void setArtist(String value) {
+        this.artist = value;
     }
 
     /**
-     * Gets the value of the discList property.
+     * Gets the value of the category property.
      * 
      * @return
      *     possible object is
-     *     {@link DiscList }
+     *     {@link String }
      *     
      */
-    public DiscList getDiscList() {
-        return discList;
+    public String getCategory() {
+        return category;
     }
 
     /**
-     * Sets the value of the discList property.
+     * Sets the value of the category property.
      * 
      * @param value
      *     allowed object is
-     *     {@link DiscList }
+     *     {@link String }
      *     
      */
-    public void setDiscList(DiscList value) {
-        this.discList = value;
+    public void setCategory(String value) {
+        this.category = value;
+    }
+
+    /**
+     * Gets the value of the year property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getYear() {
+        return year;
+    }
+
+    /**
+     * Sets the value of the year property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setYear(String value) {
+        this.year = value;
     }
 
     /**
@@ -157,10 +165,10 @@ public class Medium {
      * 
      * @return
      *     possible object is
-     *     {@link Medium.TrackList }
+     *     {@link FreedbDisc.TrackList }
      *     
      */
-    public Medium.TrackList getTrackList() {
+    public FreedbDisc.TrackList getTrackList() {
         return trackList;
     }
 
@@ -169,11 +177,35 @@ public class Medium {
      * 
      * @param value
      *     allowed object is
-     *     {@link Medium.TrackList }
+     *     {@link FreedbDisc.TrackList }
      *     
      */
-    public void setTrackList(Medium.TrackList value) {
+    public void setTrackList(FreedbDisc.TrackList value) {
         this.trackList = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setId(String value) {
+        this.id = value;
     }
 
 
@@ -186,7 +218,7 @@ public class Medium {
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_track" maxOccurs="unbounded" minOccurs="0"/>
+     *       &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_nonmb-track" maxOccurs="unbounded" minOccurs="0"/>
      *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -197,12 +229,12 @@ public class Medium {
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "defTrack"
+        "defNonmbTrack"
     })
     public static class TrackList {
 
         @XmlElement(name = "track")
-        protected List<Medium.TrackList.Track> defTrack;
+        protected List<FreedbDisc.TrackList.Track> defNonmbTrack;
         @XmlAttribute
         @XmlSchemaType(name = "nonNegativeInteger")
         protected BigInteger count;
@@ -211,32 +243,32 @@ public class Medium {
         protected BigInteger offset;
 
         /**
-         * Gets the value of the defTrack property.
+         * Gets the value of the defNonmbTrack property.
          * 
          * <p>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
          * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the defTrack property.
+         * This is why there is not a <CODE>set</CODE> method for the defNonmbTrack property.
          * 
          * <p>
          * For example, to add a new item, do as follows:
          * <pre>
-         *    getDefTrack().add(newItem);
+         *    getDefNonmbTrack().add(newItem);
          * </pre>
          * 
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link Medium.TrackList.Track }
+         * {@link FreedbDisc.TrackList.Track }
          * 
          * 
          */
-        public List<Medium.TrackList.Track> getDefTrack() {
-            if (defTrack == null) {
-                defTrack = new ArrayList<Medium.TrackList.Track>();
+        public List<FreedbDisc.TrackList.Track> getDefNonmbTrack() {
+            if (defNonmbTrack == null) {
+                defNonmbTrack = new ArrayList<FreedbDisc.TrackList.Track>();
             }
-            return this.defTrack;
+            return this.defNonmbTrack;
         }
 
         /**
@@ -298,9 +330,9 @@ public class Medium {
          *   &lt;complexContent>
          *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *       &lt;sequence>
-         *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}position" minOccurs="0"/>
-         *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}title" minOccurs="0"/>
-         *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}recording"/>
+         *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}title"/>
+         *         &lt;element name="artist" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}length"/>
          *       &lt;/sequence>
          *     &lt;/restriction>
          *   &lt;/complexContent>
@@ -311,41 +343,18 @@ public class Medium {
          */
         @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "", propOrder = {
-            "position",
             "title",
-            "recording"
+            "artist",
+            "length"
         })
         public static class Track {
 
-            @XmlSchemaType(name = "nonNegativeInteger")
-            protected BigInteger position;
-            protected String title;
             @XmlElement(required = true)
-            protected Recording recording;
-
-            /**
-             * Gets the value of the position property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link BigInteger }
-             *     
-             */
-            public BigInteger getPosition() {
-                return position;
-            }
-
-            /**
-             * Sets the value of the position property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link BigInteger }
-             *     
-             */
-            public void setPosition(BigInteger value) {
-                this.position = value;
-            }
+            protected String title;
+            protected String artist;
+            @XmlElement(required = true)
+            @XmlSchemaType(name = "nonNegativeInteger")
+            protected BigInteger length;
 
             /**
              * Gets the value of the title property.
@@ -372,27 +381,51 @@ public class Medium {
             }
 
             /**
-             * Gets the value of the recording property.
+             * Gets the value of the artist property.
              * 
              * @return
              *     possible object is
-             *     {@link Recording }
+             *     {@link String }
              *     
              */
-            public Recording getRecording() {
-                return recording;
+            public String getArtist() {
+                return artist;
             }
 
             /**
-             * Sets the value of the recording property.
+             * Sets the value of the artist property.
              * 
              * @param value
              *     allowed object is
-             *     {@link Recording }
+             *     {@link String }
              *     
              */
-            public void setRecording(Recording value) {
-                this.recording = value;
+            public void setArtist(String value) {
+                this.artist = value;
+            }
+
+            /**
+             * Gets the value of the length property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link BigInteger }
+             *     
+             */
+            public BigInteger getLength() {
+                return length;
+            }
+
+            /**
+             * Sets the value of the length property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link BigInteger }
+             *     
+             */
+            public void setLength(BigInteger value) {
+                this.length = value;
             }
 
         }
