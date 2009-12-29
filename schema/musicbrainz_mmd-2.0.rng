@@ -82,6 +82,15 @@
             <optional>
                 <ref name="def_work-list"/>
             </optional>
+            <optional>
+                <ref name="def_annotation-list"/>
+            </optional>
+            <optional>
+                <ref name="def_cdstub-list"/>
+            </optional>
+            <optional>
+                <ref name="def_freedb-disc-list"/>
+            </optional>
                 
             <ref name="def_metadata-element_extension"/>
         </element>
@@ -664,6 +673,105 @@
         </element>
     </define>
 
+    <define name="def_annotation">
+        <element name="annotation">
+            <optional>
+                <attribute name="type">
+                    <text/>
+                </attribute>
+            </optional>
+            <ref name="def_annotation-attribute_extension"/>
+            <element name="entity">
+                <data type="anyURI"/>
+            </element>
+            <element name="text">
+                <text/>
+            </element>
+            <ref name="def_annotation-element_extension"/>
+        </element>
+    </define>
+
+    <define name="def_cdstub">
+        <element name="cdstub">
+            <attribute name="id">
+                <data type="string">
+                    <param name="pattern">[a-zA-Z0-9._]{27}-</param>
+                </data>
+            </attribute>
+            <ref name="def_cdstub-attribute_extension"/>
+            <element name="title">
+                <text/>
+            </element>
+            <optional>
+                <element name="artist">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="barcode">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="comment">
+                    <text/>
+                </element>
+            </optional>
+            <ref name="def_nonmb-track-list"/>
+            <ref name="def_cdstub-element_extension"/>
+        </element>
+    </define>
+
+    <define name="def_freedb-disc">
+        <element name="freedb-disc">
+            <optional>
+                <attribute name="id">
+                    <data type="string">
+                        <param name="pattern">[a-zA-Z0-9]{8}</param>
+                    </data>
+                </attribute>
+            </optional>
+            <ref name="def_freedb-disc-attribute_extension"/>
+            <element name="title">
+                <text/>
+            </element>
+            <optional>
+                <element name="artist">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="category">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="year">
+                    <data type="string">
+                        <param name="pattern">[0-9]{4}</param>
+                    </data>
+                </element>
+            </optional>
+            <ref name="def_nonmb-track-list"/>
+            <ref name="def_freedb-disc-element_extension"/>
+        </element>
+    </define>
+
+    <define name="def_nonmb-track">
+        <element name="track">
+            <element name="title">
+                <text/>
+            </element>
+            <optional>
+                <element name="artist">
+                    <text/>
+                </element>
+            </optional>
+            <element name="length">
+                <data type="nonNegativeInteger"/>
+            </element>
+        </element>
+    </define>
 
     <!--
         This part defines the extensions elements and attributes.
@@ -723,6 +831,27 @@
     </define>
 
 
+    <define name="def_annotation-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_cdstub-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_freedb-disc-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
+
     <define name="def_artist-attribute_extension">
         <zeroOrMore>
             <ref name="def_extension_attribute"/>
@@ -759,6 +888,27 @@
 
 
     <define name="def_work-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_annotation-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_cdstub-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_freedb-disc-attribute_extension">
         <zeroOrMore>
             <ref name="def_extension_attribute"/>
         </zeroOrMore>
@@ -913,6 +1063,44 @@
             <ref name="def_list-attributes"/>
             <zeroOrMore>
                 <ref name="def_work-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_annotation-list">
+        <element name="annotation-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_annotation"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_cdstub-list">
+        <element name="cdstub-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_cdstub"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="def_nonmb-track-list">
+        <element name="track-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_nonmb-track"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="def_freedb-disc-list">
+        <element name="freedb-disc-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_freedb-disc"/>
             </zeroOrMore>
         </element>
     </define>
