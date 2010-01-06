@@ -1,0 +1,18 @@
+These are the instructions for recreating JAXB classes whenever the MMD RelaxNG definition is modified. Its a semi-automated process, there is no coding required
+but there are a couple of manual steps.
+
+1. Ensure Trang installed  (available from http://www.thaiopensource.com/relaxng/trang.html)
+2. Convert rng to xsd, making dure the xsd is created in the correct placer (i.e)java -jar trang.jar ../mmd-schema/trunk/schema/musicbrainz_mmd-2.0.rng ../mmd-schema/trunk/brainz-mmd2-jaxb/src/main/resources/musicbrainz_mmd-2.0.xsd
+3. Manually edit musicbrainz_mmd_2.0.xsd
+3.1.Add    <xs:attribute ref="ext:score"/> to ="def_extension_attribute"
+3.2.Change schema, add namespaces and import so like this
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          elementFormDefault="qualified"
+          targetNamespace="http://musicbrainz.org/ns/mmd-2.0#"
+          xmlns:ext="http://musicbrainz.org/ns/ext#-2.0"
+          xmlns:mmd-2.0="http://musicbrainz.org/ns/mmd-2.0#">
+ <xs:import schemaLocation="local.xsd"/>
+ <xs:import namespace="http://musicbrainz.org/ns/ext#-2.0" schemaLocation="extensions.xsd"/>
+4. Generate java classes from xsd (mvn org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:generate)
+5. Build jar (mvn package)
+6. Install locally so visible to search server project (mvn install)
