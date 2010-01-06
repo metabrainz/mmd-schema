@@ -28,7 +28,7 @@
            xmlns:mmd-2.0="http://musicbrainz.org/ns/mmd-2.0#">
   <xs:import schemaLocation="local.xsd"/>
   <xs:import namespace="http://musicbrainz.org/ns/ext#-2.0" schemaLocation="extensions.xsd"/>
-   <xs:element name="metadata">
+  <xs:element name="metadata">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:artist"/>
@@ -325,6 +325,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="mmd-2.0:entity"/>
+        <xs:element ref="mmd-2.0:name"/>
         <xs:element ref="mmd-2.0:text"/>
         <xs:group ref="mmd-2.0:def_annotation-element_extension"/>
       </xs:sequence>
