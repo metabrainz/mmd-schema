@@ -684,6 +684,9 @@
             <element name="entity">
                 <data type="anyURI"/>
             </element>
+            <element name="name">
+                <text/>
+            </element>
             <element name="text">
                 <text/>
             </element>
