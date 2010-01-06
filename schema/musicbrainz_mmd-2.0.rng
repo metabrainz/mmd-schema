@@ -279,7 +279,7 @@
             </optional>
             <optional>
                 <attribute name="type">
-                    <ref name="def_URI-list"/>
+                    <data type="anyURI"/>
                 </attribute>
             </optional>
             <ref name="def_release-group-attribute_extension"/>
