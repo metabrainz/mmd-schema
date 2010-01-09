@@ -150,7 +150,7 @@
         <xs:group ref="mmd-2.0:def_release-group-element_extension"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
-      <xs:attribute name="type" type="mmd-2.0:def_URI-list"/>
+      <xs:attribute name="type" type="xs:anyURI"/>
       <xs:attributeGroup ref="mmd-2.0:def_release-group-attribute_extension"/>
     </xs:complexType>
   </xs:element>
