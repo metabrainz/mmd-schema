@@ -984,6 +984,11 @@
     <define name="def_medium-list">
         <element name="medium-list">
             <ref name="def_list-attributes"/>
+            <optional>
+                <element name="track-count">
+                    <data type="nonNegativeInteger"/>
+                </element>
+            </optional>
             <zeroOrMore>
                 <ref name="def_medium"/>
             </zeroOrMore>
