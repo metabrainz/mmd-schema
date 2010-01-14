@@ -2,7 +2,7 @@ These are the instructions for recreating JAXB classes whenever the MMD RelaxNG 
 but there are a couple of manual steps.
 
 1. Ensure Trang installed  (available from http://www.thaiopensource.com/relaxng/trang.html)
-2. Convert rng to xsd, making dure the xsd is created in the correct placer (i.e)java -jar trang.jar ../mmd-schema/trunk/schema/musicbrainz_mmd-2.0.rng ../mmd-schema/trunk/brainz-mmd2-jaxb/src/main/resources/musicbrainz_mmd-2.0.xsd
+2. Convert rng to xsd, making sure the xsd is created in the correct placer (i.e)java -jar trang.jar ../mmd-schema/trunk/schema/musicbrainz_mmd-2.0.rng ../mmd-schema/trunk/brainz-mmd2-jaxb/src/main/resources/musicbrainz_mmd-2.0.xsd
 3. Manually edit musicbrainz_mmd_2.0.xsd
 3.1.Add    <xs:attribute ref="ext:score"/> to ="def_extension_attribute"
 3.2.Change schema, add namespaces and import so like this

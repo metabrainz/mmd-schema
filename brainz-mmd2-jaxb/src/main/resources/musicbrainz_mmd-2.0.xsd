@@ -505,11 +505,13 @@
   <xs:element name="medium-list">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" ref="mmd-2.0:track-count"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:medium"/>
       </xs:sequence>
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
   </xs:element>
+  <xs:element name="track-count" type="xs:nonNegativeInteger"/>
   <xs:element name="release-list">
     <xs:complexType>
       <xs:sequence>
