@@ -64,6 +64,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-group-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:label-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:work-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
@@ -140,6 +141,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:comment"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
@@ -154,6 +156,7 @@
       <xs:attributeGroup ref="mmd-2.0:def_release-group-attribute_extension"/>
     </xs:complexType>
   </xs:element>
+  <xs:element name="comment" type="xs:string"/>
   <xs:element name="recording">
     <xs:complexType>
       <xs:sequence>
@@ -214,6 +217,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:iswc"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:group ref="mmd-2.0:def_work-element_extension"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
@@ -355,7 +359,6 @@
       <xs:attributeGroup ref="mmd-2.0:def_cdstub-attribute_extension"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="comment" type="xs:string"/>
   <xs:element name="freedb-disc">
     <xs:complexType>
       <xs:sequence>
