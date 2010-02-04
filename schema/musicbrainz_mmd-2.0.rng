@@ -63,6 +63,12 @@
             <optional>
                 <ref name="def_work-element"/>
             </optional>
+            <optional>
+                <ref name="def_puid-element"/>
+            </optional>
+            <optional>
+                <ref name="def_disc-element"/>
+            </optional>
 
             <optional>
                 <ref name="def_artist-list"/>
@@ -81,6 +87,9 @@
             </optional>
             <optional>
                 <ref name="def_work-list"/>
+            </optional>
+            <optional>
+                <ref name="def_isrc-list"/>
             </optional>
             <optional>
                 <ref name="def_annotation-list"/>
@@ -350,15 +359,6 @@
                 </element>
             </optional>
             <optional>
-                <element name="isrc-list">
-                    <zeroOrMore>
-                        <element name="isrc">
-                            <ref name="def_isrc" />
-                        </element>
-                    </zeroOrMore>
-                </element>
-            </optional>
-            <optional>
                 <ref name="def_artist-credit"/>
             </optional>
 
@@ -368,6 +368,9 @@
             </optional>
             <optional>
                 <ref name="def_puid-list"/>
+            </optional>
+            <optional>
+                <ref name="def_isrc-list"/>
             </optional>
             <zeroOrMore>
                 <ref name="def_relation-list"/>
@@ -512,6 +515,59 @@
     </define>
 
 
+    <define name="def_disc-element">
+        <element name="disc">
+            <attribute name="id">
+                <data type="string">
+                    <param name="pattern">[a-zA-Z0-9._]{27}-</param>
+                </data>
+            </attribute>
+            <ref name="def_disc-attribute_extension"/>
+            <optional>
+                <element name="sectors">
+                    <data type="nonNegativeInteger"/>
+                </element>
+            </optional>
+            <optional>
+                <ref name="def_release-list"/>
+            </optional>
+            <ref name="def_disc-element_extension"/>
+        </element>
+    </define>
+
+
+    <define name="def_puid-element">
+        <element name="puid">
+            <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <ref name="def_puid-attribute_extension"/>
+
+            <ref name="def_recording-list"/>
+
+            <ref name="def_puid-element_extension"/>
+        </element>
+    </define>
+
+
+    <define name="def_isrc-element">
+        <element name="isrc">
+            <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <ref name="def_isrc-attribute_extension"/>
+
+            <ref name="def_recording-list"/>
+
+            <ref name="def_isrc-element_extension"/>
+        </element>
+    </define>
+
+    
     <define name="def_artist-credit">
         <element name="artist-credit">
             <oneOrMore>
@@ -843,12 +899,33 @@
     </define>
 
 
+    <define name="def_puid-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_isrc-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
+
     <define name="def_relation-element_extension">
         <ref name="def_extension_element"/>
     </define>
 
 
     <define name="def_annotation-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_disc-element_extension">
         <zeroOrMore>
             <ref name="def_extension_element"/>
         </zeroOrMore>
@@ -911,7 +988,28 @@
     </define>
 
 
+    <define name="def_puid-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_isrc-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+
     <define name="def_annotation-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+
+    <define name="def_disc-attribute_extension">
         <zeroOrMore>
             <ref name="def_extension_attribute"/>
         </zeroOrMore>
@@ -1132,18 +1230,7 @@
         <element name="disc-list">
             <ref name="def_list-attributes"/>
             <zeroOrMore>
-                <element name="disc">
-                    <attribute name="id">
-                        <data type="string">
-                            <param name="pattern">[a-zA-Z0-9._]{27}-</param>
-                        </data>
-                    </attribute>
-                    <optional>
-                        <element name="sectors">
-                            <data type="nonNegativeInteger"/>
-                        </element>
-                    </optional>
-                </element>
+                <ref name="def_disc-element"/>
             </zeroOrMore>
         </element>
     </define>
@@ -1157,6 +1244,23 @@
                     <attribute name="id">
                         <ref name="def_uuid"/>
                     </attribute>
+                </element>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_isrc-list">
+        <element name="isrc-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <element name="isrc">
+                    <attribute name="id">
+                        <ref name="def_isrc"/>
+                    </attribute>
+                    <optional>
+                        <ref name="def_recording-element"/>
+                    </optional>
                 </element>
             </zeroOrMore>
         </element>
@@ -1270,7 +1374,7 @@
     -->
     <define name="def_iswc">
         <data type="string">
-            <param name="pattern">[A-Z]{1}[0-9]{9}[0-9]{1}</param>
+            <param name="pattern">[A-Z]{1}-[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{1}</param>
         </data>
     </define>
 
