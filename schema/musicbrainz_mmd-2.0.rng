@@ -750,7 +750,6 @@
                     <text/>
                 </attribute>
             </optional>
-            <ref name="def_annotation-attribute_extension"/>
             <element name="entity">
                 <data type="anyURI"/>
             </element>
@@ -771,7 +770,6 @@
                     <param name="pattern">[a-zA-Z0-9._]{27}-</param>
                 </data>
             </attribute>
-            <ref name="def_cdstub-attribute_extension"/>
             <element name="title">
                 <text/>
             </element>
@@ -1369,12 +1367,17 @@
 
     <!-- An ISWC code: 
            C         - single-letter prefix character
-           NNNNNNNNN - 5-digit number
+           NNNNNNNNN - 9-digit number. Apparently a "."-separated grouping in
+	               3x3 digits is allowed in the standard. Both
+		       T-123456789-1 and T-123.456.789-1 would be legal ISWCs.
+		       However, this grouping is for ease of reading only,
+		       therefore it is not allowed here.
+		       http://www.iswc.org/en/faq.html
            C         - check digit
     -->
     <define name="def_iswc">
         <data type="string">
-            <param name="pattern">[A-Z]{1}-[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{1}</param>
+            <param name="pattern">[A-Z]-[0-9]{9}-[0-9]</param>
         </data>
     </define>
 
