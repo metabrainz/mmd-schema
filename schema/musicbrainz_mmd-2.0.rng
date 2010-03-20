@@ -750,6 +750,7 @@
                     <text/>
                 </attribute>
             </optional>
+            <ref name="def_annotation-attribute_extension"/>
             <element name="entity">
                 <data type="anyURI"/>
             </element>
@@ -770,6 +771,7 @@
                     <param name="pattern">[a-zA-Z0-9._]{27}-</param>
                 </data>
             </attribute>
+            <ref name="def_cdstub-attribute_extension"/>
             <element name="title">
                 <text/>
             </element>
