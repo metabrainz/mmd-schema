@@ -37,12 +37,15 @@
         <xs:element minOccurs="0" ref="mmd-2.0:recording"/>
         <xs:element minOccurs="0" ref="mmd-2.0:label"/>
         <xs:element minOccurs="0" ref="mmd-2.0:work"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:puid"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:disc"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-group-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:recording-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:label-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:work-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:isrc-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:annotation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:cdstub-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:freedb-disc-list"/>
@@ -163,10 +166,10 @@
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
         <xs:element minOccurs="0" ref="mmd-2.0:length"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
-        <xs:element minOccurs="0" ref="mmd-2.0:isrc-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:puid-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:isrc-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
@@ -179,14 +182,6 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="length" type="xs:nonNegativeInteger"/>
-  <xs:element name="isrc-list">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:isrc"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="isrc" type="mmd-2.0:def_isrc"/>
   <xs:element name="label">
     <xs:complexType>
       <xs:sequence>
@@ -226,6 +221,44 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="iswc" type="mmd-2.0:def_iswc"/>
+  <xs:element name="disc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="mmd-2.0:sectors"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
+        <xs:group ref="mmd-2.0:def_disc-element_extension"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z0-9._]{27}-"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="mmd-2.0:def_disc-attribute_extension"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sectors" type="xs:nonNegativeInteger"/>
+  <xs:element name="puid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="mmd-2.0:recording-list"/>
+        <xs:group ref="mmd-2.0:def_puid-element_extension"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:anyURI"/>
+      <xs:attributeGroup ref="mmd-2.0:def_puid-attribute_extension"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="isrc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="mmd-2.0:recording-list"/>
+        <xs:group ref="mmd-2.0:def_isrc-element_extension"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:anyURI"/>
+      <xs:attributeGroup ref="mmd-2.0:def_isrc-attribute_extension"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="artist-credit">
     <xs:complexType>
       <xs:sequence>
@@ -436,12 +469,27 @@
       <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
     </xs:sequence>
   </xs:group>
+  <xs:group name="def_puid-element_extension">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="def_isrc-element_extension">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
+    </xs:sequence>
+  </xs:group>
   <xs:group name="def_relation-element_extension">
     <xs:sequence>
       <xs:group ref="mmd-2.0:def_extension_element"/>
     </xs:sequence>
   </xs:group>
   <xs:group name="def_annotation-element_extension">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="def_disc-element_extension">
     <xs:sequence>
       <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
     </xs:sequence>
@@ -474,7 +522,16 @@
   <xs:attributeGroup name="def_work-attribute_extension">
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
+  <xs:attributeGroup name="def_puid-attribute_extension">
+    <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="def_isrc-attribute_extension">
+    <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
+  </xs:attributeGroup>
   <xs:attributeGroup name="def_annotation-attribute_extension">
+    <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="def_disc-attribute_extension">
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="def_cdstub-attribute_extension">
@@ -623,32 +680,31 @@
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="disc">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="mmd-2.0:sectors"/>
-      </xs:sequence>
-      <xs:attribute name="id" use="required">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:pattern value="[a-zA-Z0-9._]{27}-"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="sectors" type="xs:nonNegativeInteger"/>
   <xs:element name="puid-list">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:puid"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="puid">
+          <xs:complexType>
+            <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
+          </xs:complexType>
+        </xs:element>
       </xs:sequence>
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="puid">
+  <xs:element name="isrc-list">
     <xs:complexType>
-      <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="isrc">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" ref="mmd-2.0:recording"/>
+            </xs:sequence>
+            <xs:attribute name="id" use="required" type="mmd-2.0:def_isrc"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="relation-list">
@@ -728,12 +784,17 @@
   <!--
     An ISWC code: 
     C         - single-letter prefix character
-    NNNNNNNNN - 5-digit number
+    NNNNNNNNN - 9-digit number. Apparently a "."-separated grouping in
+    	    3x3 digits is allowed in the standard. Both
+    	    T-123456789-1 and T-123.456.789-1 would be legal ISWCs.
+    	    However, this grouping is for ease of reading only,
+    	    therefore it is not allowed here.
+    	    http://www.iswc.org/en/faq.html
     C         - check digit
   -->
   <xs:simpleType name="def_iswc">
     <xs:restriction base="xs:string">
-      <xs:pattern value="[A-Z]{1}[0-9]{9}[0-9]{1}"/>
+      <xs:pattern value="[A-Z]-[0-9]{9}-[0-9]"/>
     </xs:restriction>
   </xs:simpleType>
   <!-- A 128 Bit UUID in its standard ASCII representation. -->
