@@ -1254,14 +1254,7 @@
         <element name="isrc-list">
             <ref name="def_list-attributes"/>
             <zeroOrMore>
-                <element name="isrc">
-                    <attribute name="id">
-                        <ref name="def_isrc"/>
-                    </attribute>
-                    <optional>
-                        <ref name="def_recording-element"/>
-                    </optional>
-                </element>
+                <ref name="def_isrc-element"/>
             </zeroOrMore>
         </element>
     </define>
