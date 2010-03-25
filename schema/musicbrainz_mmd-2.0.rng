@@ -556,7 +556,7 @@
         <element name="isrc">
             <optional>
                 <attribute name="id">
-                    <data type="anyURI"/>
+                     <ref name="def_isrc"/>
                 </attribute>
             </optional>
             <ref name="def_isrc-attribute_extension"/>
