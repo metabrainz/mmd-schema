@@ -255,7 +255,7 @@
         <xs:element ref="mmd-2.0:recording-list"/>
         <xs:group ref="mmd-2.0:def_isrc-element_extension"/>
       </xs:sequence>
-      <xs:attribute name="id" type="xs:anyURI"/>
+      <xs:attribute name="id" type="mmd-2.0:def_isrc"/>
       <xs:attributeGroup ref="mmd-2.0:def_isrc-attribute_extension"/>
     </xs:complexType>
   </xs:element>
@@ -695,14 +695,7 @@
   <xs:element name="isrc-list">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" name="isrc">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element minOccurs="0" ref="mmd-2.0:recording"/>
-            </xs:sequence>
-            <xs:attribute name="id" use="required" type="mmd-2.0:def_isrc"/>
-          </xs:complexType>
-        </xs:element>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:isrc"/>
       </xs:sequence>
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>

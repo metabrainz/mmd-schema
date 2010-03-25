@@ -19,7 +19,6 @@ import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
@@ -36,10 +35,10 @@ import org.w3c.dom.Element;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}recording-list"/>
- *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_puid-element_extension"/>
+ *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_isrc-element_extension"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_puid-attribute_extension"/>
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
+ *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_isrc-attribute_extension"/>
+ *       &lt;attribute name="id" type="{http://musicbrainz.org/ns/mmd-2.0#}def_isrc" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -52,15 +51,14 @@ import org.w3c.dom.Element;
     "recordingList",
     "defExtensionElement"
 })
-@XmlRootElement(name = "puid")
-public class Puid {
+@XmlRootElement(name = "isrc")
+public class Isrc {
 
     @XmlElement(name = "recording-list", required = true)
     protected RecordingList recordingList;
     @XmlAnyElement
     protected List<Element> defExtensionElement;
     @XmlAttribute
-    @XmlSchemaType(name = "anyURI")
     protected String id;
     @XmlAttribute(namespace = "http://musicbrainz.org/ns/ext#-2.0")
     protected String score;
