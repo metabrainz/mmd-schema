@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- ==================================================================
-     $Id: musicbrainz_mmd-1.4.rng 11725 2009-06-12 08:57:41Z matt $
+     $Id$
 
      Relax NG Schema for MusicBrainz XML Metadata Version 2.0
 
@@ -508,6 +508,10 @@
                 <element name="disambiguation">
                     <text/>
                 </element>
+            </optional>
+
+            <optional>
+                <ref name="def_tag-list"/>
             </optional>
 
             <ref name="def_work-element_extension"/>
