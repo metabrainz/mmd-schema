@@ -457,6 +457,7 @@
             <zeroOrMore>
                 <ref name="def_relation-list"/>
             </zeroOrMore>
+
             <optional>
                 <ref name="def_tag-list"/>
             </optional>
@@ -512,6 +513,15 @@
 
             <optional>
                 <ref name="def_tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_rating"/>
+            </optional>
+            <optional>
+                <ref name="def_user-rating"/>
             </optional>
 
             <ref name="def_work-element_extension"/>
