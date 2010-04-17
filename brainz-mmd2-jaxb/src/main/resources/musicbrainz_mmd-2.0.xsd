@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==================================================================
-  $Id: musicbrainz_mmd-1.4.rng 11725 2009-06-12 08:57:41Z matt $
+  $Id$
   
   Relax NG Schema for MusicBrainz XML Metadata Version 2.0
   
@@ -213,6 +213,10 @@
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:iswc"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:rating"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:user-rating"/>
         <xs:group ref="mmd-2.0:def_work-element_extension"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
