@@ -49,6 +49,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:annotation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:cdstub-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:freedb-disc-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
         <xs:group ref="mmd-2.0:def_metadata-element_extension"/>
       </xs:sequence>
       <xs:attribute name="generator" type="xs:anyURI"/>

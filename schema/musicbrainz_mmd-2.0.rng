@@ -100,7 +100,9 @@
             <optional>
                 <ref name="def_freedb-disc-list"/>
             </optional>
-                
+            <optional>
+                <ref name="def_tag-list"/>
+            </optional>
             <ref name="def_metadata-element_extension"/>
         </element>
     </define>
