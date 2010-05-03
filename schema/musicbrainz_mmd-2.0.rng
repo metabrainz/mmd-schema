@@ -1379,18 +1379,17 @@
     </define>
 
     <!-- An ISWC code: 
-           C         - single-letter prefix character
-           NNNNNNNNN - 9-digit number. Apparently a "."-separated grouping in
-	               3x3 digits is allowed in the standard. Both
-		       T-123456789-1 and T-123.456.789-1 would be legal ISWCs.
-		       However, this grouping is for ease of reading only,
-		       therefore it is not allowed here.
-		       http://www.iswc.org/en/faq.html
-           C         - check digit
+           C           - single-letter prefix character
+           NNN.NNN.NNN - 9-digit number. A "."-separated grouping in
+                         3x3 digits is commonly used.  This grouping
+                         is allowed by the standard, but not
+                         mandatory.  For consistency we force this
+                         grouping in the schema.
+           C           - check digit
     -->
     <define name="def_iswc">
         <data type="string">
-            <param name="pattern">[A-Z]-[0-9]{9}-[0-9]</param>
+            <param name="pattern">[A-Z]-[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]</param>
         </data>
     </define>
 
