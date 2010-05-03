@@ -577,7 +577,9 @@
             </optional>
             <ref name="def_isrc-attribute_extension"/>
 
-            <ref name="def_recording-list"/>
+            <optional>
+              <ref name="def_recording-list"/>
+            </optional>
 
             <ref name="def_isrc-element_extension"/>
         </element>
