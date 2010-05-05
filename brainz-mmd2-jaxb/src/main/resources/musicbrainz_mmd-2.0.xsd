@@ -313,11 +313,22 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="tag">
-    <xs:complexType mixed="true">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="mmd-2.0:name"/>
+      </xs:sequence>
       <xs:attribute name="count" type="xs:nonNegativeInteger"/>
+      <xs:attributeGroup ref="mmd-2.0:def_tag-attribute_extension"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="user-tag" type="xs:string"/>
+  <xs:element name="user-tag">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="mmd-2.0:name"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mmd-2.0:def_tag-attribute_extension"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="rating">
     <xs:complexType>
       <xs:simpleContent>
@@ -543,6 +554,9 @@
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="def_freedb-disc-attribute_extension">
+    <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="def_tag-attribute_extension">
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
   <xs:group name="def_extension_element">

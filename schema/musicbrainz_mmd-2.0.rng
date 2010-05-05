@@ -676,14 +676,20 @@
                     <data type="nonNegativeInteger"/>
                 </attribute>
             </optional>
-            <text/>
+            <ref name="def_tag-attribute_extension"/>
+            <element name="name">
+                <text/>
+            </element>
         </element>
     </define>
 
 
     <define name="def_user-tag">
         <element name="user-tag">
-            <text/>
+            <ref name="def_tag-attribute_extension"/>
+            <element name="name">
+                <text/>
+            </element>    
         </element>
     </define>
 
@@ -963,7 +969,6 @@
         </zeroOrMore>
     </define>
 
-
     <define name="def_artist-attribute_extension">
         <zeroOrMore>
             <ref name="def_extension_attribute"/>
@@ -1047,6 +1052,12 @@
         </zeroOrMore>
     </define>
 
+
+    <define name="def_tag-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
 
     <define name="def_extension_element">
         <element>
