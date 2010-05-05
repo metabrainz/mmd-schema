@@ -257,7 +257,7 @@
   <xs:element name="isrc">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="mmd-2.0:recording-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:recording-list"/>
         <xs:group ref="mmd-2.0:def_isrc-element_extension"/>
       </xs:sequence>
       <xs:attribute name="id" type="mmd-2.0:def_isrc"/>
@@ -781,18 +781,17 @@
   </xs:simpleType>
   <!--
     An ISWC code: 
-    C         - single-letter prefix character
-    NNNNNNNNN - 9-digit number. Apparently a "."-separated grouping in
-    	    3x3 digits is allowed in the standard. Both
-    	    T-123456789-1 and T-123.456.789-1 would be legal ISWCs.
-    	    However, this grouping is for ease of reading only,
-    	    therefore it is not allowed here.
-    	    http://www.iswc.org/en/faq.html
-    C         - check digit
+    C           - single-letter prefix character
+    NNN.NNN.NNN - 9-digit number. A "."-separated grouping in
+                  3x3 digits is commonly used.  This grouping
+                  is allowed by the standard, but not
+                  mandatory.  For consistency we force this
+                  grouping in the schema.
+    C           - check digit
   -->
   <xs:simpleType name="def_iswc">
     <xs:restriction base="xs:string">
-      <xs:pattern value="[A-Z]-[0-9]{9}-[0-9]"/>
+      <xs:pattern value="[A-Z]-[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]"/>
     </xs:restriction>
   </xs:simpleType>
   <!-- A 128 Bit UUID in its standard ASCII representation. -->
