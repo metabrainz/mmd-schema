@@ -214,6 +214,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:iswc"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:rating"/>
