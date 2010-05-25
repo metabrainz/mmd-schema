@@ -558,7 +558,7 @@
         <element name="puid">
             <optional>
                 <attribute name="id">
-                    <data type="anyURI"/>
+                        <ref name="def_uuid"/>
                 </attribute>
             </optional>
             <ref name="def_puid-attribute_extension"/>
@@ -1271,11 +1271,7 @@
         <element name="puid-list">
             <ref name="def_list-attributes"/>
             <zeroOrMore>
-                <element name="puid">
-                    <attribute name="id">
-                        <ref name="def_uuid"/>
-                    </attribute>
-                </element>
+                <ref name="def_puid-element"/>
             </zeroOrMore>
         </element>
     </define>

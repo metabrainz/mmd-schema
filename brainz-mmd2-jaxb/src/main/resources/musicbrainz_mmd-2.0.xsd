@@ -251,7 +251,7 @@
         <xs:element ref="mmd-2.0:recording-list"/>
         <xs:group ref="mmd-2.0:def_puid-element_extension"/>
       </xs:sequence>
-      <xs:attribute name="id" type="xs:anyURI"/>
+      <xs:attribute name="id" type="mmd-2.0:def_uuid"/>
       <xs:attributeGroup ref="mmd-2.0:def_puid-attribute_extension"/>
     </xs:complexType>
   </xs:element>
@@ -703,11 +703,7 @@
   <xs:element name="puid-list">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" name="puid">
-          <xs:complexType>
-            <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
-          </xs:complexType>
-        </xs:element>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:puid"/>
       </xs:sequence>
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
