@@ -139,7 +139,7 @@
             </optional>
             <optional>
                 <element name="country">
-                    <text/>
+                    <ref name="def_iso-3166"/>
                 </element>
             </optional>
             <optional>
@@ -566,7 +566,9 @@
             </optional>
             <ref name="def_puid-attribute_extension"/>
 
-            <ref name="def_recording-list"/>
+            <optional>
+                <ref name="def_recording-list"/>
+            </optional>
 
             <ref name="def_puid-element_extension"/>
         </element>
