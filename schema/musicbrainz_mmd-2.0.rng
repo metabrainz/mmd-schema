@@ -251,9 +251,11 @@
                 <ref name="def_release-group-element"/>
             </optional>
 
-            <element name="date">
-                <ref name="def_incomplete-date"/>
-            </element>
+            <optional>
+                <element name="date">
+                    <ref name="def_incomplete-date"/>
+                </element>
+            </optional>
             <optional>
                 <element name="country">
                     <ref name="def_iso-3166"/>
