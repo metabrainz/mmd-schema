@@ -14,7 +14,7 @@
   
   Copyright (c) 2006 Robert Kaye, Matthias Friedrich
   
-  The schema is released under the Creative Commons 
+  The schema is released under the Creative Commons
   Attribution-ShareAlike 2.5 license.
   
   http://creativecommons.org/licenses/by-sa/2.5/
@@ -62,10 +62,11 @@
         <xs:element minOccurs="0" ref="mmd-2.0:name"/>
         <xs:element minOccurs="0" ref="mmd-2.0:sort-name"/>
         <xs:element minOccurs="0" ref="mmd-2.0:gender"/>
-        <xs:element minOccurs="0" name="country" type="xs:string"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:country"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:life-span"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:recording-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-group-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:label-list"/>
@@ -85,6 +86,7 @@
   <xs:element name="name" type="xs:string"/>
   <xs:element name="sort-name" type="xs:string"/>
   <xs:element name="gender" type="xs:string"/>
+  <xs:element name="country" type="mmd-2.0:def_iso-3166"/>
   <xs:element name="disambiguation" type="xs:string"/>
   <xs:element name="life-span">
     <xs:complexType>
@@ -106,8 +108,8 @@
         <xs:element minOccurs="0" ref="mmd-2.0:text-representation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-group"/>
-        <xs:element ref="mmd-2.0:date"/>
-        <xs:element minOccurs="0" name="country" type="mmd-2.0:def_iso-3166"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:date"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:country"/>
         <xs:element minOccurs="0" ref="mmd-2.0:barcode"/>
         <xs:element minOccurs="0" ref="mmd-2.0:asin"/>
         <xs:element minOccurs="0" ref="mmd-2.0:label-info-list"/>
@@ -190,7 +192,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:sort-name"/>
         <xs:element minOccurs="0" ref="mmd-2.0:label-code"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
-        <xs:element minOccurs="0" name="country" type="mmd-2.0:def_iso-3166"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:country"/>
         <xs:element minOccurs="0" ref="mmd-2.0:life-span"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
@@ -248,7 +250,7 @@
   <xs:element name="puid">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="mmd-2.0:recording-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:recording-list"/>
         <xs:group ref="mmd-2.0:def_puid-element_extension"/>
       </xs:sequence>
       <xs:attribute name="id" type="mmd-2.0:def_uuid"/>
@@ -369,7 +371,7 @@
           <xs:sequence>
             <xs:element minOccurs="0" ref="mmd-2.0:position"/>
             <xs:element minOccurs="0" ref="mmd-2.0:title"/>
-            <xs:element ref="mmd-2.0:recording"/>
+            <xs:element minOccurs="0" ref="mmd-2.0:recording"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
