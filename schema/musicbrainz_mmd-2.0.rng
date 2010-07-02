@@ -13,8 +13,8 @@
 
 
      Copyright (c) 2006 Robert Kaye, Matthias Friedrich
-   
-     The schema is released under the Creative Commons 
+
+     The schema is released under the Creative Commons
      Attribution-ShareAlike 2.5 license.
 
      http://creativecommons.org/licenses/by-sa/2.5/
@@ -770,7 +770,9 @@
                     <text/>
                 </element>
             </optional>
-            <ref name="def_recording-element"/>
+            <optional>
+                <ref name="def_recording-element"/>
+            </optional>
         </element>
     </define>
 
