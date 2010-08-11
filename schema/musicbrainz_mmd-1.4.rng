@@ -13,8 +13,8 @@
 
 
      Copyright (c) 2006 Robert Kaye, Matthias Friedrich
-   
-     The schema is released under the Creative Commons 
+
+     The schema is released under the Creative Commons
      Attribution-ShareAlike 2.5 license.
 
      http://creativecommons.org/licenses/by-sa/2.5/
@@ -76,7 +76,7 @@
             <optional>
                 <ref name="def_label-list"/>
             </optional>
-                
+
             <ref name="def_metadata-element_extension"/>
         </element>
     </define>
@@ -448,6 +448,7 @@
                     <ref name="def_artist-element"/>
                     <ref name="def_release-element"/>
                     <ref name="def_track-element"/>
+                    <ref name="def_label-element"/>
 
                     <ref name="def_relation-element_extension"/>
                 </choice>
