@@ -38,6 +38,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:label"/>
         <xs:element minOccurs="0" ref="mmd-2.0:work"/>
         <xs:element minOccurs="0" ref="mmd-2.0:puid"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:isrc"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disc"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
@@ -50,6 +51,9 @@
         <xs:element minOccurs="0" ref="mmd-2.0:cdstub-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:freedb-disc-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:rating"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:user-rating"/>
         <xs:group ref="mmd-2.0:def_metadata-element_extension"/>
       </xs:sequence>
       <xs:attribute name="generator" type="xs:anyURI"/>
@@ -103,6 +107,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
         <xs:element minOccurs="0" ref="mmd-2.0:status"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:quality"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:packaging"/>
         <xs:element minOccurs="0" ref="mmd-2.0:text-representation"/>
@@ -123,6 +128,7 @@
   </xs:element>
   <xs:element name="title" type="xs:string"/>
   <xs:element name="status" type="xs:string"/>
+  <xs:element name="quality" type="mmd-2.0:def_quality"/>
   <xs:element name="packaging" type="xs:string"/>
   <xs:element name="text-representation">
     <xs:complexType>
@@ -289,7 +295,7 @@
       <xs:sequence>
         <xs:element ref="mmd-2.0:target"/>
         <xs:element minOccurs="0" ref="mmd-2.0:direction"/>
-        <xs:element minOccurs="0" ref="mmd-2.0:attributes"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:attribute-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:begin"/>
         <xs:element minOccurs="0" ref="mmd-2.0:end"/>
         <xs:choice minOccurs="0">
@@ -307,7 +313,6 @@
   </xs:element>
   <xs:element name="target" type="xs:anyURI"/>
   <xs:element name="direction" type="mmd-2.0:def_direction"/>
-  <xs:element name="attributes" type="mmd-2.0:def_URI-list"/>
   <xs:element name="alias">
     <xs:complexType mixed="true">
       <xs:sequence>
@@ -744,19 +749,20 @@
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
   </xs:element>
+  <!-- the list of attributes on a relationship. -->
+  <xs:element name="attribute-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="mmd-2.0:attribute"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="attribute" type="xs:string"/>
+  <!-- the attributes which can be used on a -list element. -->
   <xs:attributeGroup name="def_list-attributes">
     <xs:attribute name="count" type="xs:nonNegativeInteger"/>
     <xs:attribute name="offset" type="xs:nonNegativeInteger"/>
   </xs:attributeGroup>
-  <!-- A space separated list of URIs, relative ones are possible, too. -->
-  <xs:simpleType name="def_URI-list">
-    <xs:restriction>
-      <xs:simpleType>
-        <xs:list itemType="xs:anyURI"/>
-      </xs:simpleType>
-      <xs:minLength value="1"/>
-    </xs:restriction>
-  </xs:simpleType>
   <!-- A date with varying precision in format 'YYYY-MM-DD'. -->
   <xs:simpleType name="def_incomplete-date">
     <xs:restriction base="xs:string">
@@ -820,6 +826,14 @@
       <xs:enumeration value="both"/>
       <xs:enumeration value="forward"/>
       <xs:enumeration value="backward"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- Data Quality of an entity. -->
+  <xs:simpleType name="def_quality">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="low"/>
+      <xs:enumeration value="normal"/>
+      <xs:enumeration value="high"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

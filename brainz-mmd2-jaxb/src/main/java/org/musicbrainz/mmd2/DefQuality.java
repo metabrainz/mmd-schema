@@ -14,34 +14,34 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for def_direction.
+ * <p>Java class for def_quality.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="def_direction">
+ * &lt;simpleType name="def_quality">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}token">
- *     &lt;enumeration value="both"/>
- *     &lt;enumeration value="forward"/>
- *     &lt;enumeration value="backward"/>
+ *     &lt;enumeration value="low"/>
+ *     &lt;enumeration value="normal"/>
+ *     &lt;enumeration value="high"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
  * 
  */
-@XmlType(name = "def_direction")
+@XmlType(name = "def_quality")
 @XmlEnum
-public enum DefDirection {
+public enum DefQuality {
 
-    @XmlEnumValue("both")
-    BOTH("both"),
-    @XmlEnumValue("forward")
-    FORWARD("forward"),
-    @XmlEnumValue("backward")
-    BACKWARD("backward");
+    @XmlEnumValue("low")
+    LOW("low"),
+    @XmlEnumValue("normal")
+    NORMAL("normal"),
+    @XmlEnumValue("high")
+    HIGH("high");
     private final String value;
 
-    DefDirection(String v) {
+    DefQuality(String v) {
         value = v;
     }
 
@@ -49,8 +49,8 @@ public enum DefDirection {
         return value;
     }
 
-    public static DefDirection fromValue(String v) {
-        for (DefDirection c: DefDirection.values()) {
+    public static DefQuality fromValue(String v) {
+        for (DefQuality c: DefQuality.values()) {
             if (c.value.equals(v)) {
                 return c;
             }
