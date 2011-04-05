@@ -8,18 +8,13 @@
 
 package org.musicbrainz.mmd2;
 
-import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.Map;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.namespace.QName;
 
 
 /**
@@ -33,9 +28,10 @@ import javax.xml.namespace.QName;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}name"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}editor" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}release-list"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_tag-attribute_extension"/>
- *       &lt;attribute name="count" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -45,20 +41,21 @@ import javax.xml.namespace.QName;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "name"
+    "name",
+    "editor",
+    "releaseList"
 })
-@XmlRootElement(name = "tag")
-public class Tag {
+@XmlRootElement(name = "collection")
+public class Collection {
 
     @XmlElement(required = true)
     protected String name;
+    protected String editor;
+    @XmlElement(name = "release-list", required = true)
+    protected ReleaseList releaseList;
     @XmlAttribute
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger count;
-    @XmlAttribute(namespace = "http://musicbrainz.org/ns/ext#-2.0")
-    protected String score;
-    @XmlAnyAttribute
-    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+    @XmlSchemaType(name = "anyURI")
+    protected String id;
 
     /**
      * Gets the value of the name property.
@@ -85,69 +82,75 @@ public class Tag {
     }
 
     /**
-     * Gets the value of the count property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getCount() {
-        return count;
-    }
-
-    /**
-     * Sets the value of the count property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setCount(BigInteger value) {
-        this.count = value;
-    }
-
-    /**
-     * Gets the value of the score property.
+     * Gets the value of the editor property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getScore() {
-        return score;
+    public String getEditor() {
+        return editor;
     }
 
     /**
-     * Sets the value of the score property.
+     * Sets the value of the editor property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setScore(String value) {
-        this.score = value;
+    public void setEditor(String value) {
+        this.editor = value;
     }
 
     /**
-     * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
-     * <p>
-     * the map is keyed by the name of the attribute and 
-     * the value is the string value of the attribute.
-     * 
-     * the map returned by this method is live, and you can add new attribute
-     * by updating the map directly. Because of this design, there's no setter.
-     * 
+     * Gets the value of the releaseList property.
      * 
      * @return
-     *     always non-null
+     *     possible object is
+     *     {@link ReleaseList }
+     *     
      */
-    public Map<QName, String> getOtherAttributes() {
-        return otherAttributes;
+    public ReleaseList getReleaseList() {
+        return releaseList;
+    }
+
+    /**
+     * Sets the value of the releaseList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ReleaseList }
+     *     
+     */
+    public void setReleaseList(ReleaseList value) {
+        this.releaseList = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setId(String value) {
+        this.id = value;
     }
 
 }

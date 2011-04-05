@@ -72,7 +72,15 @@
             <optional>
                 <ref name="def_disc-element"/>
             </optional>
-
+            <optional>
+                <ref name="def_rating"/>
+            </optional>
+            <optional>
+                <ref name="def_user-rating"/>
+            </optional>
+            <optional>
+                <ref name="def_collection"/>
+            </optional>
             <optional>
                 <ref name="def_artist-list"/>
             </optional>
@@ -110,12 +118,8 @@
                 <ref name="def_user-tag-list"/>
             </optional>
             <optional>
-                <ref name="def_rating"/>
+                <ref name="def_collection-list"/>
             </optional>
-            <optional>
-                <ref name="def_user-rating"/>
-            </optional>
-
             <ref name="def_metadata-element_extension"/>
         </element>
     </define>
@@ -900,6 +904,24 @@
         </element>
     </define>
 
+    <define name="def_collection">
+        <element name="collection">
+            <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <element name="name">
+                <text/>
+            </element>
+            <optional>
+                <element name="editor">
+                    <text/>
+                </element>
+            </optional>
+            <ref name="def_release-list"/>
+        </element>
+    </define>
     <!--
         This part defines the extensions elements and attributes.
     -->
@@ -1345,6 +1367,15 @@
                 <ref name="def_user-tag"/>
             </zeroOrMore>
         </element>
+    </define>
+
+    <define name="def_collection-list">
+            <element name="collection-list">
+                <ref name="def_list-attributes"/>
+                <zeroOrMore>
+                    <ref name="def_collection"/>
+                </zeroOrMore>
+            </element>
     </define>
 
     <!-- the list of attributes on a relationship. -->

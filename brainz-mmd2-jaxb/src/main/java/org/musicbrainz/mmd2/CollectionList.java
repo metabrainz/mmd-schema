@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}isrc" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}collection" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/>
  *     &lt;/restriction>
@@ -41,12 +41,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "isrc"
+    "collection"
 })
-@XmlRootElement(name = "isrc-list")
-public class IsrcList {
+@XmlRootElement(name = "collection-list")
+public class CollectionList {
 
-    protected List<Isrc> isrc;
+    protected List<Collection> collection;
     @XmlAttribute
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger count;
@@ -55,32 +55,32 @@ public class IsrcList {
     protected BigInteger offset;
 
     /**
-     * Gets the value of the isrc property.
+     * Gets the value of the collection property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the isrc property.
+     * This is why there is not a <CODE>set</CODE> method for the collection property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getIsrc().add(newItem);
+     *    getCollection().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Isrc }
+     * {@link Collection }
      * 
      * 
      */
-    public List<Isrc> getIsrc() {
-        if (isrc == null) {
-            isrc = new ArrayList<Isrc>();
+    public List<Collection> getCollection() {
+        if (collection == null) {
+            collection = new ArrayList<Collection>();
         }
-        return this.isrc;
+        return this.collection;
     }
 
     /**

@@ -40,6 +40,9 @@
         <xs:element minOccurs="0" ref="mmd-2.0:puid"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disc"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:rating"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:user-rating"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:collection"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-group-list"/>
@@ -52,8 +55,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:freedb-disc-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
-        <xs:element minOccurs="0" ref="mmd-2.0:rating"/>
-        <xs:element minOccurs="0" ref="mmd-2.0:user-rating"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:collection-list"/>
         <xs:group ref="mmd-2.0:def_metadata-element_extension"/>
       </xs:sequence>
       <xs:attribute name="generator" type="xs:anyURI"/>
@@ -458,6 +460,17 @@
       </xs:element>
     </xs:sequence>
   </xs:group>
+  <xs:element name="collection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="mmd-2.0:name"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:editor"/>
+        <xs:element ref="mmd-2.0:release-list"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="editor" type="xs:string"/>
   <!-- This part defines the extensions elements and attributes. -->
   <xs:group name="def_metadata-element_extension">
     <xs:sequence>
@@ -745,6 +758,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:user-tag"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="collection-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:collection"/>
       </xs:sequence>
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
