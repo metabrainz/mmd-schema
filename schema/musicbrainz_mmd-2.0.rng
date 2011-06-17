@@ -796,6 +796,14 @@
                 </element>
             </optional>
             <optional>
+                <element name="length">
+                    <data type="nonNegativeInteger"/> 
+                </element>
+            </optional>
+            <optional>
+                <ref name="def_artist-credit"/>
+            </optional>
+            <optional>
                 <ref name="def_recording-element"/>
             </optional>
         </element>
