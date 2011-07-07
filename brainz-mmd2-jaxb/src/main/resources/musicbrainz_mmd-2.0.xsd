@@ -167,6 +167,7 @@
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
       <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attribute name="first-release-date" type="mmd-2.0:def_incomplete-date"/>
       <xs:attributeGroup ref="mmd-2.0:def_release-group-attribute_extension"/>
     </xs:complexType>
   </xs:element>
@@ -317,10 +318,7 @@
   <xs:element name="direction" type="mmd-2.0:def_direction"/>
   <xs:element name="alias">
     <xs:complexType mixed="true">
-      <xs:sequence>
-        <xs:element minOccurs="0" ref="mmd-2.0:script"/>
-      </xs:sequence>
-      <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attribute name="locale" type="mmd-2.0:def_iso-3166-2"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="tag">
@@ -379,6 +377,8 @@
           <xs:sequence>
             <xs:element minOccurs="0" ref="mmd-2.0:position"/>
             <xs:element minOccurs="0" ref="mmd-2.0:title"/>
+            <xs:element minOccurs="0" ref="mmd-2.0:length"/>
+            <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
             <xs:element minOccurs="0" ref="mmd-2.0:recording"/>
           </xs:sequence>
         </xs:complexType>
@@ -794,6 +794,12 @@
   <xs:simpleType name="def_iso-3166">
     <xs:restriction base="xs:string">
       <xs:pattern value="[A-Z]{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- A two-letter country code like followed by a 3 letter subdivision -->
+  <xs:simpleType name="def_iso-3166-2">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{2}\-[A-Z]{2}"/>
     </xs:restriction>
   </xs:simpleType>
   <!-- An ISO-639-2/T language code like 'deu', 'eng', 'jpn' etc. -->
