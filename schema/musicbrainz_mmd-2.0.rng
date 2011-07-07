@@ -323,6 +323,11 @@
                     <data type="anyURI"/>
                 </attribute>
             </optional>
+            <optional>
+              <attribute name="first-release-date">
+                <ref name="def_incomplete-date" />
+              </attribute>
+            </optional>
             <ref name="def_release-group-attribute_extension"/>
 
             <optional>
@@ -687,14 +692,9 @@
     <define name="def_alias">
         <element name="alias">
             <optional>
-                <attribute name="type">
-                    <data type="anyURI"/>
+                <attribute name="locale">
+                    <ref name="def_iso-3166-2" />
                 </attribute>
-            </optional>
-            <optional>
-                <element name="script">
-                    <ref name="def_iso-15924"/>
-                </element>
             </optional>
             <text/>
         </element>
@@ -1424,6 +1424,13 @@
     <define name="def_iso-3166">
         <data type="string">
             <param name="pattern">[A-Z]{2}</param>
+        </data>
+    </define>
+
+    <!-- A two-letter country code like followed by a 3 letter subdivision -->
+    <define name="def_iso-3166-2">
+        <data type="string">
+            <param name="pattern">[A-Z]{2}\-[A-Z]{2}</param>
         </data>
     </define>
 
