@@ -323,11 +323,6 @@
                     <data type="anyURI"/>
                 </attribute>
             </optional>
-            <optional>
-              <attribute name="first-release-date">
-                <ref name="def_incomplete-date" />
-              </attribute>
-            </optional>
             <ref name="def_release-group-attribute_extension"/>
 
             <optional>
@@ -339,6 +334,11 @@
                 <element name="comment">
                     <text/>
                 </element>
+            </optional>
+            <optional>
+              <element name="first-release-date">
+                <ref name="def_incomplete-date" />
+              </element>
             </optional>
 
             <optional>
