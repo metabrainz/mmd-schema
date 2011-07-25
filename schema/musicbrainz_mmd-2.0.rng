@@ -331,7 +331,7 @@
                 </element>
             </optional>
             <optional>
-                <element name="disambiguation">
+                <element name="comment">
                     <text/>
                 </element>
             </optional>
