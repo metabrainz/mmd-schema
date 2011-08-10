@@ -305,6 +305,12 @@
             <zeroOrMore>
                 <ref name="def_relation-list"/>
             </zeroOrMore>
+            <optional>
+                <ref name="def_tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-tag-list"/>
+            </optional>
 
             <ref name="def_release-element_extension"/>
         </element>
