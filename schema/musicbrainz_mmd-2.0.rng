@@ -165,6 +165,11 @@
                 </element>
             </optional>
             <optional>
+                <element name="ipi">
+                    <ref name="def_ipi"/>
+                </element>
+            </optional>
+            <optional>
                 <element name="life-span">
                     <optional>
                         <element name="begin">
@@ -466,6 +471,11 @@
             <optional>
                 <element name="label-code">
                     <data type="nonNegativeInteger"/>
+                </element>
+            </optional>
+            <optional>
+                <element name="ipi">
+                    <ref name="def_ipi"/>
                 </element>
             </optional>
             <optional>
@@ -1427,6 +1437,13 @@
     <define name="def_incomplete-date">
         <data type="string">
             <param name="pattern">[0-9]{4}(-[0-9]{2})?(-[0-9]{2})?</param>
+        </data>
+    </define>
+
+    <!-- An IPI code -->
+    <define name="def_ipi">
+        <data type="string">
+            <param name="pattern">[0-9]{11}</param>
         </data>
     </define>
 
