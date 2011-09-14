@@ -70,6 +70,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:gender"/>
         <xs:element minOccurs="0" ref="mmd-2.0:country"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:ipi"/>
         <xs:element minOccurs="0" ref="mmd-2.0:life-span"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:recording-list"/>
@@ -94,6 +95,7 @@
   <xs:element name="gender" type="xs:string"/>
   <xs:element name="country" type="mmd-2.0:def_iso-3166"/>
   <xs:element name="disambiguation" type="xs:string"/>
+  <xs:element name="ipi" type="mmd-2.0:def_ipi"/>
   <xs:element name="life-span">
     <xs:complexType>
       <xs:sequence>
@@ -122,6 +124,8 @@
         <xs:element minOccurs="0" ref="mmd-2.0:label-info-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:medium-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
         <xs:group ref="mmd-2.0:def_release-element_extension"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
@@ -155,6 +159,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:comment"/>
         <xs:element minOccurs="0" ref="mmd-2.0:first-release-date"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
@@ -201,6 +206,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:name"/>
         <xs:element minOccurs="0" ref="mmd-2.0:sort-name"/>
         <xs:element minOccurs="0" ref="mmd-2.0:label-code"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:ipi"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:country"/>
         <xs:element minOccurs="0" ref="mmd-2.0:life-span"/>
@@ -789,6 +795,12 @@
   <xs:simpleType name="def_incomplete-date">
     <xs:restriction base="xs:string">
       <xs:pattern value="[0-9]{4}(-[0-9]{2})?(-[0-9]{2})?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- An IPI code -->
+  <xs:simpleType name="def_ipi">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{11}"/>
     </xs:restriction>
   </xs:simpleType>
   <!-- A two-letter country code like 'DE', 'UK', 'FR' etc. -->
