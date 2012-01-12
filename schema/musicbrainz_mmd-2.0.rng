@@ -316,6 +316,9 @@
             <optional>
                 <ref name="def_user-tag-list"/>
             </optional>
+            <optional>
+                <ref name="def_collection-list"/>
+            </optional>
 
             <ref name="def_release-element_extension"/>
         </element>
