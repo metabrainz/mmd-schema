@@ -815,6 +815,11 @@
                 </element>
             </optional>
             <optional>
+                <element name="number">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
                 <element name="title">
                     <text/>
                 </element>
