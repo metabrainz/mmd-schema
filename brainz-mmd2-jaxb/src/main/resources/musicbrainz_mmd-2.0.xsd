@@ -126,6 +126,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:collection-list"/>
         <xs:group ref="mmd-2.0:def_release-element_extension"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
@@ -229,6 +230,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:language"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:iswc"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
@@ -383,6 +385,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" ref="mmd-2.0:position"/>
+            <xs:element minOccurs="0" ref="mmd-2.0:number"/>
             <xs:element minOccurs="0" ref="mmd-2.0:title"/>
             <xs:element minOccurs="0" ref="mmd-2.0:length"/>
             <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
@@ -392,6 +395,7 @@
       </xs:element>
     </xs:sequence>
   </xs:group>
+  <xs:element name="number" type="xs:string"/>
   <xs:element name="annotation">
     <xs:complexType>
       <xs:sequence>
@@ -815,7 +819,7 @@
       <xs:pattern value="[A-Z]{2}\-[A-Z]{2}"/>
     </xs:restriction>
   </xs:simpleType>
-  <!-- An ISO-639-2/T language code like 'deu', 'eng', 'jpn' etc. -->
+  <!-- An ISO-639 Part 3 language code like 'deu', 'eng', 'jpn' etc. -->
   <xs:simpleType name="def_iso-639">
     <xs:restriction base="xs:string">
       <xs:pattern value="[a-z]{3}"/>
