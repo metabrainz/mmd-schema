@@ -232,7 +232,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
         <xs:element minOccurs="0" ref="mmd-2.0:language"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
-        <xs:element minOccurs="0" ref="mmd-2.0:iswc"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:iswc-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
@@ -247,7 +247,6 @@
       <xs:attributeGroup ref="mmd-2.0:def_work-attribute_extension"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="iswc" type="mmd-2.0:def_iswc"/>
   <xs:element name="disc">
     <xs:complexType>
       <xs:sequence>
@@ -329,6 +328,17 @@
     <xs:complexType mixed="true">
       <xs:attribute name="locale" type="mmd-2.0:def_iso-3166-2"/>
     </xs:complexType>
+  </xs:element>
+  <xs:element name="iswc">
+    <xs:simpleType>
+      <xs:union memberTypes="mmd-2.0:def_iswc">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:length value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:union>
+    </xs:simpleType>
   </xs:element>
   <xs:element name="tag">
     <xs:complexType>
@@ -761,6 +771,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:tag"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iswc-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:iswc"/>
       </xs:sequence>
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
