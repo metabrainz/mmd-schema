@@ -564,9 +564,7 @@
             </optional>
 
             <optional>
-                <element name="iswc">
-                    <ref name="def_iswc" />
-                </element>
+              <ref name="def_iswc-list" />
             </optional>
 
             <optional>
@@ -730,6 +728,13 @@
         </element>
     </define>
 
+    <define name="def_iswc-element">
+      <element name="iswc">
+        <optional>
+          <ref name="def_iswc"/>
+        </optional>
+      </element>
+    </define>
 
     <define name="def_tag">
         <element name="tag">
@@ -1402,6 +1407,14 @@
         </element>
     </define>
 
+    <define name="def_iswc-list">
+      <element name="iswc-list">
+        <ref name="def_list-attributes"/>
+        <zeroOrMore>
+          <ref name="def_iswc-element" />
+        </zeroOrMore>
+      </element>
+    </define>
 
     <define name="def_user-tag-list">
         <element name="user-tag-list">
