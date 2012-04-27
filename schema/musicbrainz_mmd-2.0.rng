@@ -350,11 +350,6 @@
                 </element>
             </optional>
             <optional>
-                <element name="comment">
-                    <text/>
-                </element>
-            </optional>
-            <optional>
               <element name="first-release-date">
                 <ref name="def_incomplete-date" />
               </element>
