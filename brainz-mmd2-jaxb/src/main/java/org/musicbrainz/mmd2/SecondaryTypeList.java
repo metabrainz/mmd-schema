@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}name-credit" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}secondary-type" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,41 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "nameCredit"
+    "secondaryType"
 })
-@XmlRootElement(name = "artist-credit")
-public class ArtistCredit {
+@XmlRootElement(name = "secondary-type-list")
+public class SecondaryTypeList {
 
-    @XmlElement(name = "name-credit", required = true)
-    protected List<NameCredit> nameCredit;
+    @XmlElement(name = "secondary-type")
+    protected List<String> secondaryType;
 
     /**
-     * Gets the value of the nameCredit property.
+     * Gets the value of the secondaryType property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nameCredit property.
+     * This is why there is not a <CODE>set</CODE> method for the secondaryType property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getNameCredit().add(newItem);
+     *    getSecondaryType().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link NameCredit }
+     * {@link String }
      * 
      * 
      */
-    public List<NameCredit> getNameCredit() {
-        if (nameCredit == null) {
-            nameCredit = new ArrayList<NameCredit>();
+    public List<String> getSecondaryType() {
+        if (secondaryType == null) {
+            secondaryType = new ArrayList<String>();
         }
-        return this.nameCredit;
+        return this.secondaryType;
     }
 
 }

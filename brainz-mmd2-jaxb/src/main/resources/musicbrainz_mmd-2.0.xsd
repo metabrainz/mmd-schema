@@ -163,6 +163,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:comment"/>
         <xs:element minOccurs="0" ref="mmd-2.0:first-release-date"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:secondary-type-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
@@ -179,6 +180,14 @@
   </xs:element>
   <xs:element name="comment" type="xs:string"/>
   <xs:element name="first-release-date" type="mmd-2.0:def_incomplete-date"/>
+  <xs:element name="secondary-type-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:secondary-type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="secondary-type" type="xs:string"/>
   <xs:element name="recording">
     <xs:complexType>
       <xs:sequence>
@@ -327,6 +336,11 @@
   <xs:element name="alias">
     <xs:complexType mixed="true">
       <xs:attribute name="locale" type="mmd-2.0:def_iso-3166-2"/>
+      <xs:attribute name="sort-name"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="primary"/>
+      <xs:attribute name="begin-date" type="mmd-2.0:def_incomplete-date"/>
+      <xs:attribute name="end-date" type="mmd-2.0:def_incomplete-date"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="iswc">
