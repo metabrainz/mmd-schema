@@ -71,6 +71,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:country"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:ipi"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:ipi-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:life-span"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:recording-list"/>
@@ -161,7 +162,6 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
-        <xs:element minOccurs="0" ref="mmd-2.0:comment"/>
         <xs:element minOccurs="0" ref="mmd-2.0:first-release-date"/>
         <xs:element minOccurs="0" ref="mmd-2.0:secondary-type-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
@@ -178,7 +178,6 @@
       <xs:attributeGroup ref="mmd-2.0:def_release-group-attribute_extension"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="comment" type="xs:string"/>
   <xs:element name="first-release-date" type="mmd-2.0:def_incomplete-date"/>
   <xs:element name="secondary-type-list">
     <xs:complexType>
@@ -217,6 +216,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:sort-name"/>
         <xs:element minOccurs="0" ref="mmd-2.0:label-code"/>
         <xs:element minOccurs="0" ref="mmd-2.0:ipi"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:ipi-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:country"/>
         <xs:element minOccurs="0" ref="mmd-2.0:life-span"/>
@@ -454,6 +454,7 @@
       <xs:attributeGroup ref="mmd-2.0:def_cdstub-attribute_extension"/>
     </xs:complexType>
   </xs:element>
+  <xs:element name="comment" type="xs:string"/>
   <xs:element name="freedb-disc">
     <xs:complexType>
       <xs:sequence>
@@ -839,6 +840,13 @@
       <xs:pattern value="[0-9]{11}"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:element name="ipi-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:ipi"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <!-- A two-letter country code like 'DE', 'UK', 'FR' etc. -->
   <xs:simpleType name="def_iso-3166">
     <xs:restriction base="xs:string">
