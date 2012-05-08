@@ -170,6 +170,9 @@
                 </element>
             </optional>
             <optional>
+              <ref name="def_ipi-list" />
+            </optional>
+            <optional>
                 <element name="life-span">
                     <optional>
                         <element name="begin">
@@ -486,6 +489,9 @@
                 <element name="ipi">
                     <ref name="def_ipi"/>
                 </element>
+            </optional>
+            <optional>
+              <ref name="def_ipi-list" />
             </optional>
             <optional>
                 <element name="disambiguation">
@@ -1503,6 +1509,16 @@
         <data type="string">
             <param name="pattern">[0-9]{11}</param>
         </data>
+    </define>
+
+    <define name="def_ipi-list">
+      <element name="ipi-list">
+        <zeroOrMore>
+          <element name="ipi">
+            <ref name="def_ipi" />
+          </element>
+        </zeroOrMore>
+      </element>
     </define>
 
 
