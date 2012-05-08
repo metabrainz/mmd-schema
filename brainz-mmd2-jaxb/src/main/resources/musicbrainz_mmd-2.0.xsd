@@ -160,6 +160,7 @@
   <xs:element name="release-group">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" ref="mmd-2.0:primary-type"/>
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:first-release-date"/>
@@ -178,6 +179,7 @@
       <xs:attributeGroup ref="mmd-2.0:def_release-group-attribute_extension"/>
     </xs:complexType>
   </xs:element>
+  <xs:element name="primary-type" type="xs:string"/>
   <xs:element name="first-release-date" type="mmd-2.0:def_incomplete-date"/>
   <xs:element name="secondary-type-list">
     <xs:complexType>

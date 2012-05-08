@@ -341,7 +341,11 @@
                 </attribute>
             </optional>
             <ref name="def_release-group-attribute_extension"/>
-
+            <optional>
+                <element name="primary-type">
+                    <text/>
+                </element>
+            </optional>
             <optional>
                 <element name="title">
                     <text/>
