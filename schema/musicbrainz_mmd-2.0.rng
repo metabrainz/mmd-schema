@@ -184,6 +184,9 @@
                             <ref name="def_incomplete-date"/>
                         </element>
                     </optional>
+                    <optional>
+                        <ref name="def_ended" />
+                    </optional>
                 </element>
             </optional>
 
@@ -519,6 +522,9 @@
                             <ref name="def_incomplete-date"/>
                         </element>
                     </optional>
+                    <optional>
+                        <ref name="def_ended" />
+                    </optional>
                 </element>
             </optional>
 
@@ -715,6 +721,9 @@
                 <element name="end">
                     <ref name="def_incomplete-date"/>
                 </element>
+            </optional>
+            <optional>
+              <ref name="def_ended" />
             </optional>
 
             <optional>
@@ -1525,6 +1534,13 @@
       </element>
     </define>
 
+    <define name="def_ended">
+      <element name="ended">
+        <choice>
+          <value>true</value>
+        </choice>
+      </element>
+    </define>
 
     <!-- A two-letter country code like 'DE', 'UK', 'FR' etc. -->
     <define name="def_iso-3166">
