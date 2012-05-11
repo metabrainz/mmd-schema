@@ -102,6 +102,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:begin"/>
         <xs:element minOccurs="0" ref="mmd-2.0:end"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:ended"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -320,6 +321,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:attribute-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:begin"/>
         <xs:element minOccurs="0" ref="mmd-2.0:end"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:ended"/>
         <xs:choice minOccurs="0">
           <xs:element ref="mmd-2.0:artist"/>
           <xs:element ref="mmd-2.0:release"/>
@@ -848,6 +850,13 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:ipi"/>
       </xs:sequence>
     </xs:complexType>
+  </xs:element>
+  <xs:element name="ended">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+      </xs:restriction>
+    </xs:simpleType>
   </xs:element>
   <!-- A two-letter country code like 'DE', 'UK', 'FR' etc. -->
   <xs:simpleType name="def_iso-3166">
