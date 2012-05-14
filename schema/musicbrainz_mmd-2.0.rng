@@ -345,11 +345,6 @@
             </optional>
             <ref name="def_release-group-attribute_extension"/>
             <optional>
-                <element name="primary-type">
-                    <text/>
-                </element>
-            </optional>
-            <optional>
                 <element name="title">
                     <text/>
                 </element>
@@ -363,6 +358,11 @@
               <element name="first-release-date">
                 <ref name="def_incomplete-date" />
               </element>
+            </optional>
+            <optional>
+                <element name="primary-type">
+                    <text/>
+                </element>
             </optional>
             <optional>
               <element name="secondary-type-list">
