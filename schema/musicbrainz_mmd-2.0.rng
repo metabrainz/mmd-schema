@@ -586,6 +586,10 @@
             </optional>
 
             <optional>
+              <ref name="def_iswc-element" />
+            </optional>
+
+            <optional>
               <ref name="def_iswc-list" />
             </optional>
 
