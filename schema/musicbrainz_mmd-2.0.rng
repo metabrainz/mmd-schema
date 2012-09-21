@@ -165,6 +165,11 @@
                 </element>
             </optional>
             <optional>
+                <element name="annotation">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
                 <element name="ipi">
                     <ref name="def_ipi"/>
                 </element>
@@ -255,6 +260,11 @@
             </optional>
             <optional>
                 <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="annotation">
                     <text/>
                 </element>
             </optional>
@@ -355,6 +365,11 @@
                 </element>
             </optional>
             <optional>
+                <element name="annotation">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
               <element name="first-release-date">
                 <ref name="def_incomplete-date" />
               </element>
@@ -419,11 +434,16 @@
             </optional>
             <optional>
                 <element name="length">
-                    <data type="nonNegativeInteger"/> 
+                    <data type="nonNegativeInteger"/>
                 </element>
             </optional>
             <optional>
                 <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="annotation">
                     <text/>
                 </element>
             </optional>
@@ -502,6 +522,11 @@
             </optional>
             <optional>
                 <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="annotation">
                     <text/>
                 </element>
             </optional>
@@ -595,6 +620,11 @@
 
             <optional>
                 <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="annotation">
                     <text/>
                 </element>
             </optional>
