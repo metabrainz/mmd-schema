@@ -929,12 +929,16 @@
                 </attribute>
             </optional>
             <ref name="def_annotation-attribute_extension"/>
-            <element name="entity">
+            <optional>
+              <element name="entity">
                 <data type="anyURI"/>
-            </element>
-            <element name="name">
+              </element>
+            </optional>
+            <optional>
+              <element name="name">
                 <text/>
-            </element>
+              </element>
+            </optional>
             <element name="text">
                 <text/>
             </element>
