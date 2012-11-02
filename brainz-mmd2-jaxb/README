@@ -14,4 +14,5 @@ but there are a couple of manual steps.
  <xs:import schemaLocation="local.xsd"/>
  <xs:import namespace="http://musicbrainz.org/ns/ext#-2.0" schemaLocation="extensions.xsd"/>
 4. Generate java classes from xsd (cd ../..; mvn org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:generate)
-5. Build package and then install locally so visible to search server project (mvn install)
+5. Edit DiscList.java and Medium$TrackLIst.java adding "count","offset" to prop order
+6. Build package and then install locally so visible to search server project (mvn install)

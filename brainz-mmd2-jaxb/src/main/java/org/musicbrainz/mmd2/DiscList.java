@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "disc"
+    "disc","count","offset"
 })
 @XmlRootElement(name = "disc-list")
 public class DiscList {
