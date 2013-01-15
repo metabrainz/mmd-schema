@@ -313,6 +313,10 @@
                 </element>
             </optional>
             <optional>
+                <ref name="def_cover-art-archive"/>
+            </optional>
+
+            <optional>
                 <ref name="def_label-info-list"/>
             </optional>
 
@@ -1533,6 +1537,16 @@
                 <data type="nonNegativeInteger"/>
             </attribute>
         </optional>
+    </define>
+
+    <define name="def_cover-art-archive">
+        <element name="cover-art-archive">
+            <element name="artwork"><choice><value>true</value><value>false</value></choice></element>
+            <element name="count"><data type="nonNegativeInteger"/></element>
+            <element name="front"><choice><value>true</value><value>false</value></choice></element>
+            <element name="back"><choice><value>true</value><value>false</value></choice></element>
+            <optional><element name="darkened"><choice><value>true</value></choice></element></optional>
+        </element>
     </define>
 
 
