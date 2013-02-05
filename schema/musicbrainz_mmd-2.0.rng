@@ -64,6 +64,9 @@
                 <ref name="def_work-element"/>
             </optional>
             <optional>
+                <ref name="def_url-element"/>
+            </optional>
+            <optional>
                 <ref name="def_puid-element"/>
             </optional>
             <optional>
@@ -640,6 +643,25 @@
             </optional>
 
             <ref name="def_work-element_extension"/>
+        </element>
+    </define>
+
+    <define name="def_url-element">
+        <element name="url">
+            <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+
+            <optional>
+                <element name="resource">
+                    <text/>
+                </element>
+            </optional>
+            <zeroOrMore>
+                <ref name="def_relation-list"/>
+            </zeroOrMore>
         </element>
     </define>
 
