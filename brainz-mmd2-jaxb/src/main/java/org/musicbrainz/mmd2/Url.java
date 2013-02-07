@@ -8,12 +8,12 @@
 
 package org.musicbrainz.mmd2;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
@@ -29,9 +29,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}cdstub" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}resource" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}relation-list" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/>
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -41,94 +42,94 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "cdstub"
+    "resource",
+    "relationList"
 })
-@XmlRootElement(name = "cdstub-list")
-public class CdstubList {
+@XmlRootElement(name = "url")
+public class Url {
 
-    protected List<Cdstub> cdstub;
+    protected String resource;
+    @XmlElement(name = "relation-list")
+    protected List<RelationList> relationList;
     @XmlAttribute
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger count;
-    @XmlAttribute
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger offset;
+    @XmlSchemaType(name = "anyURI")
+    protected String id;
 
     /**
-     * Gets the value of the cdstub property.
+     * Gets the value of the resource property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getResource() {
+        return resource;
+    }
+
+    /**
+     * Sets the value of the resource property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setResource(String value) {
+        this.resource = value;
+    }
+
+    /**
+     * Gets the value of the relationList property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the cdstub property.
+     * This is why there is not a <CODE>set</CODE> method for the relationList property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCdstub().add(newItem);
+     *    getRelationList().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Cdstub }
+     * {@link RelationList }
      * 
      * 
      */
-    public List<Cdstub> getCdstub() {
-        if (cdstub == null) {
-            cdstub = new ArrayList<Cdstub>();
+    public List<RelationList> getRelationList() {
+        if (relationList == null) {
+            relationList = new ArrayList<RelationList>();
         }
-        return this.cdstub;
+        return this.relationList;
     }
 
     /**
-     * Gets the value of the count property.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getCount() {
-        return count;
+    public String getId() {
+        return id;
     }
 
     /**
-     * Sets the value of the count property.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setCount(BigInteger value) {
-        this.count = value;
-    }
-
-    /**
-     * Gets the value of the offset property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getOffset() {
-        return offset;
-    }
-
-    /**
-     * Sets the value of the offset property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setOffset(BigInteger value) {
-        this.offset = value;
+    public void setId(String value) {
+        this.id = value;
     }
 
 }

@@ -37,6 +37,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:recording"/>
         <xs:element minOccurs="0" ref="mmd-2.0:label"/>
         <xs:element minOccurs="0" ref="mmd-2.0:work"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:url"/>
         <xs:element minOccurs="0" ref="mmd-2.0:puid"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disc"/>
@@ -69,6 +70,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:sort-name"/>
         <xs:element minOccurs="0" ref="mmd-2.0:gender"/>
         <xs:element minOccurs="0" ref="mmd-2.0:country"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:ipi"/>
         <xs:element minOccurs="0" ref="mmd-2.0:ipi-list"/>
@@ -114,6 +116,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
         <xs:element minOccurs="0" ref="mmd-2.0:status"/>
         <xs:element minOccurs="0" ref="mmd-2.0:quality"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:packaging"/>
         <xs:element minOccurs="0" ref="mmd-2.0:text-representation"/>
@@ -123,6 +126,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:country"/>
         <xs:element minOccurs="0" ref="mmd-2.0:barcode"/>
         <xs:element minOccurs="0" ref="mmd-2.0:asin"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:cover-art-archive"/>
         <xs:element minOccurs="0" ref="mmd-2.0:label-info-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:medium-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
@@ -161,10 +165,11 @@
   <xs:element name="release-group">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" ref="mmd-2.0:primary-type"/>
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:first-release-date"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:primary-type"/>
         <xs:element minOccurs="0" ref="mmd-2.0:secondary-type-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
@@ -180,8 +185,8 @@
       <xs:attributeGroup ref="mmd-2.0:def_release-group-attribute_extension"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="primary-type" type="xs:string"/>
   <xs:element name="first-release-date" type="mmd-2.0:def_incomplete-date"/>
+  <xs:element name="primary-type" type="xs:string"/>
   <xs:element name="secondary-type-list">
     <xs:complexType>
       <xs:sequence>
@@ -195,6 +200,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
         <xs:element minOccurs="0" ref="mmd-2.0:length"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
@@ -220,6 +226,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:label-code"/>
         <xs:element minOccurs="0" ref="mmd-2.0:ipi"/>
         <xs:element minOccurs="0" ref="mmd-2.0:ipi-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:country"/>
         <xs:element minOccurs="0" ref="mmd-2.0:life-span"/>
@@ -244,7 +251,9 @@
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
         <xs:element minOccurs="0" ref="mmd-2.0:language"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:iswc"/>
         <xs:element minOccurs="0" ref="mmd-2.0:iswc-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
@@ -259,6 +268,16 @@
       <xs:attributeGroup ref="mmd-2.0:def_work-attribute_extension"/>
     </xs:complexType>
   </xs:element>
+  <xs:element name="url">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="mmd-2.0:resource"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="resource" type="xs:string"/>
   <xs:element name="disc">
     <xs:complexType>
       <xs:sequence>
@@ -333,6 +352,7 @@
         </xs:choice>
       </xs:sequence>
       <xs:attribute name="type" use="required" type="xs:anyURI"/>
+      <xs:attribute name="type-id" use="required" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="target" type="xs:anyURI"/>
@@ -427,8 +447,8 @@
   <xs:element name="annotation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="mmd-2.0:entity"/>
-        <xs:element ref="mmd-2.0:name"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:entity"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:name"/>
         <xs:element ref="mmd-2.0:text"/>
         <xs:group ref="mmd-2.0:def_annotation-element_extension"/>
       </xs:sequence>
@@ -832,6 +852,49 @@
     <xs:attribute name="count" type="xs:nonNegativeInteger"/>
     <xs:attribute name="offset" type="xs:nonNegativeInteger"/>
   </xs:attributeGroup>
+  <xs:element name="cover-art-archive">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="mmd-2.0:artwork"/>
+        <xs:element ref="mmd-2.0:count"/>
+        <xs:element ref="mmd-2.0:front"/>
+        <xs:element ref="mmd-2.0:back"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:darkened"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="artwork">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+        <xs:enumeration value="false"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="count" type="xs:nonNegativeInteger"/>
+  <xs:element name="front">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+        <xs:enumeration value="false"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="back">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+        <xs:enumeration value="false"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="darkened">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
   <!-- A date with varying precision in format 'YYYY-MM-DD'. -->
   <xs:simpleType name="def_incomplete-date">
     <xs:restriction base="xs:string">
