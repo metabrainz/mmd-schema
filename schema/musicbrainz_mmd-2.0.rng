@@ -753,6 +753,11 @@
                 <data type="anyURI"/>
             </attribute>
             <element name="target">
+                <optional>
+                    <attribute name="id">
+                        <data type="anyURI"/>
+                    </attribute>
+                </optional>
                 <data type="anyURI"/>
             </element>
             <optional>
