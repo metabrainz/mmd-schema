@@ -57,6 +57,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:collection-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:entity-list"/>
         <xs:group ref="mmd-2.0:def_metadata-element_extension"/>
       </xs:sequence>
       <xs:attribute name="generator" type="xs:anyURI"/>
@@ -355,7 +356,15 @@
       <xs:attribute name="type-id" use="required" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="target" type="xs:anyURI"/>
+  <xs:element name="target">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:anyURI">
+          <xs:attribute name="id" type="xs:anyURI"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="direction" type="mmd-2.0:def_direction"/>
   <xs:element name="alias">
     <xs:complexType mixed="true">
@@ -834,6 +843,19 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:collection"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="entity-list">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="mmd-2.0:artist"/>
+        <xs:element ref="mmd-2.0:release"/>
+        <xs:element ref="mmd-2.0:release-group"/>
+        <xs:element ref="mmd-2.0:recording"/>
+        <xs:element ref="mmd-2.0:label"/>
+        <xs:element ref="mmd-2.0:work"/>
       </xs:sequence>
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>

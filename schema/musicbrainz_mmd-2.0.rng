@@ -123,6 +123,9 @@
             <optional>
                 <ref name="def_collection-list"/>
             </optional>
+            <optional>
+                <ref name="def_entity-list"/>
+            </optional>
             <ref name="def_metadata-element_extension"/>
         </element>
     </define>
@@ -1080,6 +1083,7 @@
             <ref name="def_release-list"/>
         </element>
     </define>
+
     <!--
         This part defines the extensions elements and attributes.
     -->
@@ -1542,6 +1546,20 @@
                     <ref name="def_collection"/>
                 </zeroOrMore>
             </element>
+    </define>
+
+    <define name="def_entity-list">
+        <element name="entity-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+               <ref name="def_artist-element"/>
+               <ref name="def_release-element"/>
+               <ref name="def_release-group-element"/>
+               <ref name="def_recording-element"/>
+               <ref name="def_label-element"/>
+               <ref name="def_work-element"/>
+            </zeroOrMore>
+        </element>
     </define>
 
     <!-- the list of attributes on a relationship. -->

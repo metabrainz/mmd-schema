@@ -8,7 +8,6 @@
 
 package org.musicbrainz.mmd2;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -26,8 +25,8 @@ import javax.xml.bind.annotation.XmlValue;
  * <pre>
  * &lt;complexType>
  *   &lt;simpleContent>
- *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>float">
- *       &lt;attribute name="votes-count" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
+ *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>anyURI">
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *     &lt;/extension>
  *   &lt;/simpleContent>
  * &lt;/complexType>
@@ -39,53 +38,62 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlType(name = "", propOrder = {
     "value"
 })
-@XmlRootElement(name = "rating")
-public class Rating {
+@XmlRootElement(name = "target")
+public class Target {
 
     @XmlValue
-    protected float value;
-    @XmlAttribute(name = "votes-count")
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger votesCount;
+    @XmlSchemaType(name = "anyURI")
+    protected String value;
+    @XmlAttribute
+    @XmlSchemaType(name = "anyURI")
+    protected String id;
 
     /**
      * Gets the value of the value property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public float getValue() {
+    public String getValue() {
         return value;
     }
 
     /**
      * Sets the value of the value property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setValue(float value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
     /**
-     * Gets the value of the votesCount property.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getVotesCount() {
-        return votesCount;
+    public String getId() {
+        return id;
     }
 
     /**
-     * Sets the value of the votesCount property.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setVotesCount(BigInteger value) {
-        this.votesCount = value;
+    public void setId(String value) {
+        this.id = value;
     }
 
 }

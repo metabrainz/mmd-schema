@@ -14,6 +14,8 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
@@ -28,8 +30,13 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}isrc" maxOccurs="unbounded" minOccurs="0"/>
+ *       &lt;sequence maxOccurs="unbounded" minOccurs="0">
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}artist"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}release"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}release-group"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}recording"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}label"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}work"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/>
  *     &lt;/restriction>
@@ -41,12 +48,20 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "isrc"
+    "artistAndReleaseAndReleaseGroup"
 })
-@XmlRootElement(name = "isrc-list")
-public class IsrcList {
+@XmlRootElement(name = "entity-list")
+public class EntityList {
 
-    protected List<Isrc> isrc;
+    @XmlElements({
+        @XmlElement(name = "label", type = Label.class),
+        @XmlElement(name = "recording", type = Recording.class),
+        @XmlElement(name = "artist", type = Artist.class),
+        @XmlElement(name = "work", type = Work.class),
+        @XmlElement(name = "release", type = Release.class),
+        @XmlElement(name = "release-group", type = ReleaseGroup.class)
+    })
+    protected List<Object> artistAndReleaseAndReleaseGroup;
     @XmlAttribute
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger count;
@@ -55,32 +70,37 @@ public class IsrcList {
     protected BigInteger offset;
 
     /**
-     * Gets the value of the isrc property.
+     * Gets the value of the artistAndReleaseAndReleaseGroup property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the isrc property.
+     * This is why there is not a <CODE>set</CODE> method for the artistAndReleaseAndReleaseGroup property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getIsrc().add(newItem);
+     *    getArtistAndReleaseAndReleaseGroup().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Isrc }
+     * {@link Label }
+     * {@link Recording }
+     * {@link Artist }
+     * {@link Work }
+     * {@link Release }
+     * {@link ReleaseGroup }
      * 
      * 
      */
-    public List<Isrc> getIsrc() {
-        if (isrc == null) {
-            isrc = new ArrayList<Isrc>();
+    public List<Object> getArtistAndReleaseAndReleaseGroup() {
+        if (artistAndReleaseAndReleaseGroup == null) {
+            artistAndReleaseAndReleaseGroup = new ArrayList<Object>();
         }
-        return this.isrc;
+        return this.artistAndReleaseAndReleaseGroup;
     }
 
     /**
