@@ -24,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}language" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}script" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}country" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}date" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,61 +36,61 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "language",
-    "script"
+    "country",
+    "date"
 })
-@XmlRootElement(name = "text-representation")
-public class TextRepresentation {
+@XmlRootElement(name = "release-event")
+public class ReleaseEvent {
 
-    protected String language;
-    protected String script;
+    protected String country;
+    protected String date;
 
     /**
-     * Gets the value of the language property.
+     * Gets the value of the country property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getLanguage() {
-        return language;
+    public String getCountry() {
+        return country;
     }
 
     /**
-     * Sets the value of the language property.
+     * Sets the value of the country property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setLanguage(String value) {
-        this.language = value;
+    public void setCountry(String value) {
+        this.country = value;
     }
 
     /**
-     * Gets the value of the script property.
+     * Gets the value of the date property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getScript() {
-        return script;
+    public String getDate() {
+        return date;
     }
 
     /**
-     * Sets the value of the script property.
+     * Sets the value of the date property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setScript(String value) {
-        this.script = value;
+    public void setDate(String value) {
+        this.date = value;
     }
 
 }

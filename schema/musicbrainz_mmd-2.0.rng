@@ -307,7 +307,7 @@
                 </element>
             </optional>
             <optional>
-                <ref name="def_release-event-list" />
+                <ref name="def_release-event-list"/>
             </optional>
             <optional>
                 <element name="barcode">
@@ -1453,7 +1453,7 @@
         <element name="release-event-list">
             <ref name="def_list-attributes" />
             <zeroOrMore>
-                <ref name="def_release-event-element">
+                <ref name="def_release-event-element"/>
             </zeroOrMore>
         </element>
     </define>
