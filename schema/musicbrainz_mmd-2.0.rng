@@ -167,42 +167,21 @@
                 </element>
             </optional>
             <optional>
-                <element name="area">
-                    <optional>
-                        <ref name="def_iso-3166-1-code"/>
-                    </optional>
-                    <optional>
-                        <ref name="def_iso-3166-2-code"/>
-                    </optional>
-                    <optional>
-                        <ref name="def_iso-3166-3-code"/>
-                    </optional>
+                <element name="country">
+                    <ref name="def_iso-3166-1-code"/>
                 </element>
             </optional>
             <optional>
+                <ref name="def_area-element"/>
+            </optional>
+            <optional>
                 <element name="begin-area">
-                    <optional>
-                        <ref name="def_iso-3166-1-code"/>
-                    </optional>
-                    <optional>
-                        <ref name="def_iso-3166-2-code"/>
-                    </optional>
-                    <optional>
-                        <ref name="def_iso-3166-3-code"/>
-                    </optional>
+                  <ref name="def_area-element_inner"/>
                 </element>
             </optional>
             <optional>
                 <element name="end-area">
-                    <optional>
-                        <ref name="def_iso-3166-1-code"/>
-                    </optional>
-                    <optional>
-                        <ref name="def_iso-3166-2-code"/>
-                    </optional>
-                    <optional>
-                        <ref name="def_iso-3166-3-code"/>
-                    </optional>
+                  <ref name="def_area-element_inner"/>
                 </element>
             </optional>
             <optional>
@@ -571,17 +550,12 @@
                 </element>
             </optional>
             <optional>
-                <element name="area">
-                    <optional>
-                        <ref name="def_iso-3166-1-code"/>
-                    </optional>
-                    <optional>
-                        <ref name="def_iso-3166-2-code"/>
-                    </optional>
-                    <optional>
-                        <ref name="def_iso-3166-3-code"/>
-                    </optional>
+                <element name="country">
+                    <ref name="def_iso-3166-1-code"/>
                 </element>
+            </optional>
+            <optional>
+                <ref name="def_area-element"/>
             </optional>
             <optional>
                 <element name="life-span">
@@ -697,79 +671,73 @@
         </element>
     </define>
 
-    <define name="def_label-element">
-        <element name="label">
-            <optional>
-                <attribute name="id">
-                    <data type="anyURI"/>
-                </attribute>
-            </optional>
-            <optional>
-                <attribute name="type">
-                    <data type="anyURI"/>
-                </attribute>
-            </optional>
-            <ref name="def_label-attribute_extension"/>
-
-            <optional>
-                <element name="name">
-                    <text/>
-                </element>
-            </optional>
-            <optional>
-                <element name="sort-name">
-                    <text/>
-                </element>
-            </optional>
-            <optional>
-              <ref name="def_iso-3166-1-code-list" />
-            </optional>
-            <optional>
-              <ref name="def_iso-3166-2-code-list" />
-            </optional>
-            <optional>
-              <ref name="def_iso-3166-3-code-list" />
-            </optional>
-            <optional>
-              <ref name="def_annotation" />
-            </optional>
-            <optional>
-                <element name="life-span">
-                    <optional>
-                        <element name="begin">
-                            <ref name="def_incomplete-date"/>
-                        </element>
-                    </optional>
-                    <optional>
-                        <element name="end">
-                            <ref name="def_incomplete-date"/>
-                        </element>
-                    </optional>
-                    <optional>
-                        <ref name="def_ended" />
-                    </optional>
-                </element>
-            </optional>
-
-            <optional>
-                <ref name="def_alias-list"/>
-            </optional>
-
-            <optional>
-                <ref name="def_tag-list"/>
-            </optional>
-            <optional>
-                <ref name="def_user-tag-list"/>
-            </optional>
-            <optional>
-                <ref name="def_rating"/>
-            </optional>
-            <optional>
-                <ref name="def_user-rating"/>
-            </optional>
-
-            <ref name="def_area-element_extension"/>
+    <define name="def_area-element">
+        <element name="area">
+            <ref name="def_area-element_inner"/>
         </element>
+    </define>
+
+    <define name="def_area-element_inner">
+        <optional>
+            <attribute name="id">
+                <data type="anyURI"/>
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="type">
+                <data type="anyURI"/>
+            </attribute>
+        </optional>
+        <ref name="def_area-attribute_extension"/>
+
+        <optional>
+            <element name="name">
+                <text/>
+            </element>
+        </optional>
+        <optional>
+            <element name="sort-name">
+                <text/>
+            </element>
+        </optional>
+        <optional>
+          <ref name="def_primary-code" />
+        </optional>
+        <optional>
+          <ref name="def_iso-3166-1-code-list" />
+        </optional>
+        <optional>
+          <ref name="def_iso-3166-2-code-list" />
+        </optional>
+        <optional>
+          <ref name="def_iso-3166-3-code-list" />
+        </optional>
+        <optional>
+          <ref name="def_annotation" />
+        </optional>
+        <optional>
+            <element name="life-span">
+                <optional>
+                    <element name="begin">
+                        <ref name="def_incomplete-date"/>
+                    </element>
+                </optional>
+                <optional>
+                    <element name="end">
+                        <ref name="def_incomplete-date"/>
+                    </element>
+                </optional>
+                <optional>
+                    <ref name="def_ended" />
+                </optional>
+            </element>
+        </optional>
+
+        <optional>
+            <ref name="def_alias-list"/>
+        </optional>
+
+        <ref name="def_area-element_extension"/>
     </define>
 
     <define name="def_url-element">
@@ -1318,6 +1286,11 @@
         </zeroOrMore>
     </define>
 
+    <define name="def_area-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
 
     <define name="def_release-attribute_extension">
         <zeroOrMore>
@@ -1764,6 +1737,16 @@
       <element name="ended">
         <choice>
           <value>true</value>
+        </choice>
+      </element>
+    </define>
+
+    <define name="def_primary-code">
+      <element name="primary-code">
+        <choice>
+            <ref name="def_iso-3166-1-code" />
+            <ref name="def_iso-3166-2-code" />
+            <ref name="def_iso-3166-3-code" />
         </choice>
       </element>
     </define>
