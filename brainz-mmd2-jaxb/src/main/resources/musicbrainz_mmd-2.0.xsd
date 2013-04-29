@@ -125,6 +125,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:release-group"/>
         <xs:element minOccurs="0" ref="mmd-2.0:date"/>
         <xs:element minOccurs="0" ref="mmd-2.0:country"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:release-event-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:barcode"/>
         <xs:element minOccurs="0" ref="mmd-2.0:asin"/>
         <xs:element minOccurs="0" ref="mmd-2.0:cover-art-archive"/>
@@ -540,6 +541,14 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="editor" type="xs:string"/>
+  <xs:element name="release-event">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="mmd-2.0:country"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:date"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <!-- This part defines the extensions elements and attributes. -->
   <xs:group name="def_metadata-element_extension">
     <xs:sequence>
@@ -744,6 +753,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:work"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="release-event-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:release-event"/>
       </xs:sequence>
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
