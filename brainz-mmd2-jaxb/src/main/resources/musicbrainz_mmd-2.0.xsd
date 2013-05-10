@@ -283,7 +283,6 @@
     <xs:sequence>
       <xs:element minOccurs="0" ref="mmd-2.0:name"/>
       <xs:element minOccurs="0" ref="mmd-2.0:sort-name"/>
-      <xs:element minOccurs="0" ref="mmd-2.0:primary-code"/>
       <xs:element minOccurs="0" ref="mmd-2.0:iso-3166-1-code-list"/>
       <xs:element minOccurs="0" ref="mmd-2.0:iso-3166-2-code-list"/>
       <xs:element minOccurs="0" ref="mmd-2.0:iso-3166-3-code-list"/>
@@ -1002,11 +1001,6 @@
       <xs:restriction base="xs:token">
         <xs:enumeration value="true"/>
       </xs:restriction>
-    </xs:simpleType>
-  </xs:element>
-  <xs:element name="primary-code">
-    <xs:simpleType>
-      <xs:union memberTypes="mmd-2.0:def_iso-3166-1-code mmd-2.0:def_iso-3166-2-code mmd-2.0:def_iso-3166-3-code"/>
     </xs:simpleType>
   </xs:element>
   <!-- A two-letter country code like 'DE', 'UK', 'FR' etc. -->
