@@ -704,9 +704,6 @@
             </element>
         </optional>
         <optional>
-          <ref name="def_primary-code" />
-        </optional>
-        <optional>
           <ref name="def_iso-3166-1-code-list" />
         </optional>
         <optional>
@@ -1762,16 +1759,6 @@
       <element name="ended">
         <choice>
           <value>true</value>
-        </choice>
-      </element>
-    </define>
-
-    <define name="def_primary-code">
-      <element name="primary-code">
-        <choice>
-            <ref name="def_iso-3166-1-code" />
-            <ref name="def_iso-3166-2-code" />
-            <ref name="def_iso-3166-3-code" />
         </choice>
       </element>
     </define>
