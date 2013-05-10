@@ -8,7 +8,6 @@
 
 package org.musicbrainz.mmd2;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +18,6 @@ import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
@@ -27,35 +25,27 @@ import org.w3c.dom.Element;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Java class for def_area-element_inner complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
+ * &lt;complexType name="def_area-element_inner">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}name" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}sort-name" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}label-code" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}ipi" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}ipi-list" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}primary-code" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}iso-3166-1-code-list" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}iso-3166-2-code-list" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}iso-3166-3-code-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}annotation" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}disambiguation" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}country" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}area" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}life-span" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}alias-list" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}release-list" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}relation-list" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}tag-list" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}user-tag-list" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}rating" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}user-rating" minOccurs="0"/>
- *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_label-element_extension"/>
+ *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_area-element_extension"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_label-attribute_extension"/>
+ *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_area-attribute_extension"/>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *     &lt;/restriction>
@@ -66,58 +56,36 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "def_area-element_inner", propOrder = {
     "name",
     "sortName",
-    "labelCode",
-    "ipi",
-    "ipiList",
+    "primaryCode",
+    "iso31661CodeList",
+    "iso31662CodeList",
+    "iso31663CodeList",
     "annotation",
-    "disambiguation",
-    "country",
-    "area",
     "lifeSpan",
     "aliasList",
-    "releaseList",
-    "relationList",
-    "tagList",
-    "userTagList",
-    "rating",
-    "userRating",
     "defExtensionElement"
 })
-@XmlRootElement(name = "label")
-public class Label {
+public class DefAreaElementInner {
 
     protected String name;
     @XmlElement(name = "sort-name")
     protected String sortName;
-    @XmlElement(name = "label-code")
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger labelCode;
-    protected String ipi;
-    @XmlElement(name = "ipi-list")
-    protected IpiList ipiList;
+    @XmlElement(name = "primary-code")
+    protected String primaryCode;
+    @XmlElement(name = "iso-3166-1-code-list")
+    protected Iso31661CodeList iso31661CodeList;
+    @XmlElement(name = "iso-3166-2-code-list")
+    protected Iso31662CodeList iso31662CodeList;
+    @XmlElement(name = "iso-3166-3-code-list")
+    protected Iso31663CodeList iso31663CodeList;
     protected Annotation annotation;
-    protected String disambiguation;
-    protected String country;
-    protected DefAreaElementInner area;
     @XmlElement(name = "life-span")
     protected LifeSpan lifeSpan;
     @XmlElement(name = "alias-list")
     protected AliasList aliasList;
-    @XmlElement(name = "release-list")
-    protected ReleaseList releaseList;
-    @XmlElement(name = "relation-list")
-    protected List<RelationList> relationList;
-    @XmlElement(name = "tag-list")
-    protected TagList tagList;
-    @XmlElement(name = "user-tag-list")
-    protected UserTagList userTagList;
-    protected Rating rating;
-    @XmlElement(name = "user-rating")
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger userRating;
     @XmlAnyElement
     protected List<Element> defExtensionElement;
     @XmlAttribute
@@ -180,75 +148,99 @@ public class Label {
     }
 
     /**
-     * Gets the value of the labelCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getLabelCode() {
-        return labelCode;
-    }
-
-    /**
-     * Sets the value of the labelCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setLabelCode(BigInteger value) {
-        this.labelCode = value;
-    }
-
-    /**
-     * Gets the value of the ipi property.
+     * Gets the value of the primaryCode property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getIpi() {
-        return ipi;
+    public String getPrimaryCode() {
+        return primaryCode;
     }
 
     /**
-     * Sets the value of the ipi property.
+     * Sets the value of the primaryCode property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setIpi(String value) {
-        this.ipi = value;
+    public void setPrimaryCode(String value) {
+        this.primaryCode = value;
     }
 
     /**
-     * Gets the value of the ipiList property.
+     * Gets the value of the iso31661CodeList property.
      * 
      * @return
      *     possible object is
-     *     {@link IpiList }
+     *     {@link Iso31661CodeList }
      *     
      */
-    public IpiList getIpiList() {
-        return ipiList;
+    public Iso31661CodeList getIso31661CodeList() {
+        return iso31661CodeList;
     }
 
     /**
-     * Sets the value of the ipiList property.
+     * Sets the value of the iso31661CodeList property.
      * 
      * @param value
      *     allowed object is
-     *     {@link IpiList }
+     *     {@link Iso31661CodeList }
      *     
      */
-    public void setIpiList(IpiList value) {
-        this.ipiList = value;
+    public void setIso31661CodeList(Iso31661CodeList value) {
+        this.iso31661CodeList = value;
+    }
+
+    /**
+     * Gets the value of the iso31662CodeList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Iso31662CodeList }
+     *     
+     */
+    public Iso31662CodeList getIso31662CodeList() {
+        return iso31662CodeList;
+    }
+
+    /**
+     * Sets the value of the iso31662CodeList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Iso31662CodeList }
+     *     
+     */
+    public void setIso31662CodeList(Iso31662CodeList value) {
+        this.iso31662CodeList = value;
+    }
+
+    /**
+     * Gets the value of the iso31663CodeList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Iso31663CodeList }
+     *     
+     */
+    public Iso31663CodeList getIso31663CodeList() {
+        return iso31663CodeList;
+    }
+
+    /**
+     * Sets the value of the iso31663CodeList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Iso31663CodeList }
+     *     
+     */
+    public void setIso31663CodeList(Iso31663CodeList value) {
+        this.iso31663CodeList = value;
     }
 
     /**
@@ -273,78 +265,6 @@ public class Label {
      */
     public void setAnnotation(Annotation value) {
         this.annotation = value;
-    }
-
-    /**
-     * Gets the value of the disambiguation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDisambiguation() {
-        return disambiguation;
-    }
-
-    /**
-     * Sets the value of the disambiguation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDisambiguation(String value) {
-        this.disambiguation = value;
-    }
-
-    /**
-     * Gets the value of the country property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCountry() {
-        return country;
-    }
-
-    /**
-     * Sets the value of the country property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCountry(String value) {
-        this.country = value;
-    }
-
-    /**
-     * Gets the value of the area property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DefAreaElementInner }
-     *     
-     */
-    public DefAreaElementInner getArea() {
-        return area;
-    }
-
-    /**
-     * Sets the value of the area property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DefAreaElementInner }
-     *     
-     */
-    public void setArea(DefAreaElementInner value) {
-        this.area = value;
     }
 
     /**
@@ -393,155 +313,6 @@ public class Label {
      */
     public void setAliasList(AliasList value) {
         this.aliasList = value;
-    }
-
-    /**
-     * Gets the value of the releaseList property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ReleaseList }
-     *     
-     */
-    public ReleaseList getReleaseList() {
-        return releaseList;
-    }
-
-    /**
-     * Sets the value of the releaseList property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ReleaseList }
-     *     
-     */
-    public void setReleaseList(ReleaseList value) {
-        this.releaseList = value;
-    }
-
-    /**
-     * Gets the value of the relationList property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the relationList property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getRelationList().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link RelationList }
-     * 
-     * 
-     */
-    public List<RelationList> getRelationList() {
-        if (relationList == null) {
-            relationList = new ArrayList<RelationList>();
-        }
-        return this.relationList;
-    }
-
-    /**
-     * Gets the value of the tagList property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TagList }
-     *     
-     */
-    public TagList getTagList() {
-        return tagList;
-    }
-
-    /**
-     * Sets the value of the tagList property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TagList }
-     *     
-     */
-    public void setTagList(TagList value) {
-        this.tagList = value;
-    }
-
-    /**
-     * Gets the value of the userTagList property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UserTagList }
-     *     
-     */
-    public UserTagList getUserTagList() {
-        return userTagList;
-    }
-
-    /**
-     * Sets the value of the userTagList property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UserTagList }
-     *     
-     */
-    public void setUserTagList(UserTagList value) {
-        this.userTagList = value;
-    }
-
-    /**
-     * Gets the value of the rating property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Rating }
-     *     
-     */
-    public Rating getRating() {
-        return rating;
-    }
-
-    /**
-     * Sets the value of the rating property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Rating }
-     *     
-     */
-    public void setRating(Rating value) {
-        this.rating = value;
-    }
-
-    /**
-     * Gets the value of the userRating property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getUserRating() {
-        return userRating;
-    }
-
-    /**
-     * Sets the value of the userRating property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setUserRating(BigInteger value) {
-        this.userRating = value;
     }
 
     /**

@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}name-credit" maxOccurs="unbounded"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}iso-3166-3-code" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,41 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "nameCredit"
+    "iso31663Code"
 })
-@XmlRootElement(name = "artist-credit")
-public class ArtistCredit {
+@XmlRootElement(name = "iso-3166-3-code-list")
+public class Iso31663CodeList {
 
-    @XmlElement(name = "name-credit", required = true)
-    protected List<NameCredit> nameCredit;
+    @XmlElement(name = "iso-3166-3-code")
+    protected List<String> iso31663Code;
 
     /**
-     * Gets the value of the nameCredit property.
+     * Gets the value of the iso31663Code property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the nameCredit property.
+     * This is why there is not a <CODE>set</CODE> method for the iso31663Code property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getNameCredit().add(newItem);
+     *    getIso31663Code().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link NameCredit }
+     * {@link String }
      * 
      * 
      */
-    public List<NameCredit> getNameCredit() {
-        if (nameCredit == null) {
-            nameCredit = new ArrayList<NameCredit>();
+    public List<String> getIso31663Code() {
+        if (iso31663Code == null) {
+            iso31663Code = new ArrayList<String>();
         }
-        return this.nameCredit;
+        return this.iso31663Code;
     }
 
 }

@@ -37,6 +37,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:recording"/>
         <xs:element minOccurs="0" ref="mmd-2.0:label"/>
         <xs:element minOccurs="0" ref="mmd-2.0:work"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:area"/>
         <xs:element minOccurs="0" ref="mmd-2.0:url"/>
         <xs:element minOccurs="0" ref="mmd-2.0:puid"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc"/>
@@ -50,6 +51,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:recording-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:label-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:work-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:area-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:annotation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:cdstub-list"/>
@@ -71,6 +73,9 @@
         <xs:element minOccurs="0" ref="mmd-2.0:sort-name"/>
         <xs:element minOccurs="0" ref="mmd-2.0:gender"/>
         <xs:element minOccurs="0" ref="mmd-2.0:country"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:area"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:begin-area"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:end-area"/>
         <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:ipi"/>
@@ -97,7 +102,9 @@
   <xs:element name="name" type="xs:string"/>
   <xs:element name="sort-name" type="xs:string"/>
   <xs:element name="gender" type="xs:string"/>
-  <xs:element name="country" type="mmd-2.0:def_iso-3166"/>
+  <xs:element name="country" type="mmd-2.0:def_iso-3166-1-code"/>
+  <xs:element name="begin-area" type="mmd-2.0:def_area-element_inner"/>
+  <xs:element name="end-area" type="mmd-2.0:def_area-element_inner"/>
   <xs:element name="disambiguation" type="xs:string"/>
   <xs:element name="ipi" type="mmd-2.0:def_ipi"/>
   <xs:element name="life-span">
@@ -231,6 +238,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:country"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:area"/>
         <xs:element minOccurs="0" ref="mmd-2.0:life-span"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
@@ -270,6 +278,24 @@
       <xs:attributeGroup ref="mmd-2.0:def_work-attribute_extension"/>
     </xs:complexType>
   </xs:element>
+  <xs:element name="area" type="mmd-2.0:def_area-element_inner"/>
+  <xs:complexType name="def_area-element_inner">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mmd-2.0:name"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:sort-name"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:primary-code"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:iso-3166-1-code-list"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:iso-3166-2-code-list"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:iso-3166-3-code-list"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:life-span"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
+      <xs:group ref="mmd-2.0:def_area-element_extension"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:anyURI"/>
+    <xs:attribute name="type" type="xs:anyURI"/>
+    <xs:attributeGroup ref="mmd-2.0:def_area-attribute_extension"/>
+  </xs:complexType>
   <xs:element name="url">
     <xs:complexType>
       <xs:sequence>
@@ -350,6 +376,7 @@
           <xs:element ref="mmd-2.0:recording"/>
           <xs:element ref="mmd-2.0:label"/>
           <xs:element ref="mmd-2.0:work"/>
+          <xs:element ref="mmd-2.0:area"/>
           <xs:group ref="mmd-2.0:def_relation-element_extension"/>
         </xs:choice>
       </xs:sequence>
@@ -369,7 +396,7 @@
   <xs:element name="direction" type="mmd-2.0:def_direction"/>
   <xs:element name="alias">
     <xs:complexType mixed="true">
-      <xs:attribute name="locale" type="mmd-2.0:def_iso-3166-2"/>
+      <xs:attribute name="locale" type="mmd-2.0:def_iso-3166-2-code"/>
       <xs:attribute name="sort-name"/>
       <xs:attribute name="type"/>
       <xs:attribute name="primary"/>
@@ -544,8 +571,8 @@
   <xs:element name="release-event">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" ref="mmd-2.0:country"/>
         <xs:element minOccurs="0" ref="mmd-2.0:date"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:area"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -581,6 +608,11 @@
     </xs:sequence>
   </xs:group>
   <xs:group name="def_work-element_extension">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="def_area-element_extension">
     <xs:sequence>
       <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
     </xs:sequence>
@@ -621,6 +653,9 @@
     </xs:sequence>
   </xs:group>
   <xs:attributeGroup name="def_artist-attribute_extension">
+    <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="def_area-attribute_extension">
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="def_release-attribute_extension">
@@ -757,6 +792,14 @@
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
   </xs:element>
+  <xs:element name="area-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:area"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="release-event-list">
     <xs:complexType>
       <xs:sequence>
@@ -873,6 +916,7 @@
         <xs:element ref="mmd-2.0:recording"/>
         <xs:element ref="mmd-2.0:label"/>
         <xs:element ref="mmd-2.0:work"/>
+        <xs:element ref="mmd-2.0:area"/>
       </xs:sequence>
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
@@ -960,18 +1004,53 @@
       </xs:restriction>
     </xs:simpleType>
   </xs:element>
+  <xs:element name="primary-code">
+    <xs:simpleType>
+      <xs:union memberTypes="mmd-2.0:def_iso-3166-1-code mmd-2.0:def_iso-3166-2-code mmd-2.0:def_iso-3166-3-code"/>
+    </xs:simpleType>
+  </xs:element>
   <!-- A two-letter country code like 'DE', 'UK', 'FR' etc. -->
-  <xs:simpleType name="def_iso-3166">
+  <xs:simpleType name="def_iso-3166-1-code">
     <xs:restriction base="xs:string">
       <xs:pattern value="[A-Z]{2}"/>
     </xs:restriction>
   </xs:simpleType>
-  <!-- A two-letter country code like followed by a 3 letter subdivision -->
-  <xs:simpleType name="def_iso-3166-2">
+  <xs:element name="iso-3166-1-code-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:iso-3166-1-code"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iso-3166-1-code" type="mmd-2.0:def_iso-3166-1-code"/>
+  <!-- A two-letter country code followed by a subdivision code -->
+  <xs:simpleType name="def_iso-3166-2-code">
     <xs:restriction base="xs:string">
-      <xs:pattern value="[A-Z]{2}\-[A-Z]{2}"/>
+      <xs:pattern value="[A-Z]{2}\-[A-Z0-9]+"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:element name="iso-3166-2-code-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:iso-3166-2-code"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iso-3166-2-code" type="mmd-2.0:def_iso-3166-2-code"/>
+  <!-- A four-letter country code like "DDDE" -->
+  <xs:simpleType name="def_iso-3166-3-code">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="iso-3166-3-code-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:iso-3166-3-code"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iso-3166-3-code" type="mmd-2.0:def_iso-3166-3-code"/>
   <!-- An ISO-639 Part 3 language code like 'deu', 'eng', 'jpn' etc. -->
   <xs:simpleType name="def_iso-639">
     <xs:restriction base="xs:string">
