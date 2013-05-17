@@ -1022,6 +1022,11 @@
     <define name="def_track">
         <element name="track">
             <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
                 <element name="position">
                     <data type="nonNegativeInteger"/>
                 </element>
