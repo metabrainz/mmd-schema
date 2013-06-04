@@ -475,6 +475,7 @@
             <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
             <xs:element minOccurs="0" ref="mmd-2.0:recording"/>
           </xs:sequence>
+          <xs:attribute name="id" type="xs:anyURI"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
