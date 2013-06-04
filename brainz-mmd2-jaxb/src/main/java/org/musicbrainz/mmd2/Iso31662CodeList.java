@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}secondary-type" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}iso-3166-2-code" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,27 +38,27 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "secondaryType"
+    "iso31662Code"
 })
-@XmlRootElement(name = "secondary-type-list")
-public class SecondaryTypeList {
+@XmlRootElement(name = "iso-3166-2-code-list")
+public class Iso31662CodeList {
 
-    @XmlElement(name = "secondary-type")
-    protected List<String> secondaryType;
+    @XmlElement(name = "iso-3166-2-code")
+    protected List<String> iso31662Code;
 
     /**
-     * Gets the value of the secondaryType property.
+     * Gets the value of the iso31662Code property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the secondaryType property.
+     * This is why there is not a <CODE>set</CODE> method for the iso31662Code property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getSecondaryType().add(newItem);
+     *    getIso31662Code().add(newItem);
      * </pre>
      * 
      * 
@@ -68,11 +68,11 @@ public class SecondaryTypeList {
      * 
      * 
      */
-    public List<String> getSecondaryType() {
-        if (secondaryType == null) {
-            secondaryType = new ArrayList<String>();
+    public List<String> getIso31662Code() {
+        if (iso31662Code == null) {
+            iso31662Code = new ArrayList<String>();
         }
-        return this.secondaryType;
+        return this.iso31662Code;
     }
 
 }
