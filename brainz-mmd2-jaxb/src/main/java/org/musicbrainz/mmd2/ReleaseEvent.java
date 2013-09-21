@@ -10,7 +10,6 @@ package org.musicbrainz.mmd2;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -25,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}catalog-number" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}label" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}date" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}area" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,62 +36,61 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "catalogNumber",
-    "label"
+    "date",
+    "area"
 })
-@XmlRootElement(name = "label-info")
-public class LabelInfo {
+@XmlRootElement(name = "release-event")
+public class ReleaseEvent {
 
-    @XmlElement(name = "catalog-number")
-    protected String catalogNumber;
-    protected Label label;
+    protected String date;
+    protected DefAreaElementInner area;
 
     /**
-     * Gets the value of the catalogNumber property.
+     * Gets the value of the date property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCatalogNumber() {
-        return catalogNumber;
+    public String getDate() {
+        return date;
     }
 
     /**
-     * Sets the value of the catalogNumber property.
+     * Sets the value of the date property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCatalogNumber(String value) {
-        this.catalogNumber = value;
+    public void setDate(String value) {
+        this.date = value;
     }
 
     /**
-     * Gets the value of the label property.
+     * Gets the value of the area property.
      * 
      * @return
      *     possible object is
-     *     {@link Label }
+     *     {@link DefAreaElementInner }
      *     
      */
-    public Label getLabel() {
-        return label;
+    public DefAreaElementInner getArea() {
+        return area;
     }
 
     /**
-     * Sets the value of the label property.
+     * Sets the value of the area property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Label }
+     *     {@link DefAreaElementInner }
      *     
      */
-    public void setLabel(Label value) {
-        this.label = value;
+    public void setArea(DefAreaElementInner value) {
+        this.area = value;
     }
 
 }

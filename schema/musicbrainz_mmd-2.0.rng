@@ -326,6 +326,9 @@
                 </element>
             </optional>
             <optional>
+                <ref name="def_release-event-list"/>
+            </optional>
+            <optional>
                 <element name="barcode">
                     <text/>
                 </element>
@@ -701,9 +704,6 @@
             </element>
         </optional>
         <optional>
-          <ref name="def_primary-code" />
-        </optional>
-        <optional>
           <ref name="def_iso-3166-1-code-list" />
         </optional>
         <optional>
@@ -1022,6 +1022,11 @@
     <define name="def_track">
         <element name="track">
             <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
                 <element name="position">
                     <data type="nonNegativeInteger"/>
                 </element>
@@ -1173,6 +1178,19 @@
                 </element>
             </optional>
             <ref name="def_release-list"/>
+        </element>
+    </define>
+
+    <define name="def_release-event-element">
+        <element name="release-event">
+            <optional>
+                <element name="date">
+                    <ref name="def_incomplete-date"/>
+                </element>
+            </optional>
+            <optional>
+                <ref name="def_area-element"/>
+            </optional>
         </element>
     </define>
 
@@ -1541,6 +1559,15 @@
         </element>
     </define>
 
+    <define name="def_release-event-list">
+        <element name="release-event-list">
+            <ref name="def_list-attributes" />
+            <zeroOrMore>
+                <ref name="def_release-event-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
     <define name="def_annotation-list">
         <element name="annotation-list">
             <ref name="def_list-attributes"/>
@@ -1737,16 +1764,6 @@
       <element name="ended">
         <choice>
           <value>true</value>
-        </choice>
-      </element>
-    </define>
-
-    <define name="def_primary-code">
-      <element name="primary-code">
-        <choice>
-            <ref name="def_iso-3166-1-code" />
-            <ref name="def_iso-3166-2-code" />
-            <ref name="def_iso-3166-3-code" />
         </choice>
       </element>
     </define>

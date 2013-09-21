@@ -14,6 +14,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
@@ -29,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}alias" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}release-event" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/>
  *     &lt;/restriction>
@@ -41,12 +42,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "alias"
+    "releaseEvent"
 })
-@XmlRootElement(name = "alias-list")
-public class AliasList {
+@XmlRootElement(name = "release-event-list")
+public class ReleaseEventList {
 
-    protected List<Alias> alias;
+    @XmlElement(name = "release-event")
+    protected List<ReleaseEvent> releaseEvent;
     @XmlAttribute
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger count;
@@ -55,32 +57,32 @@ public class AliasList {
     protected BigInteger offset;
 
     /**
-     * Gets the value of the alias property.
+     * Gets the value of the releaseEvent property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the alias property.
+     * This is why there is not a <CODE>set</CODE> method for the releaseEvent property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getAlias().add(newItem);
+     *    getReleaseEvent().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Alias }
+     * {@link ReleaseEvent }
      * 
      * 
      */
-    public List<Alias> getAlias() {
-        if (alias == null) {
-            alias = new ArrayList<Alias>();
+    public List<ReleaseEvent> getReleaseEvent() {
+        if (releaseEvent == null) {
+            releaseEvent = new ArrayList<ReleaseEvent>();
         }
-        return this.alias;
+        return this.releaseEvent;
     }
 
     /**

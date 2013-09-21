@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}alias" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}area" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/>
  *     &lt;/restriction>
@@ -41,12 +41,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "alias"
+    "area"
 })
-@XmlRootElement(name = "alias-list")
-public class AliasList {
+@XmlRootElement(name = "area-list")
+public class AreaList {
 
-    protected List<Alias> alias;
+    protected List<DefAreaElementInner> area;
     @XmlAttribute
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger count;
@@ -55,32 +55,32 @@ public class AliasList {
     protected BigInteger offset;
 
     /**
-     * Gets the value of the alias property.
+     * Gets the value of the area property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the alias property.
+     * This is why there is not a <CODE>set</CODE> method for the area property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getAlias().add(newItem);
+     *    getArea().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Alias }
+     * {@link DefAreaElementInner }
      * 
      * 
      */
-    public List<Alias> getAlias() {
-        if (alias == null) {
-            alias = new ArrayList<Alias>();
+    public List<DefAreaElementInner> getArea() {
+        if (area == null) {
+            area = new ArrayList<DefAreaElementInner>();
         }
-        return this.alias;
+        return this.area;
     }
 
     /**
