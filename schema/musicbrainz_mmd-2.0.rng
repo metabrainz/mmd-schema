@@ -704,7 +704,7 @@
             </element>
         </optional>
         <optional>
-            <element name="comment">
+            <element name="disambiguation">
                 <text/>
             </element>
         </optional>
