@@ -478,6 +478,9 @@
                 </element>
             </optional>
             <optional>
+                <ref name="def_video"/>
+            </optional>
+            <optional>
                 <ref name="def_artist-credit"/>
             </optional>
 
@@ -1880,6 +1883,14 @@
 
     <define name="def_ended">
       <element name="ended">
+        <choice>
+          <value>true</value>
+        </choice>
+      </element>
+    </define>
+
+    <define name="def_video">
+      <element name="video">
         <choice>
           <value>true</value>
         </choice>
