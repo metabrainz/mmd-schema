@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}work" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}place" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/>
  *     &lt;/restriction>
@@ -41,12 +41,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "work"
+    "place"
 })
-@XmlRootElement(name = "work-list")
-public class WorkList {
+@XmlRootElement(name = "place-list")
+public class PlaceList {
 
-    protected List<Work> work;
+    protected List<Place> place;
     @XmlAttribute
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger count;
@@ -55,32 +55,32 @@ public class WorkList {
     protected BigInteger offset;
 
     /**
-     * Gets the value of the work property.
+     * Gets the value of the place property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the work property.
+     * This is why there is not a <CODE>set</CODE> method for the place property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getWork().add(newItem);
+     *    getPlace().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Work }
+     * {@link Place }
      * 
      * 
      */
-    public List<Work> getWork() {
-        if (work == null) {
-            work = new ArrayList<Work>();
+    public List<Place> getPlace() {
+        if (place == null) {
+            place = new ArrayList<Place>();
         }
-        return this.work;
+        return this.place;
     }
 
     /**

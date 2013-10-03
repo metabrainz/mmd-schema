@@ -38,6 +38,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:label"/>
         <xs:element minOccurs="0" ref="mmd-2.0:work"/>
         <xs:element minOccurs="0" ref="mmd-2.0:area"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:place"/>
         <xs:element minOccurs="0" ref="mmd-2.0:url"/>
         <xs:element minOccurs="0" ref="mmd-2.0:puid"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc"/>
@@ -52,6 +53,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:label-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:work-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:area-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:place-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:annotation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:cdstub-list"/>
@@ -211,6 +213,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:length"/>
         <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:video"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:puid-list"/>
@@ -283,6 +286,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" ref="mmd-2.0:name"/>
       <xs:element minOccurs="0" ref="mmd-2.0:sort-name"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
       <xs:element minOccurs="0" ref="mmd-2.0:iso-3166-1-code-list"/>
       <xs:element minOccurs="0" ref="mmd-2.0:iso-3166-2-code-list"/>
       <xs:element minOccurs="0" ref="mmd-2.0:iso-3166-3-code-list"/>
@@ -295,6 +299,38 @@
     <xs:attribute name="type" type="xs:anyURI"/>
     <xs:attributeGroup ref="mmd-2.0:def_area-attribute_extension"/>
   </xs:complexType>
+  <xs:element name="place">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="mmd-2.0:name"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:address"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:coordinates"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:area"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:life-span"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
+        <xs:group ref="mmd-2.0:def_place-element_extension"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:anyURI"/>
+      <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attributeGroup ref="mmd-2.0:def_place-attribute_extension"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="address" type="xs:string"/>
+  <xs:element name="coordinates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="mmd-2.0:latitude"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:longitude"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="latitude" type="xs:string"/>
+  <xs:element name="longitude" type="xs:string"/>
   <xs:element name="url">
     <xs:complexType>
       <xs:sequence>
@@ -617,6 +653,11 @@
       <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
     </xs:sequence>
   </xs:group>
+  <xs:group name="def_place-element_extension">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
+    </xs:sequence>
+  </xs:group>
   <xs:group name="def_puid-element_extension">
     <xs:sequence>
       <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
@@ -656,6 +697,9 @@
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="def_area-attribute_extension">
+    <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="def_place-attribute_extension">
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="def_release-attribute_extension">
@@ -796,6 +840,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:area"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="place-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:place"/>
       </xs:sequence>
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
@@ -998,6 +1050,13 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="ended">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="video">
     <xs:simpleType>
       <xs:restriction base="xs:token">
         <xs:enumeration value="true"/>
