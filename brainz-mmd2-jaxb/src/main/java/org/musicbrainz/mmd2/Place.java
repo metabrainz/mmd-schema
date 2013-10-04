@@ -8,7 +8,6 @@
 
 package org.musicbrainz.mmd2;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,8 +21,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
@@ -38,24 +35,22 @@ import org.w3c.dom.Element;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}title" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}length" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}annotation" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}name" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}disambiguation" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}video" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}artist-credit" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}release-list" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}puid-list" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}isrc-list" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}address" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}coordinates" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}annotation" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}area" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}life-span" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}alias-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}relation-list" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}tag-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}user-tag-list" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}rating" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}user-rating" minOccurs="0"/>
- *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_recording-element_extension"/>
+ *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_place-element_extension"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_recording-attribute_extension"/>
+ *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_place-attribute_extension"/>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
+ *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -65,130 +60,73 @@ import org.w3c.dom.Element;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "title",
-    "length",
-    "annotation",
+    "name",
     "disambiguation",
-    "video",
-    "artistCredit",
-    "releaseList",
-    "puidList",
-    "isrcList",
+    "address",
+    "coordinates",
+    "annotation",
+    "area",
+    "lifeSpan",
+    "aliasList",
     "relationList",
     "tagList",
     "userTagList",
-    "rating",
-    "userRating",
     "defExtensionElement"
 })
-@XmlRootElement(name = "recording")
-public class Recording {
+@XmlRootElement(name = "place")
+public class Place {
 
-    protected String title;
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger length;
-    protected Annotation annotation;
+    protected String name;
     protected String disambiguation;
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String video;
-    @XmlElement(name = "artist-credit")
-    protected ArtistCredit artistCredit;
-    @XmlElement(name = "release-list")
-    protected ReleaseList releaseList;
-    @XmlElement(name = "puid-list")
-    protected PuidList puidList;
-    @XmlElement(name = "isrc-list")
-    protected IsrcList isrcList;
+    protected String address;
+    protected Coordinates coordinates;
+    protected Annotation annotation;
+    protected DefAreaElementInner area;
+    @XmlElement(name = "life-span")
+    protected LifeSpan lifeSpan;
+    @XmlElement(name = "alias-list")
+    protected AliasList aliasList;
     @XmlElement(name = "relation-list")
     protected List<RelationList> relationList;
     @XmlElement(name = "tag-list")
     protected TagList tagList;
     @XmlElement(name = "user-tag-list")
     protected UserTagList userTagList;
-    protected Rating rating;
-    @XmlElement(name = "user-rating")
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger userRating;
     @XmlAnyElement
     protected List<Element> defExtensionElement;
     @XmlAttribute
     @XmlSchemaType(name = "anyURI")
     protected String id;
+    @XmlAttribute
+    @XmlSchemaType(name = "anyURI")
+    protected String type;
     @XmlAttribute(namespace = "http://musicbrainz.org/ns/ext#-2.0")
     protected String score;
     @XmlAnyAttribute
     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
     /**
-     * Gets the value of the title property.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
     /**
-     * Sets the value of the title property.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setTitle(String value) {
-        this.title = value;
-    }
-
-    /**
-     * Gets the value of the length property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getLength() {
-        return length;
-    }
-
-    /**
-     * Sets the value of the length property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setLength(BigInteger value) {
-        this.length = value;
-    }
-
-    /**
-     * Gets the value of the annotation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Annotation }
-     *     
-     */
-    public Annotation getAnnotation() {
-        return annotation;
-    }
-
-    /**
-     * Sets the value of the annotation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Annotation }
-     *     
-     */
-    public void setAnnotation(Annotation value) {
-        this.annotation = value;
+    public void setName(String value) {
+        this.name = value;
     }
 
     /**
@@ -216,123 +154,147 @@ public class Recording {
     }
 
     /**
-     * Gets the value of the video property.
+     * Gets the value of the address property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getVideo() {
-        return video;
+    public String getAddress() {
+        return address;
     }
 
     /**
-     * Sets the value of the video property.
+     * Sets the value of the address property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setVideo(String value) {
-        this.video = value;
+    public void setAddress(String value) {
+        this.address = value;
     }
 
     /**
-     * Gets the value of the artistCredit property.
+     * Gets the value of the coordinates property.
      * 
      * @return
      *     possible object is
-     *     {@link ArtistCredit }
+     *     {@link Coordinates }
      *     
      */
-    public ArtistCredit getArtistCredit() {
-        return artistCredit;
+    public Coordinates getCoordinates() {
+        return coordinates;
     }
 
     /**
-     * Sets the value of the artistCredit property.
+     * Sets the value of the coordinates property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ArtistCredit }
+     *     {@link Coordinates }
      *     
      */
-    public void setArtistCredit(ArtistCredit value) {
-        this.artistCredit = value;
+    public void setCoordinates(Coordinates value) {
+        this.coordinates = value;
     }
 
     /**
-     * Gets the value of the releaseList property.
+     * Gets the value of the annotation property.
      * 
      * @return
      *     possible object is
-     *     {@link ReleaseList }
+     *     {@link Annotation }
      *     
      */
-    public ReleaseList getReleaseList() {
-        return releaseList;
+    public Annotation getAnnotation() {
+        return annotation;
     }
 
     /**
-     * Sets the value of the releaseList property.
+     * Sets the value of the annotation property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ReleaseList }
+     *     {@link Annotation }
      *     
      */
-    public void setReleaseList(ReleaseList value) {
-        this.releaseList = value;
+    public void setAnnotation(Annotation value) {
+        this.annotation = value;
     }
 
     /**
-     * Gets the value of the puidList property.
+     * Gets the value of the area property.
      * 
      * @return
      *     possible object is
-     *     {@link PuidList }
+     *     {@link DefAreaElementInner }
      *     
      */
-    public PuidList getPuidList() {
-        return puidList;
+    public DefAreaElementInner getArea() {
+        return area;
     }
 
     /**
-     * Sets the value of the puidList property.
+     * Sets the value of the area property.
      * 
      * @param value
      *     allowed object is
-     *     {@link PuidList }
+     *     {@link DefAreaElementInner }
      *     
      */
-    public void setPuidList(PuidList value) {
-        this.puidList = value;
+    public void setArea(DefAreaElementInner value) {
+        this.area = value;
     }
 
     /**
-     * Gets the value of the isrcList property.
+     * Gets the value of the lifeSpan property.
      * 
      * @return
      *     possible object is
-     *     {@link IsrcList }
+     *     {@link LifeSpan }
      *     
      */
-    public IsrcList getIsrcList() {
-        return isrcList;
+    public LifeSpan getLifeSpan() {
+        return lifeSpan;
     }
 
     /**
-     * Sets the value of the isrcList property.
+     * Sets the value of the lifeSpan property.
      * 
      * @param value
      *     allowed object is
-     *     {@link IsrcList }
+     *     {@link LifeSpan }
      *     
      */
-    public void setIsrcList(IsrcList value) {
-        this.isrcList = value;
+    public void setLifeSpan(LifeSpan value) {
+        this.lifeSpan = value;
+    }
+
+    /**
+     * Gets the value of the aliasList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AliasList }
+     *     
+     */
+    public AliasList getAliasList() {
+        return aliasList;
+    }
+
+    /**
+     * Sets the value of the aliasList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AliasList }
+     *     
+     */
+    public void setAliasList(AliasList value) {
+        this.aliasList = value;
     }
 
     /**
@@ -413,54 +375,6 @@ public class Recording {
     }
 
     /**
-     * Gets the value of the rating property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Rating }
-     *     
-     */
-    public Rating getRating() {
-        return rating;
-    }
-
-    /**
-     * Sets the value of the rating property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Rating }
-     *     
-     */
-    public void setRating(Rating value) {
-        this.rating = value;
-    }
-
-    /**
-     * Gets the value of the userRating property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getUserRating() {
-        return userRating;
-    }
-
-    /**
-     * Sets the value of the userRating property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setUserRating(BigInteger value) {
-        this.userRating = value;
-    }
-
-    /**
      * Gets the value of the defExtensionElement property.
      * 
      * <p>
@@ -511,6 +425,30 @@ public class Recording {
      */
     public void setId(String value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the type property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setType(String value) {
+        this.type = value;
     }
 
     /**
