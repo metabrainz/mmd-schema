@@ -115,6 +115,9 @@
                 <ref name="def_place-list"/>
             </optional>
             <optional>
+                <ref name="def_url-list"/>
+            </optional>
+            <optional>
                 <ref name="def_isrc-list"/>
             </optional>
             <optional>
@@ -847,7 +850,7 @@
                     <data type="anyURI"/>
                 </attribute>
             </optional>
-
+            <ref name="def_url-attribute_extension"/>
             <optional>
                 <element name="resource">
                     <text/>
@@ -1422,6 +1425,13 @@
         </zeroOrMore>
     </define>
 
+    <define name="def_url-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+
     <define name="def_release-attribute_extension">
         <zeroOrMore>
             <ref name="def_extension_attribute"/>
@@ -1680,6 +1690,15 @@
         </element>
     </define>
 
+    <define name="def_url-list">
+        <element name="url-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_url-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
     <define name="def_release-event-list">
         <element name="release-event-list">
             <ref name="def_list-attributes" />
@@ -1697,7 +1716,6 @@
             </zeroOrMore>
         </element>
     </define>
-
 
     <define name="def_cdstub-list">
         <element name="cdstub-list">
@@ -1726,7 +1744,6 @@
         </element>
     </define>
 
-
     <define name="def_disc-list">
         <element name="disc-list">
             <ref name="def_list-attributes"/>
@@ -1735,7 +1752,6 @@
             </zeroOrMore>
         </element>
     </define>
-
 
     <define name="def_puid-list">
         <element name="puid-list">
@@ -1746,7 +1762,6 @@
         </element>
     </define>
 
-
     <define name="def_isrc-list">
         <element name="isrc-list">
             <ref name="def_list-attributes"/>
@@ -1755,7 +1770,6 @@
             </zeroOrMore>
         </element>
     </define>
-
 
     <define name="def_relation-list">
         <element name="relation-list">
@@ -1768,7 +1782,6 @@
             </zeroOrMore>
         </element>
     </define>
-
 
     <define name="def_tag-list">
         <element name="tag-list">
