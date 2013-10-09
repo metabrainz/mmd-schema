@@ -4,7 +4,7 @@ but there are a couple of manual steps.
 1. Ensure Trang installed  (linux ubuntu apt-get install trang, or available from http://www.thaiopensource.com/relaxng/trang.html)
 
 2. Convert rng to xsd
-(Ubuntu) trang ../schema/musicbrainz_mmd-2.0.rng src/main/resources/musicbrainz_mmd-2.0.xsd
+(Ubuntu)trang ../schema/musicbr ainz_mmd-2.0.rng src/main/resources/musicbrainz_mmd-2.0.xsd
 (Other) java -jar trang.jar ../schema/musicbrainz_mmd-2.0.rng src/main/resources/musicbrainz_mmd-2.0.xsd
 
 3. Manually edit musicbrainz_mmd_2.0.xsd (cd src/resources)

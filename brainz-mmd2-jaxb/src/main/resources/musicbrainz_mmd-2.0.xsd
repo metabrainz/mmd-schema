@@ -54,6 +54,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:work-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:area-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:place-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:url-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:annotation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:cdstub-list"/>
@@ -338,6 +339,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
+      <xs:attributeGroup ref="mmd-2.0:def_url-attribute_extension"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="resource" type="xs:string"/>
@@ -702,6 +704,9 @@
   <xs:attributeGroup name="def_place-attribute_extension">
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
+  <xs:attributeGroup name="def_url-attribute_extension">
+    <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
+  </xs:attributeGroup>
   <xs:attributeGroup name="def_release-attribute_extension">
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
@@ -848,6 +853,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:place"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="url-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:url"/>
       </xs:sequence>
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
