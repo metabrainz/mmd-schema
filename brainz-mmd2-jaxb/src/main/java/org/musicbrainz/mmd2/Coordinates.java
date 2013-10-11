@@ -24,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}language" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}script" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}latitude" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}longitude" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,61 +36,61 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "language",
-    "script"
+    "latitude",
+    "longitude"
 })
-@XmlRootElement(name = "text-representation")
-public class TextRepresentation {
+@XmlRootElement(name = "coordinates")
+public class Coordinates {
 
-    protected String language;
-    protected String script;
+    protected String latitude;
+    protected String longitude;
 
     /**
-     * Gets the value of the language property.
+     * Gets the value of the latitude property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getLanguage() {
-        return language;
+    public String getLatitude() {
+        return latitude;
     }
 
     /**
-     * Sets the value of the language property.
+     * Sets the value of the latitude property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setLanguage(String value) {
-        this.language = value;
+    public void setLatitude(String value) {
+        this.latitude = value;
     }
 
     /**
-     * Gets the value of the script property.
+     * Gets the value of the longitude property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getScript() {
-        return script;
+    public String getLongitude() {
+        return longitude;
     }
 
     /**
-     * Sets the value of the script property.
+     * Sets the value of the longitude property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setScript(String value) {
-        this.script = value;
+    public void setLongitude(String value) {
+        this.longitude = value;
     }
 
 }

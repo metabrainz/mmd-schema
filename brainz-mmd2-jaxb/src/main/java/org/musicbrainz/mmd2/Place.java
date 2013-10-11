@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
@@ -25,27 +26,29 @@ import org.w3c.dom.Element;
 
 
 /**
- * <p>Java class for def_area-element_inner complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="def_area-element_inner">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}name" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}sort-name" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}disambiguation" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}iso-3166-1-code-list" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}iso-3166-2-code-list" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}iso-3166-3-code-list" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}address" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}coordinates" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}annotation" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}area" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}life-span" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}alias-list" minOccurs="0"/>
- *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_area-element_extension"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}relation-list" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}tag-list" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}user-tag-list" minOccurs="0"/>
+ *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_place-element_extension"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_area-attribute_extension"/>
+ *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_place-attribute_extension"/>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *     &lt;/restriction>
@@ -56,35 +59,39 @@ import org.w3c.dom.Element;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "def_area-element_inner", propOrder = {
+@XmlType(name = "", propOrder = {
     "name",
-    "sortName",
     "disambiguation",
-    "iso31661CodeList",
-    "iso31662CodeList",
-    "iso31663CodeList",
+    "address",
+    "coordinates",
     "annotation",
+    "area",
     "lifeSpan",
     "aliasList",
+    "relationList",
+    "tagList",
+    "userTagList",
     "defExtensionElement"
 })
-public class DefAreaElementInner {
+@XmlRootElement(name = "place")
+public class Place {
 
     protected String name;
-    @XmlElement(name = "sort-name")
-    protected String sortName;
     protected String disambiguation;
-    @XmlElement(name = "iso-3166-1-code-list")
-    protected Iso31661CodeList iso31661CodeList;
-    @XmlElement(name = "iso-3166-2-code-list")
-    protected Iso31662CodeList iso31662CodeList;
-    @XmlElement(name = "iso-3166-3-code-list")
-    protected Iso31663CodeList iso31663CodeList;
+    protected String address;
+    protected Coordinates coordinates;
     protected Annotation annotation;
+    protected DefAreaElementInner area;
     @XmlElement(name = "life-span")
     protected LifeSpan lifeSpan;
     @XmlElement(name = "alias-list")
     protected AliasList aliasList;
+    @XmlElement(name = "relation-list")
+    protected List<RelationList> relationList;
+    @XmlElement(name = "tag-list")
+    protected TagList tagList;
+    @XmlElement(name = "user-tag-list")
+    protected UserTagList userTagList;
     @XmlAnyElement
     protected List<Element> defExtensionElement;
     @XmlAttribute
@@ -123,30 +130,6 @@ public class DefAreaElementInner {
     }
 
     /**
-     * Gets the value of the sortName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSortName() {
-        return sortName;
-    }
-
-    /**
-     * Sets the value of the sortName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSortName(String value) {
-        this.sortName = value;
-    }
-
-    /**
      * Gets the value of the disambiguation property.
      * 
      * @return
@@ -171,75 +154,51 @@ public class DefAreaElementInner {
     }
 
     /**
-     * Gets the value of the iso31661CodeList property.
+     * Gets the value of the address property.
      * 
      * @return
      *     possible object is
-     *     {@link Iso31661CodeList }
+     *     {@link String }
      *     
      */
-    public Iso31661CodeList getIso31661CodeList() {
-        return iso31661CodeList;
+    public String getAddress() {
+        return address;
     }
 
     /**
-     * Sets the value of the iso31661CodeList property.
+     * Sets the value of the address property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Iso31661CodeList }
+     *     {@link String }
      *     
      */
-    public void setIso31661CodeList(Iso31661CodeList value) {
-        this.iso31661CodeList = value;
+    public void setAddress(String value) {
+        this.address = value;
     }
 
     /**
-     * Gets the value of the iso31662CodeList property.
+     * Gets the value of the coordinates property.
      * 
      * @return
      *     possible object is
-     *     {@link Iso31662CodeList }
+     *     {@link Coordinates }
      *     
      */
-    public Iso31662CodeList getIso31662CodeList() {
-        return iso31662CodeList;
+    public Coordinates getCoordinates() {
+        return coordinates;
     }
 
     /**
-     * Sets the value of the iso31662CodeList property.
+     * Sets the value of the coordinates property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Iso31662CodeList }
+     *     {@link Coordinates }
      *     
      */
-    public void setIso31662CodeList(Iso31662CodeList value) {
-        this.iso31662CodeList = value;
-    }
-
-    /**
-     * Gets the value of the iso31663CodeList property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Iso31663CodeList }
-     *     
-     */
-    public Iso31663CodeList getIso31663CodeList() {
-        return iso31663CodeList;
-    }
-
-    /**
-     * Sets the value of the iso31663CodeList property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Iso31663CodeList }
-     *     
-     */
-    public void setIso31663CodeList(Iso31663CodeList value) {
-        this.iso31663CodeList = value;
+    public void setCoordinates(Coordinates value) {
+        this.coordinates = value;
     }
 
     /**
@@ -264,6 +223,30 @@ public class DefAreaElementInner {
      */
     public void setAnnotation(Annotation value) {
         this.annotation = value;
+    }
+
+    /**
+     * Gets the value of the area property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DefAreaElementInner }
+     *     
+     */
+    public DefAreaElementInner getArea() {
+        return area;
+    }
+
+    /**
+     * Sets the value of the area property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DefAreaElementInner }
+     *     
+     */
+    public void setArea(DefAreaElementInner value) {
+        this.area = value;
     }
 
     /**
@@ -312,6 +295,83 @@ public class DefAreaElementInner {
      */
     public void setAliasList(AliasList value) {
         this.aliasList = value;
+    }
+
+    /**
+     * Gets the value of the relationList property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the relationList property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getRelationList().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link RelationList }
+     * 
+     * 
+     */
+    public List<RelationList> getRelationList() {
+        if (relationList == null) {
+            relationList = new ArrayList<RelationList>();
+        }
+        return this.relationList;
+    }
+
+    /**
+     * Gets the value of the tagList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TagList }
+     *     
+     */
+    public TagList getTagList() {
+        return tagList;
+    }
+
+    /**
+     * Sets the value of the tagList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link TagList }
+     *     
+     */
+    public void setTagList(TagList value) {
+        this.tagList = value;
+    }
+
+    /**
+     * Gets the value of the userTagList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link UserTagList }
+     *     
+     */
+    public UserTagList getUserTagList() {
+        return userTagList;
+    }
+
+    /**
+     * Sets the value of the userTagList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link UserTagList }
+     *     
+     */
+    public void setUserTagList(UserTagList value) {
+        this.userTagList = value;
     }
 
     /**

@@ -67,6 +67,9 @@
                 <ref name="def_area-element"/>
             </optional>
             <optional>
+                <ref name="def_place-element"/>
+            </optional>
+            <optional>
                 <ref name="def_url-element"/>
             </optional>
             <optional>
@@ -107,6 +110,12 @@
             </optional>
             <optional>
                 <ref name="def_area-list"/>
+            </optional>
+            <optional>
+                <ref name="def_place-list"/>
+            </optional>
+            <optional>
+                <ref name="def_url-list"/>
             </optional>
             <optional>
                 <ref name="def_isrc-list"/>
@@ -472,6 +481,9 @@
                 </element>
             </optional>
             <optional>
+                <ref name="def_video"/>
+            </optional>
+            <optional>
                 <ref name="def_artist-credit"/>
             </optional>
 
@@ -704,6 +716,11 @@
             </element>
         </optional>
         <optional>
+            <element name="disambiguation">
+                <text/>
+            </element>
+        </optional>
+        <optional>
           <ref name="def_iso-3166-1-code-list" />
         </optional>
         <optional>
@@ -740,6 +757,92 @@
         <ref name="def_area-element_extension"/>
     </define>
 
+    <define name="def_place-element">
+        <element name="place">
+            <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="type">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <ref name="def_place-attribute_extension"/>
+
+            <optional>
+                <element name="name">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="address">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="coordinates">
+                    <optional>
+                        <element name="latitude">
+                            <text/>
+                        </element>
+                    </optional>
+                    <optional>
+                        <element name="longitude">
+                            <text/>
+                        </element>
+                    </optional>
+                </element>
+            </optional>
+            <optional>
+              <ref name="def_annotation" />
+            </optional>
+            <optional>
+                <ref name="def_area-element"/>
+            </optional>
+            <optional>
+                <element name="life-span">
+                    <optional>
+                        <element name="begin">
+                            <ref name="def_incomplete-date"/>
+                        </element>
+                    </optional>
+                    <optional>
+                        <element name="end">
+                            <ref name="def_incomplete-date"/>
+                        </element>
+                    </optional>
+                    <optional>
+                        <ref name="def_ended" />
+                    </optional>
+                </element>
+            </optional>
+
+            <optional>
+                <ref name="def_alias-list"/>
+            </optional>
+            <zeroOrMore>
+                <ref name="def_relation-list"/>
+            </zeroOrMore>
+
+            <optional>
+                <ref name="def_tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-tag-list"/>
+            </optional>
+ 
+
+            <ref name="def_place-element_extension"/>
+        </element>
+    </define>
+
     <define name="def_url-element">
         <element name="url">
             <optional>
@@ -747,7 +850,7 @@
                     <data type="anyURI"/>
                 </attribute>
             </optional>
-
+            <ref name="def_url-attribute_extension"/>
             <optional>
                 <element name="resource">
                     <text/>
@@ -1252,6 +1355,12 @@
         </zeroOrMore>
     </define>
 
+    <define name="def_place-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
     <define name="def_puid-element_extension">
         <zeroOrMore>
             <ref name="def_extension_element"/>
@@ -1309,6 +1418,19 @@
             <ref name="def_extension_attribute"/>
         </zeroOrMore>
     </define>
+
+    <define name="def_place-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+    <define name="def_url-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
 
     <define name="def_release-attribute_extension">
         <zeroOrMore>
@@ -1559,6 +1681,24 @@
         </element>
     </define>
 
+    <define name="def_place-list">
+        <element name="place-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_place-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="def_url-list">
+        <element name="url-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_url-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
     <define name="def_release-event-list">
         <element name="release-event-list">
             <ref name="def_list-attributes" />
@@ -1576,7 +1716,6 @@
             </zeroOrMore>
         </element>
     </define>
-
 
     <define name="def_cdstub-list">
         <element name="cdstub-list">
@@ -1605,7 +1744,6 @@
         </element>
     </define>
 
-
     <define name="def_disc-list">
         <element name="disc-list">
             <ref name="def_list-attributes"/>
@@ -1614,7 +1752,6 @@
             </zeroOrMore>
         </element>
     </define>
-
 
     <define name="def_puid-list">
         <element name="puid-list">
@@ -1625,7 +1762,6 @@
         </element>
     </define>
 
-
     <define name="def_isrc-list">
         <element name="isrc-list">
             <ref name="def_list-attributes"/>
@@ -1634,7 +1770,6 @@
             </zeroOrMore>
         </element>
     </define>
-
 
     <define name="def_relation-list">
         <element name="relation-list">
@@ -1647,7 +1782,6 @@
             </zeroOrMore>
         </element>
     </define>
-
 
     <define name="def_tag-list">
         <element name="tag-list">
@@ -1762,6 +1896,14 @@
 
     <define name="def_ended">
       <element name="ended">
+        <choice>
+          <value>true</value>
+        </choice>
+      </element>
+    </define>
+
+    <define name="def_video">
+      <element name="video">
         <choice>
           <value>true</value>
         </choice>

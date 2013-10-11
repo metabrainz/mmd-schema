@@ -29,10 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}relation" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}place" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/>
- *       &lt;attribute name="target-type" use="required" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -42,15 +41,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "relation"
+    "place"
 })
-@XmlRootElement(name = "relation-list")
-public class RelationList {
+@XmlRootElement(name = "place-list")
+public class PlaceList {
 
-    protected List<Relation> relation;
-    @XmlAttribute(name = "target-type", required = true)
-    @XmlSchemaType(name = "anyURI")
-    protected String targetType;
+    protected List<Place> place;
     @XmlAttribute
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger count;
@@ -59,56 +55,32 @@ public class RelationList {
     protected BigInteger offset;
 
     /**
-     * Gets the value of the relation property.
+     * Gets the value of the place property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the relation property.
+     * This is why there is not a <CODE>set</CODE> method for the place property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getRelation().add(newItem);
+     *    getPlace().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Relation }
+     * {@link Place }
      * 
      * 
      */
-    public List<Relation> getRelation() {
-        if (relation == null) {
-            relation = new ArrayList<Relation>();
+    public List<Place> getPlace() {
+        if (place == null) {
+            place = new ArrayList<Place>();
         }
-        return this.relation;
-    }
-
-    /**
-     * Gets the value of the targetType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTargetType() {
-        return targetType;
-    }
-
-    /**
-     * Sets the value of the targetType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTargetType(String value) {
-        this.targetType = value;
+        return this.place;
     }
 
     /**
