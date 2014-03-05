@@ -656,6 +656,10 @@
             </optional>
 
             <optional>
+                <ref name="def_work-attribute-list" />
+            </optional>
+
+            <optional>
               <ref name="def_annotation" />
             </optional>
             <optional>
@@ -837,7 +841,7 @@
             <optional>
                 <ref name="def_user-tag-list"/>
             </optional>
- 
+
 
             <ref name="def_place-element_extension"/>
         </element>
@@ -919,7 +923,7 @@
         </element>
     </define>
 
-    
+
     <define name="def_artist-credit">
         <element name="artist-credit">
             <oneOrMore>
@@ -1060,7 +1064,7 @@
             <ref name="def_tag-attribute_extension"/>
             <element name="name">
                 <text/>
-            </element>    
+            </element>
         </element>
     </define>
 
@@ -1146,7 +1150,7 @@
             </optional>
             <optional>
                 <element name="length">
-                    <data type="nonNegativeInteger"/> 
+                    <data type="nonNegativeInteger"/>
                 </element>
             </optional>
             <optional>
@@ -1988,7 +1992,7 @@
         </data>
     </define>
 
-    <!-- An ISWC code: 
+    <!-- An ISWC code:
            C           - single-letter prefix character
            NNN.NNN.NNN - 9-digit number. A "."-separated grouping in
                          3x3 digits is commonly used.  This grouping
@@ -2027,6 +2031,20 @@
             <value>normal</value>
             <value>high</value>
         </choice>
+    </define>
+
+    <!-- A list of work attributes. -->
+    <define name="def_work-attribute-list">
+        <element name="attribute-list">
+            <oneOrMore>
+                <element name="attribute">
+                    <attribute name="type">
+                        <data type="string"/>
+                    </attribute>
+                    <text />
+                </element>
+            </oneOrMore>
+        </element>
     </define>
 
 </grammar>
