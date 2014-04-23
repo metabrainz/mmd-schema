@@ -118,7 +118,7 @@
                 <ref name="def_place-list"/>
             </optional>
             <optional>
-                <ref name="def_instruments-list"/>
+                <ref name="def_instrument-list"/>
             </optional>
             <optional>
                 <ref name="def_url-list"/>
