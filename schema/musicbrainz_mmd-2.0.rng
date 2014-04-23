@@ -1603,14 +1603,14 @@
 
 
     <define name="def_extension_attribute">
-	<attribute>
-	<anyName>
-            <except>
-                <nsName ns="http://musicbrainz.org/ns/mmd-2.0#"/>
-                <nsName ns=""/>
-            </except>
-	</anyName>
-	</attribute>
+        <attribute>
+            <anyName>
+                <except>
+                    <nsName ns="http://musicbrainz.org/ns/mmd-2.0#"/>
+                    <nsName ns=""/>
+                </except>
+            </anyName>
+        </attribute>
     </define>
 
 
