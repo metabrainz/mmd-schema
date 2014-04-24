@@ -757,6 +757,9 @@
         <optional>
             <ref name="def_alias-list"/>
         </optional>
+        <zeroOrMore>
+            <ref name="def_relation-list"/>
+        </zeroOrMore>
 
         <ref name="def_area-element_extension"/>
     </define>
