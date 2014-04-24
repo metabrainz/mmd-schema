@@ -1042,6 +1042,8 @@
                     <ref name="def_label-element"/>
                     <ref name="def_work-element"/>
                     <ref name="def_area-element"/>
+                    <ref name="def_place-element"/>
+                    <ref name="def_instrument-element"/>
 
                     <ref name="def_relation-element_extension"/>
                 </choice>
@@ -1905,6 +1907,8 @@
                <ref name="def_label-element"/>
                <ref name="def_work-element"/>
                <ref name="def_area-element"/>
+               <ref name="def_place-element"/>
+               <ref name="def_instrument-element"/>
             </zeroOrMore>
         </element>
     </define>
