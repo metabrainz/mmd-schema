@@ -124,6 +124,9 @@
                 <ref name="def_instrument-list"/>
             </optional>
             <optional>
+                <ref name="def_series-list"/>
+            </optional>
+            <optional>
                 <ref name="def_url-list"/>
             </optional>
             <optional>
