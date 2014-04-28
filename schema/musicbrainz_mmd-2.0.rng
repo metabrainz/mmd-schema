@@ -73,6 +73,9 @@
                 <ref name="def_instrument-element"/>
             </optional>
             <optional>
+                <ref name="def_series-element"/>
+            </optional>
+            <optional>
                 <ref name="def_url-element"/>
             </optional>
             <optional>
@@ -119,6 +122,9 @@
             </optional>
             <optional>
                 <ref name="def_instrument-list"/>
+            </optional>
+            <optional>
+                <ref name="def_series-list"/>
             </optional>
             <optional>
                 <ref name="def_url-list"/>
@@ -900,6 +906,50 @@
         </element>
     </define>
 
+    <define name="def_series-element">
+        <element name="series">
+            <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="type">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <ref name="def_series-attribute_extension"/>
+
+            <optional>
+                <element name="name">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="ordering-attribute">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+              <ref name="def_annotation" />
+            </optional>
+
+            <optional>
+                <ref name="def_alias-list"/>
+            </optional>
+            <zeroOrMore>
+                <ref name="def_relation-list"/>
+            </zeroOrMore>
+
+            <ref name="def_series-element_extension"/>
+        </element>
+    </define>
+
     <define name="def_url-element">
         <element name="url">
             <optional>
@@ -1015,6 +1065,11 @@
                 <data type="anyURI"/>
             </element>
             <optional>
+                <element name="ordering-key">
+                    <data type="nonNegativeInteger"/>
+                </element>
+            </optional>
+            <optional>
                 <element name="direction">
                     <ref name="def_direction"/>
                 </element>
@@ -1047,7 +1102,7 @@
                     <ref name="def_area-element"/>
                     <ref name="def_place-element"/>
                     <ref name="def_instrument-element"/>
-
+                    <ref name="def_series-element"/>
                     <ref name="def_relation-element_extension"/>
                 </choice>
             </optional>
@@ -1395,6 +1450,13 @@
     </define>
 
 
+    <define name="def_series-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
+
     <define name="def_label-element_extension">
         <zeroOrMore>
             <ref name="def_extension_element"/>
@@ -1491,6 +1553,12 @@
     </define>
 
     <define name="def_instrument-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+    <define name="def_series-attribute_extension">
         <zeroOrMore>
             <ref name="def_extension_attribute"/>
         </zeroOrMore>
@@ -1770,6 +1838,15 @@
         </element>
     </define>
 
+    <define name="def_series-list">
+        <element name="series-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_series-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
     <define name="def_url-list">
         <element name="url-list">
             <ref name="def_list-attributes"/>
@@ -1912,6 +1989,7 @@
                <ref name="def_area-element"/>
                <ref name="def_place-element"/>
                <ref name="def_instrument-element"/>
+               <ref name="def_series-element"/>
             </zeroOrMore>
         </element>
     </define>
