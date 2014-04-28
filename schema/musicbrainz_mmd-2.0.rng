@@ -97,6 +97,9 @@
                 <ref name="def_collection"/>
             </optional>
             <optional>
+                <ref name="def_editor-element"/>
+            </optional>
+            <optional>
                 <ref name="def_artist-list"/>
             </optional>
             <optional>
@@ -149,6 +152,9 @@
             </optional>
             <optional>
                 <ref name="def_collection-list"/>
+            </optional>
+            <optional>
+                <ref name="def_editor-list"/>
             </optional>
             <optional>
                 <ref name="def_entity-list"/>
@@ -1398,6 +1404,92 @@
         </element>
     </define>
 
+    <define name="def_editor-element">
+        <element name="editor">
+            <optional>
+                <attribute name="id">
+                    <data type="nonNegativeInteger"/>
+                </attribute>
+            </optional>
+            <element name="name">
+                <text/>
+            </element>
+            <optional>
+                <element name="member-since">
+                    <ref name="def_incomplete-date"/>
+                </element>
+            </optional>
+            <optional>
+                <element name="privs">
+                    <data type="nonNegativeInteger"/>
+                </element>
+            </optional>
+            <optional>
+                <element name="gender">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="age">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="homepage">
+                    <data type="anyURI"/>
+                </element>
+            </optional>
+            <optional>
+                <element name="bio">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <ref name="def_area-element"/>
+            </optional>
+            <optional>
+                <ref name="def_language-list"/>
+            </optional>
+            <optional>
+                <element name="edit-information">
+                    <element name="edits-accepted">
+                        <data type="nonNegativeInteger"/>
+                    </element>
+                    <element name="edits-rejected">
+                        <data type="nonNegativeInteger"/>
+                    </element>
+                    <element name="auto-edits-accepted">
+                        <data type="nonNegativeInteger"/>
+                    </element>
+                    <element name="edits-failed">
+                        <data type="nonNegativeInteger"/>
+                    </element>
+                </element>
+            </optional>
+        </element>
+    </define>
+
+    <define name="def_language-list">
+        <element name="language-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <element name="language">
+                    <optional>
+                        <attribute name="fluency">
+                            <choice>
+                                <value>basic</value>
+                                <value>intermediate</value>
+                                <value>advanced</value>
+                                <value>native</value>
+                            </choice>
+                        </attribute>
+                    </optional>
+                    <ref name="def_iso-639"/>
+                </element>
+            </zeroOrMore>
+        </element>
+    </define>
+
     <define name="def_release-event-element">
         <element name="release-event">
             <optional>
@@ -1974,6 +2066,15 @@
                     <ref name="def_collection"/>
                 </zeroOrMore>
             </element>
+    </define>
+
+    <define name="def_editor-list">
+        <element name="editor-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_editor-element"/>
+            </zeroOrMore>
+        </element>
     </define>
 
     <define name="def_entity-list">
