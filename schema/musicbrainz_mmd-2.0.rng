@@ -70,6 +70,9 @@
                 <ref name="def_place-element"/>
             </optional>
             <optional>
+                <ref name="def_instrument-element"/>
+            </optional>
+            <optional>
                 <ref name="def_series-element"/>
             </optional>
             <optional>
@@ -116,6 +119,9 @@
             </optional>
             <optional>
                 <ref name="def_place-list"/>
+            </optional>
+            <optional>
+                <ref name="def_instrument-list"/>
             </optional>
             <optional>
                 <ref name="def_url-list"/>
@@ -853,6 +859,50 @@
         </element>
     </define>
 
+    <define name="def_instrument-element">
+        <element name="instrument">
+            <optional>
+                <attribute name="id">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="type">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <ref name="def_instrument-attribute_extension"/>
+
+            <optional>
+                <element name="name">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+                <element name="description">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
+              <ref name="def_annotation" />
+            </optional>
+
+            <optional>
+                <ref name="def_alias-list"/>
+            </optional>
+            <zeroOrMore>
+                <ref name="def_relation-list"/>
+            </zeroOrMore>
+
+            <ref name="def_instrument-element_extension"/>
+        </element>
+    </define>
+
     <define name="def_series-element">
         <element name="series">
             <optional>
@@ -1047,8 +1097,9 @@
                     <ref name="def_label-element"/>
                     <ref name="def_work-element"/>
                     <ref name="def_area-element"/>
+                    <ref name="def_place-element"/>
+                    <ref name="def_instrument-element"/>
                     <ref name="def_series-element"/>
-
                     <ref name="def_relation-element_extension"/>
                 </choice>
             </optional>
@@ -1428,6 +1479,12 @@
         </zeroOrMore>
     </define>
 
+    <define name="def_instrument-element_extension">
+        <zeroOrMore>
+            <ref name="def_extension_element"/>
+        </zeroOrMore>
+    </define>
+
     <define name="def_puid-element_extension">
         <zeroOrMore>
             <ref name="def_extension_element"/>
@@ -1487,6 +1544,12 @@
     </define>
 
     <define name="def_place-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
+    <define name="def_instrument-attribute_extension">
         <zeroOrMore>
             <ref name="def_extension_attribute"/>
         </zeroOrMore>
@@ -1610,14 +1673,14 @@
 
 
     <define name="def_extension_attribute">
-	<attribute>
-	<anyName>
-            <except>
-                <nsName ns="http://musicbrainz.org/ns/mmd-2.0#"/>
-                <nsName ns=""/>
-            </except>
-	</anyName>
-	</attribute>
+        <attribute>
+            <anyName>
+                <except>
+                    <nsName ns="http://musicbrainz.org/ns/mmd-2.0#"/>
+                    <nsName ns=""/>
+                </except>
+            </anyName>
+        </attribute>
     </define>
 
 
@@ -1759,6 +1822,15 @@
             <ref name="def_list-attributes"/>
             <zeroOrMore>
                 <ref name="def_place-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="def_instrument-list">
+        <element name="instrument-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_instrument-element"/>
             </zeroOrMore>
         </element>
     </define>
@@ -1912,6 +1984,8 @@
                <ref name="def_label-element"/>
                <ref name="def_work-element"/>
                <ref name="def_area-element"/>
+               <ref name="def_place-element"/>
+               <ref name="def_instrument-element"/>
                <ref name="def_series-element"/>
             </zeroOrMore>
         </element>

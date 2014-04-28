@@ -267,6 +267,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:iswc"/>
         <xs:element minOccurs="0" ref="mmd-2.0:iswc-list"/>
+        <xs:group minOccurs="0" ref="mmd-2.0:def_work-attribute-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
@@ -294,6 +295,7 @@
       <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
       <xs:element minOccurs="0" ref="mmd-2.0:life-span"/>
       <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
       <xs:group ref="mmd-2.0:def_area-element_extension"/>
     </xs:sequence>
     <xs:attribute name="id" type="xs:anyURI"/>
@@ -402,7 +404,7 @@
       <xs:sequence>
         <xs:element ref="mmd-2.0:target"/>
         <xs:element minOccurs="0" ref="mmd-2.0:direction"/>
-        <xs:element minOccurs="0" ref="mmd-2.0:attribute-list"/>
+        <xs:group minOccurs="0" ref="mmd-2.0:def_attribute-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:begin"/>
         <xs:element minOccurs="0" ref="mmd-2.0:end"/>
         <xs:element minOccurs="0" ref="mmd-2.0:ended"/>
@@ -987,14 +989,17 @@
     </xs:complexType>
   </xs:element>
   <!-- the list of attributes on a relationship. -->
-  <xs:element name="attribute-list">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element maxOccurs="unbounded" ref="mmd-2.0:attribute"/>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="attribute" type="xs:string"/>
+  <xs:group name="def_attribute-list">
+    <xs:sequence>
+      <xs:element name="attribute-list">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="attribute" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
   <!-- the attributes which can be used on a -list element. -->
   <xs:attributeGroup name="def_list-attributes">
     <xs:attribute name="count" type="xs:nonNegativeInteger"/>
@@ -1143,7 +1148,7 @@
     </xs:restriction>
   </xs:simpleType>
   <!--
-    An ISWC code: 
+    An ISWC code:
     C           - single-letter prefix character
     NNN.NNN.NNN - 9-digit number. A "."-separated grouping in
                   3x3 digits is commonly used.  This grouping
@@ -1179,4 +1184,20 @@
       <xs:enumeration value="high"/>
     </xs:restriction>
   </xs:simpleType>
+  <!-- A list of work attributes. -->
+  <xs:group name="def_work-attribute-list">
+    <xs:sequence>
+      <xs:element name="attribute-list">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="attribute">
+              <xs:complexType mixed="true">
+                <xs:attribute name="type" use="required" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
 </xs:schema>
