@@ -666,6 +666,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:edit-information"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+      <xs:attributeGroup ref="mmd-2.0:def_editor-attribute_extension"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="member-since" type="mmd-2.0:def_incomplete-date"/>
@@ -824,6 +825,9 @@
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="def_series-attribute_extension">
+    <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="def_editor-attribute_extension">
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="def_url-attribute_extension">
