@@ -2106,9 +2106,14 @@
     <define name="def_attribute-list">
         <element name="attribute-list">
             <oneOrMore>
-              <element name="attribute">
-                <text />
-              </element>
+                <element name="attribute">
+                    <optional>
+                        <attribute name="value">
+                            <data type="string"/>
+                        </attribute>
+                    </optional>
+                    <text />
+                </element>
             </oneOrMore>
         </element>
     </define>
