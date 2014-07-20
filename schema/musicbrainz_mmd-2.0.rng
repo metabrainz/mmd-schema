@@ -2112,6 +2112,11 @@
                             <data type="string"/>
                         </attribute>
                     </optional>
+                    <optional>
+                        <attribute name="credited-as">
+                            <data type="string"/>
+                        </attribute>
+                    </optional>
                     <text />
                 </element>
             </oneOrMore>
