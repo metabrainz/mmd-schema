@@ -35,13 +35,17 @@ import org.w3c.dom.Element;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}entity" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}name" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}text"/>
- *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_annotation-element_extension"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}disambiguation" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}ordering-attribute" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}annotation" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}alias-list" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}relation-list" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_series-element_extension"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_annotation-attribute_extension"/>
- *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
+ *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_series-attribute_extension"/>
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
+ *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -51,52 +55,38 @@ import org.w3c.dom.Element;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "entity",
     "name",
-    "text",
+    "disambiguation",
+    "orderingAttribute",
+    "annotation",
+    "aliasList",
+    "relationList",
     "defExtensionElement"
 })
-@XmlRootElement(name = "annotation")
-public class Annotation {
+@XmlRootElement(name = "series")
+public class Series {
 
-    @XmlSchemaType(name = "anyURI")
-    protected String entity;
     protected String name;
-    @XmlElement(required = true)
-    protected String text;
+    protected String disambiguation;
+    @XmlElement(name = "ordering-attribute")
+    protected String orderingAttribute;
+    protected Annotation annotation;
+    @XmlElement(name = "alias-list")
+    protected AliasList aliasList;
+    @XmlElement(name = "relation-list")
+    protected List<RelationList> relationList;
     @XmlAnyElement
     protected List<Element> defExtensionElement;
     @XmlAttribute
-    @XmlSchemaType(name = "anySimpleType")
+    @XmlSchemaType(name = "anyURI")
+    protected String id;
+    @XmlAttribute
+    @XmlSchemaType(name = "anyURI")
     protected String type;
     @XmlAttribute(namespace = "http://musicbrainz.org/ns/ext#-2.0")
     protected String score;
     @XmlAnyAttribute
     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
-
-    /**
-     * Gets the value of the entity property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEntity() {
-        return entity;
-    }
-
-    /**
-     * Sets the value of the entity property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEntity(String value) {
-        this.entity = value;
-    }
 
     /**
      * Gets the value of the name property.
@@ -123,27 +113,128 @@ public class Annotation {
     }
 
     /**
-     * Gets the value of the text property.
+     * Gets the value of the disambiguation property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getText() {
-        return text;
+    public String getDisambiguation() {
+        return disambiguation;
     }
 
     /**
-     * Sets the value of the text property.
+     * Sets the value of the disambiguation property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setText(String value) {
-        this.text = value;
+    public void setDisambiguation(String value) {
+        this.disambiguation = value;
+    }
+
+    /**
+     * Gets the value of the orderingAttribute property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getOrderingAttribute() {
+        return orderingAttribute;
+    }
+
+    /**
+     * Sets the value of the orderingAttribute property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setOrderingAttribute(String value) {
+        this.orderingAttribute = value;
+    }
+
+    /**
+     * Gets the value of the annotation property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Annotation }
+     *     
+     */
+    public Annotation getAnnotation() {
+        return annotation;
+    }
+
+    /**
+     * Sets the value of the annotation property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Annotation }
+     *     
+     */
+    public void setAnnotation(Annotation value) {
+        this.annotation = value;
+    }
+
+    /**
+     * Gets the value of the aliasList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AliasList }
+     *     
+     */
+    public AliasList getAliasList() {
+        return aliasList;
+    }
+
+    /**
+     * Sets the value of the aliasList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AliasList }
+     *     
+     */
+    public void setAliasList(AliasList value) {
+        this.aliasList = value;
+    }
+
+    /**
+     * Gets the value of the relationList property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the relationList property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getRelationList().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link RelationList }
+     * 
+     * 
+     */
+    public List<RelationList> getRelationList() {
+        if (relationList == null) {
+            relationList = new ArrayList<RelationList>();
+        }
+        return this.relationList;
     }
 
     /**
@@ -173,6 +264,30 @@ public class Annotation {
             defExtensionElement = new ArrayList<Element>();
         }
         return this.defExtensionElement;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setId(String value) {
+        this.id = value;
     }
 
     /**

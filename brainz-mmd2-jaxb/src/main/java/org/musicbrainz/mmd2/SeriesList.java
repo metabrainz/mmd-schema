@@ -14,7 +14,6 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
@@ -30,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}freedb-disc" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}series" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/>
  *     &lt;/restriction>
@@ -42,13 +41,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "freedbDisc"
+    "series"
 })
-@XmlRootElement(name = "freedb-disc-list")
-public class FreedbDiscList {
+@XmlRootElement(name = "series-list")
+public class SeriesList {
 
-    @XmlElement(name = "freedb-disc")
-    protected List<FreedbDisc> freedbDisc;
+    protected List<Series> series;
     @XmlAttribute
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger count;
@@ -57,32 +55,32 @@ public class FreedbDiscList {
     protected BigInteger offset;
 
     /**
-     * Gets the value of the freedbDisc property.
+     * Gets the value of the series property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the freedbDisc property.
+     * This is why there is not a <CODE>set</CODE> method for the series property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getFreedbDisc().add(newItem);
+     *    getSeries().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link FreedbDisc }
+     * {@link Series }
      * 
      * 
      */
-    public List<FreedbDisc> getFreedbDisc() {
-        if (freedbDisc == null) {
-            freedbDisc = new ArrayList<FreedbDisc>();
+    public List<Series> getSeries() {
+        if (series == null) {
+            series = new ArrayList<Series>();
         }
-        return this.freedbDisc;
+        return this.series;
     }
 
     /**
