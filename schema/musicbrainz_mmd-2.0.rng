@@ -1120,10 +1120,7 @@
         <element name="alias">
             <optional>
                 <attribute name="locale">
-                    <choice>
-                        <ref name="def_iso-3166-1-code" />
-                        <ref name="def_iso-3166-2-code" />
-                    </choice>
+                    <ref name="def_locale" />
                 </attribute>
             </optional>
             <optional>
@@ -2184,6 +2181,12 @@
           <value>true</value>
         </choice>
       </element>
+    </define>
+
+    <define name="def_locale">
+        <data type="string">
+            <param name="pattern">[a-z]{2}(_[A-Za-z]+)?</param>
+        </data>
     </define>
 
     <!-- A two-letter country code like 'DE', 'UK', 'FR' etc. -->
