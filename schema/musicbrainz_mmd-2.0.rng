@@ -1120,7 +1120,10 @@
         <element name="alias">
             <optional>
                 <attribute name="locale">
-                    <ref name="def_iso-3166-2-code" />
+                    <choice>
+                        <ref name="def_iso-3166-1-code" />
+                        <ref name="def_iso-3166-2-code" />
+                    </choice>
                 </attribute>
             </optional>
             <optional>
