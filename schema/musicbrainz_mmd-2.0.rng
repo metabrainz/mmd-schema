@@ -1002,7 +1002,7 @@
             </optional>
             <optional>
                 <element name="time">
-                    <text/>
+                    <ref name="def_time" />
                 </element>
             </optional>
             <optional>
@@ -2278,6 +2278,12 @@
     <define name="def_locale">
         <data type="string">
             <param name="pattern">[a-z]{2}(_[A-Za-z]+)?</param>
+        </data>
+    </define>
+
+    <define name="def_time">
+        <data type="string">
+            <param name="pattern">([01][0-9]|2[0-3]):[0-5][0-9]</param>
         </data>
     </define>
 
