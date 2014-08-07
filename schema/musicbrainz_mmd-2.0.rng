@@ -987,6 +987,9 @@
                 </element>
             </optional>
             <optional>
+              <ref name="def_cancelled" />
+            </optional>
+            <optional>
                 <element name="life-span">
                     <optional>
                         <element name="begin">
@@ -1020,6 +1023,18 @@
             <zeroOrMore>
                 <ref name="def_relation-list"/>
             </zeroOrMore>
+            <optional>
+                <ref name="def_tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_rating"/>
+            </optional>
+            <optional>
+                <ref name="def_user-rating"/>
+            </optional>
 
             <ref name="def_event-element_extension"/>
         </element>
@@ -2261,6 +2276,14 @@
 
     <define name="def_ended">
       <element name="ended">
+        <choice>
+          <value>true</value>
+        </choice>
+      </element>
+    </define>
+
+    <define name="def_cancelled">
+      <element name="cancelled">
         <choice>
           <value>true</value>
         </choice>
