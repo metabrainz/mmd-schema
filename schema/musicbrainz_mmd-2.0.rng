@@ -1983,9 +1983,9 @@
     <define name="def_data-track-list">
         <element name="data-track-list">
             <ref name="def_list-attributes"/>
-            <zeroOrMore>
+            <oneOrMore>
                 <ref name="def_track"/>
-            </zeroOrMore>
+            </oneOrMore>
         </element>
     </define>
 
