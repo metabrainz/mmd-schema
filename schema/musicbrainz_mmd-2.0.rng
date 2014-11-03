@@ -1322,44 +1322,56 @@
             <optional>
                 <ref name="def_disc-list"/>
             </optional>
+            <optional>
+                <ref name="def_pregap-track"/>
+            </optional>
             <ref name="def_track-list"/>
         </element>
     </define>
 
+    <define name="def_track-data">
+        <optional>
+            <attribute name="id">
+                <data type="anyURI"/>
+            </attribute>
+        </optional>
+        <optional>
+            <element name="position">
+                <data type="nonNegativeInteger"/>
+            </element>
+        </optional>
+        <optional>
+            <element name="number">
+                <text/>
+            </element>
+        </optional>
+        <optional>
+            <element name="title">
+                <text/>
+            </element>
+        </optional>
+        <optional>
+            <element name="length">
+                <data type="nonNegativeInteger"/>
+            </element>
+        </optional>
+        <optional>
+            <ref name="def_artist-credit"/>
+        </optional>
+        <optional>
+            <ref name="def_recording-element"/>
+        </optional>
+    </define>
+
+    <define name="def_pregap-track">
+        <element name="pregap">
+            <ref name="def_track-data"/>
+        </element>
+    </define>
 
     <define name="def_track">
         <element name="track">
-            <optional>
-                <attribute name="id">
-                    <data type="anyURI"/>
-                </attribute>
-            </optional>
-            <optional>
-                <element name="position">
-                    <data type="nonNegativeInteger"/>
-                </element>
-            </optional>
-            <optional>
-                <element name="number">
-                    <text/>
-                </element>
-            </optional>
-            <optional>
-                <element name="title">
-                    <text/>
-                </element>
-            </optional>
-            <optional>
-                <element name="length">
-                    <data type="nonNegativeInteger"/>
-                </element>
-            </optional>
-            <optional>
-                <ref name="def_artist-credit"/>
-            </optional>
-            <optional>
-                <ref name="def_recording-element"/>
-            </optional>
+            <ref name="def_track-data"/>
         </element>
     </define>
 
