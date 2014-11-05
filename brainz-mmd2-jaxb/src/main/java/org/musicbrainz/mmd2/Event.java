@@ -22,6 +22,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
@@ -37,25 +39,32 @@ import org.w3c.dom.Element;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}name" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}sort-name" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}label-code" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}ipi" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}ipi-list" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}annotation" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}disambiguation" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}country" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}area" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}life-span" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}cancelled" minOccurs="0"/>
+ *         &lt;element name="life-span" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}begin" minOccurs="0"/>
+ *                   &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}end" minOccurs="0"/>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}time" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}setlist" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}annotation" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}alias-list" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}release-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}relation-list" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}tag-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}user-tag-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}rating" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}user-rating" minOccurs="0"/>
- *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_label-element_extension"/>
+ *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_event-element_extension"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_label-attribute_extension"/>
+ *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_event-attribute_extension"/>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *     &lt;/restriction>
@@ -68,17 +77,13 @@ import org.w3c.dom.Element;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "name",
-    "sortName",
-    "labelCode",
-    "ipi",
-    "ipiList",
-    "annotation",
     "disambiguation",
-    "country",
-    "area",
+    "cancelled",
     "lifeSpan",
+    "time",
+    "setlist",
+    "annotation",
     "aliasList",
-    "releaseList",
     "relationList",
     "tagList",
     "userTagList",
@@ -86,28 +91,20 @@ import org.w3c.dom.Element;
     "userRating",
     "defExtensionElement"
 })
-@XmlRootElement(name = "label")
-public class Label {
+@XmlRootElement(name = "event")
+public class Event {
 
     protected String name;
-    @XmlElement(name = "sort-name")
-    protected String sortName;
-    @XmlElement(name = "label-code")
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger labelCode;
-    protected String ipi;
-    @XmlElement(name = "ipi-list")
-    protected IpiList ipiList;
-    protected Annotation annotation;
     protected String disambiguation;
-    protected String country;
-    protected DefAreaElementInner area;
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    protected String cancelled;
     @XmlElement(name = "life-span")
-    protected LifeSpan lifeSpan;
+    protected Event.LifeSpan lifeSpan;
+    protected String time;
+    protected String setlist;
+    protected Annotation annotation;
     @XmlElement(name = "alias-list")
     protected AliasList aliasList;
-    @XmlElement(name = "release-list")
-    protected ReleaseList releaseList;
     @XmlElement(name = "relation-list")
     protected List<RelationList> relationList;
     @XmlElement(name = "tag-list")
@@ -156,99 +153,123 @@ public class Label {
     }
 
     /**
-     * Gets the value of the sortName property.
+     * Gets the value of the disambiguation property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getSortName() {
-        return sortName;
+    public String getDisambiguation() {
+        return disambiguation;
     }
 
     /**
-     * Sets the value of the sortName property.
+     * Sets the value of the disambiguation property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setSortName(String value) {
-        this.sortName = value;
+    public void setDisambiguation(String value) {
+        this.disambiguation = value;
     }
 
     /**
-     * Gets the value of the labelCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getLabelCode() {
-        return labelCode;
-    }
-
-    /**
-     * Sets the value of the labelCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setLabelCode(BigInteger value) {
-        this.labelCode = value;
-    }
-
-    /**
-     * Gets the value of the ipi property.
+     * Gets the value of the cancelled property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getIpi() {
-        return ipi;
+    public String getCancelled() {
+        return cancelled;
     }
 
     /**
-     * Sets the value of the ipi property.
+     * Sets the value of the cancelled property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setIpi(String value) {
-        this.ipi = value;
+    public void setCancelled(String value) {
+        this.cancelled = value;
     }
 
     /**
-     * Gets the value of the ipiList property.
+     * Gets the value of the lifeSpan property.
      * 
      * @return
      *     possible object is
-     *     {@link IpiList }
+     *     {@link Event.LifeSpan }
      *     
      */
-    public IpiList getIpiList() {
-        return ipiList;
+    public Event.LifeSpan getLifeSpan() {
+        return lifeSpan;
     }
 
     /**
-     * Sets the value of the ipiList property.
+     * Sets the value of the lifeSpan property.
      * 
      * @param value
      *     allowed object is
-     *     {@link IpiList }
+     *     {@link Event.LifeSpan }
      *     
      */
-    public void setIpiList(IpiList value) {
-        this.ipiList = value;
+    public void setLifeSpan(Event.LifeSpan value) {
+        this.lifeSpan = value;
+    }
+
+    /**
+     * Gets the value of the time property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTime() {
+        return time;
+    }
+
+    /**
+     * Sets the value of the time property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTime(String value) {
+        this.time = value;
+    }
+
+    /**
+     * Gets the value of the setlist property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSetlist() {
+        return setlist;
+    }
+
+    /**
+     * Sets the value of the setlist property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSetlist(String value) {
+        this.setlist = value;
     }
 
     /**
@@ -276,102 +297,6 @@ public class Label {
     }
 
     /**
-     * Gets the value of the disambiguation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDisambiguation() {
-        return disambiguation;
-    }
-
-    /**
-     * Sets the value of the disambiguation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDisambiguation(String value) {
-        this.disambiguation = value;
-    }
-
-    /**
-     * Gets the value of the country property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCountry() {
-        return country;
-    }
-
-    /**
-     * Sets the value of the country property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCountry(String value) {
-        this.country = value;
-    }
-
-    /**
-     * Gets the value of the area property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link DefAreaElementInner }
-     *     
-     */
-    public DefAreaElementInner getArea() {
-        return area;
-    }
-
-    /**
-     * Sets the value of the area property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link DefAreaElementInner }
-     *     
-     */
-    public void setArea(DefAreaElementInner value) {
-        this.area = value;
-    }
-
-    /**
-     * Gets the value of the lifeSpan property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link LifeSpan }
-     *     
-     */
-    public LifeSpan getLifeSpan() {
-        return lifeSpan;
-    }
-
-    /**
-     * Sets the value of the lifeSpan property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link LifeSpan }
-     *     
-     */
-    public void setLifeSpan(LifeSpan value) {
-        this.lifeSpan = value;
-    }
-
-    /**
      * Gets the value of the aliasList property.
      * 
      * @return
@@ -393,30 +318,6 @@ public class Label {
      */
     public void setAliasList(AliasList value) {
         this.aliasList = value;
-    }
-
-    /**
-     * Gets the value of the releaseList property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ReleaseList }
-     *     
-     */
-    public ReleaseList getReleaseList() {
-        return releaseList;
-    }
-
-    /**
-     * Sets the value of the releaseList property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ReleaseList }
-     *     
-     */
-    public void setReleaseList(ReleaseList value) {
-        this.releaseList = value;
     }
 
     /**
@@ -661,6 +562,87 @@ public class Label {
      */
     public Map<QName, String> getOtherAttributes() {
         return otherAttributes;
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}begin" minOccurs="0"/>
+     *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}end" minOccurs="0"/>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "begin",
+        "end"
+    })
+    public static class LifeSpan {
+
+        protected String begin;
+        protected String end;
+
+        /**
+         * Gets the value of the begin property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getBegin() {
+            return begin;
+        }
+
+        /**
+         * Sets the value of the begin property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setBegin(String value) {
+            this.begin = value;
+        }
+
+        /**
+         * Gets the value of the end property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getEnd() {
+            return end;
+        }
+
+        /**
+         * Sets the value of the end property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setEnd(String value) {
+            this.end = value;
+        }
+
     }
 
 }
