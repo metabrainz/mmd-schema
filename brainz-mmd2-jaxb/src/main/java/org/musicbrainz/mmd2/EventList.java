@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}instrument" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}event" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/>
  *     &lt;/restriction>
@@ -41,12 +41,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "instrument"
+    "event"
 })
-@XmlRootElement(name = "instrument-list")
-public class InstrumentList {
+@XmlRootElement(name = "event-list")
+public class EventList {
 
-    protected List<Instrument> instrument;
+    protected List<Event> event;
     @XmlAttribute
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger count;
@@ -55,32 +55,32 @@ public class InstrumentList {
     protected BigInteger offset;
 
     /**
-     * Gets the value of the instrument property.
+     * Gets the value of the event property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the instrument property.
+     * This is why there is not a <CODE>set</CODE> method for the event property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getInstrument().add(newItem);
+     *    getEvent().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Instrument }
+     * {@link Event }
      * 
      * 
      */
-    public List<Instrument> getInstrument() {
-        if (instrument == null) {
-            instrument = new ArrayList<Instrument>();
+    public List<Event> getEvent() {
+        if (event == null) {
+            event = new ArrayList<Event>();
         }
-        return this.instrument;
+        return this.event;
     }
 
     /**
