@@ -1326,6 +1326,9 @@
                 <ref name="def_pregap-track"/>
             </optional>
             <ref name="def_track-list"/>
+            <optional>
+                <ref name="def_data-track-list"/>
+            </optional>
         </element>
     </define>
 
@@ -1989,6 +1992,14 @@
         </element>
     </define>
 
+    <define name="def_data-track-list">
+        <element name="data-track-list">
+            <ref name="def_list-attributes"/>
+            <oneOrMore>
+                <ref name="def_track"/>
+            </oneOrMore>
+        </element>
+    </define>
 
     <define name="def_label-list">
         <element name="label-list">
