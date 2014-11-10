@@ -38,24 +38,35 @@ import org.w3c.dom.Element;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}title" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}length" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}annotation" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}name" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}disambiguation" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}video" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}artist-credit" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}release-list" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}puid-list" minOccurs="0"/>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}isrc-list" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}cancelled" minOccurs="0"/>
+ *         &lt;element name="life-span" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}begin" minOccurs="0"/>
+ *                   &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}end" minOccurs="0"/>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}time" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}setlist" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}annotation" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}alias-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}relation-list" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}tag-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}user-tag-list" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}rating" minOccurs="0"/>
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}user-rating" minOccurs="0"/>
- *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_recording-element_extension"/>
+ *         &lt;group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_event-element_extension"/>
  *       &lt;/sequence>
- *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_recording-attribute_extension"/>
+ *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_event-attribute_extension"/>
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
+ *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -65,15 +76,14 @@ import org.w3c.dom.Element;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "title",
-    "length",
-    "annotation",
+    "name",
     "disambiguation",
-    "video",
-    "artistCredit",
-    "releaseList",
-    "puidList",
-    "isrcList",
+    "cancelled",
+    "lifeSpan",
+    "time",
+    "setlist",
+    "annotation",
+    "aliasList",
     "relationList",
     "tagList",
     "userTagList",
@@ -81,24 +91,20 @@ import org.w3c.dom.Element;
     "userRating",
     "defExtensionElement"
 })
-@XmlRootElement(name = "recording")
-public class Recording {
+@XmlRootElement(name = "event")
+public class Event {
 
-    protected String title;
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger length;
-    protected Annotation annotation;
+    protected String name;
     protected String disambiguation;
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String video;
-    @XmlElement(name = "artist-credit")
-    protected ArtistCredit artistCredit;
-    @XmlElement(name = "release-list")
-    protected ReleaseList releaseList;
-    @XmlElement(name = "puid-list")
-    protected PuidList puidList;
-    @XmlElement(name = "isrc-list")
-    protected IsrcList isrcList;
+    protected String cancelled;
+    @XmlElement(name = "life-span")
+    protected Event.LifeSpan lifeSpan;
+    protected String time;
+    protected String setlist;
+    protected Annotation annotation;
+    @XmlElement(name = "alias-list")
+    protected AliasList aliasList;
     @XmlElement(name = "relation-list")
     protected List<RelationList> relationList;
     @XmlElement(name = "tag-list")
@@ -114,81 +120,36 @@ public class Recording {
     @XmlAttribute
     @XmlSchemaType(name = "anyURI")
     protected String id;
+    @XmlAttribute
+    @XmlSchemaType(name = "anyURI")
+    protected String type;
     @XmlAttribute(namespace = "http://musicbrainz.org/ns/ext#-2.0")
     protected String score;
     @XmlAnyAttribute
     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
     /**
-     * Gets the value of the title property.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
     /**
-     * Sets the value of the title property.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setTitle(String value) {
-        this.title = value;
-    }
-
-    /**
-     * Gets the value of the length property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getLength() {
-        return length;
-    }
-
-    /**
-     * Sets the value of the length property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setLength(BigInteger value) {
-        this.length = value;
-    }
-
-    /**
-     * Gets the value of the annotation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Annotation }
-     *     
-     */
-    public Annotation getAnnotation() {
-        return annotation;
-    }
-
-    /**
-     * Sets the value of the annotation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Annotation }
-     *     
-     */
-    public void setAnnotation(Annotation value) {
-        this.annotation = value;
+    public void setName(String value) {
+        this.name = value;
     }
 
     /**
@@ -216,123 +177,147 @@ public class Recording {
     }
 
     /**
-     * Gets the value of the video property.
+     * Gets the value of the cancelled property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getVideo() {
-        return video;
+    public String getCancelled() {
+        return cancelled;
     }
 
     /**
-     * Sets the value of the video property.
+     * Sets the value of the cancelled property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setVideo(String value) {
-        this.video = value;
+    public void setCancelled(String value) {
+        this.cancelled = value;
     }
 
     /**
-     * Gets the value of the artistCredit property.
+     * Gets the value of the lifeSpan property.
      * 
      * @return
      *     possible object is
-     *     {@link ArtistCredit }
+     *     {@link Event.LifeSpan }
      *     
      */
-    public ArtistCredit getArtistCredit() {
-        return artistCredit;
+    public Event.LifeSpan getLifeSpan() {
+        return lifeSpan;
     }
 
     /**
-     * Sets the value of the artistCredit property.
+     * Sets the value of the lifeSpan property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ArtistCredit }
+     *     {@link Event.LifeSpan }
      *     
      */
-    public void setArtistCredit(ArtistCredit value) {
-        this.artistCredit = value;
+    public void setLifeSpan(Event.LifeSpan value) {
+        this.lifeSpan = value;
     }
 
     /**
-     * Gets the value of the releaseList property.
+     * Gets the value of the time property.
      * 
      * @return
      *     possible object is
-     *     {@link ReleaseList }
+     *     {@link String }
      *     
      */
-    public ReleaseList getReleaseList() {
-        return releaseList;
+    public String getTime() {
+        return time;
     }
 
     /**
-     * Sets the value of the releaseList property.
+     * Sets the value of the time property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ReleaseList }
+     *     {@link String }
      *     
      */
-    public void setReleaseList(ReleaseList value) {
-        this.releaseList = value;
+    public void setTime(String value) {
+        this.time = value;
     }
 
     /**
-     * Gets the value of the puidList property.
+     * Gets the value of the setlist property.
      * 
      * @return
      *     possible object is
-     *     {@link PuidList }
+     *     {@link String }
      *     
      */
-    public PuidList getPuidList() {
-        return puidList;
+    public String getSetlist() {
+        return setlist;
     }
 
     /**
-     * Sets the value of the puidList property.
+     * Sets the value of the setlist property.
      * 
      * @param value
      *     allowed object is
-     *     {@link PuidList }
+     *     {@link String }
      *     
      */
-    public void setPuidList(PuidList value) {
-        this.puidList = value;
+    public void setSetlist(String value) {
+        this.setlist = value;
     }
 
     /**
-     * Gets the value of the isrcList property.
+     * Gets the value of the annotation property.
      * 
      * @return
      *     possible object is
-     *     {@link IsrcList }
+     *     {@link Annotation }
      *     
      */
-    public IsrcList getIsrcList() {
-        return isrcList;
+    public Annotation getAnnotation() {
+        return annotation;
     }
 
     /**
-     * Sets the value of the isrcList property.
+     * Sets the value of the annotation property.
      * 
      * @param value
      *     allowed object is
-     *     {@link IsrcList }
+     *     {@link Annotation }
      *     
      */
-    public void setIsrcList(IsrcList value) {
-        this.isrcList = value;
+    public void setAnnotation(Annotation value) {
+        this.annotation = value;
+    }
+
+    /**
+     * Gets the value of the aliasList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link AliasList }
+     *     
+     */
+    public AliasList getAliasList() {
+        return aliasList;
+    }
+
+    /**
+     * Sets the value of the aliasList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link AliasList }
+     *     
+     */
+    public void setAliasList(AliasList value) {
+        this.aliasList = value;
     }
 
     /**
@@ -514,6 +499,30 @@ public class Recording {
     }
 
     /**
+     * Gets the value of the type property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Sets the value of the type property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setType(String value) {
+        this.type = value;
+    }
+
+    /**
      * Gets the value of the score property.
      * 
      * @return
@@ -553,6 +562,87 @@ public class Recording {
      */
     public Map<QName, String> getOtherAttributes() {
         return otherAttributes;
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}begin" minOccurs="0"/>
+     *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}end" minOccurs="0"/>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "begin",
+        "end"
+    })
+    public static class LifeSpan {
+
+        protected String begin;
+        protected String end;
+
+        /**
+         * Gets the value of the begin property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getBegin() {
+            return begin;
+        }
+
+        /**
+         * Sets the value of the begin property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setBegin(String value) {
+            this.begin = value;
+        }
+
+        /**
+         * Gets the value of the end property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getEnd() {
+            return end;
+        }
+
+        /**
+         * Sets the value of the end property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setEnd(String value) {
+            this.end = value;
+        }
+
     }
 
 }

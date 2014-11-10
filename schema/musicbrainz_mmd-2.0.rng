@@ -784,6 +784,12 @@
         <zeroOrMore>
             <ref name="def_relation-list"/>
         </zeroOrMore>
+        <optional>
+            <ref name="def_tag-list"/>
+        </optional>
+        <optional>
+            <ref name="def_user-tag-list"/>
+        </optional>
 
         <ref name="def_area-element_extension"/>
     </define>
@@ -913,6 +919,12 @@
             <zeroOrMore>
                 <ref name="def_relation-list"/>
             </zeroOrMore>
+            <optional>
+                <ref name="def_tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-tag-list"/>
+            </optional>
 
             <ref name="def_instrument-element_extension"/>
         </element>
@@ -957,6 +969,12 @@
             <zeroOrMore>
                 <ref name="def_relation-list"/>
             </zeroOrMore>
+            <optional>
+                <ref name="def_tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-tag-list"/>
+            </optional>
 
             <ref name="def_series-element_extension"/>
         </element>

@@ -41,6 +41,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:place"/>
         <xs:element minOccurs="0" ref="mmd-2.0:instrument"/>
         <xs:element minOccurs="0" ref="mmd-2.0:series"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:event"/>
         <xs:element minOccurs="0" ref="mmd-2.0:url"/>
         <xs:element minOccurs="0" ref="mmd-2.0:puid"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc"/>
@@ -59,6 +60,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:place-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:instrument-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:series-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:event-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:url-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:annotation-list"/>
@@ -301,6 +303,8 @@
       <xs:element minOccurs="0" ref="mmd-2.0:life-span"/>
       <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
       <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
       <xs:group ref="mmd-2.0:def_area-element_extension"/>
     </xs:sequence>
     <xs:attribute name="id" type="xs:anyURI"/>
@@ -348,6 +352,8 @@
         <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
         <xs:group ref="mmd-2.0:def_instrument-element_extension"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
@@ -365,6 +371,8 @@
         <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
         <xs:group ref="mmd-2.0:def_series-element_extension"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
@@ -373,6 +381,38 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="ordering-attribute" type="xs:string"/>
+  <xs:element name="event">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="mmd-2.0:name"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:cancelled"/>
+        <xs:element minOccurs="0" name="life-span">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" ref="mmd-2.0:begin"/>
+              <xs:element minOccurs="0" ref="mmd-2.0:end"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" ref="mmd-2.0:time"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:setlist"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:rating"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:user-rating"/>
+        <xs:group ref="mmd-2.0:def_event-element_extension"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:anyURI"/>
+      <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attributeGroup ref="mmd-2.0:def_event-attribute_extension"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="time" type="mmd-2.0:def_time"/>
+  <xs:element name="setlist" type="xs:string"/>
   <xs:element name="url">
     <xs:complexType>
       <xs:sequence>
@@ -459,6 +499,7 @@
           <xs:element ref="mmd-2.0:place"/>
           <xs:element ref="mmd-2.0:instrument"/>
           <xs:element ref="mmd-2.0:series"/>
+          <xs:element ref="mmd-2.0:event"/>
           <xs:group ref="mmd-2.0:def_relation-element_extension"/>
         </xs:choice>
       </xs:sequence>
@@ -479,7 +520,7 @@
   <xs:element name="direction" type="mmd-2.0:def_direction"/>
   <xs:element name="alias">
     <xs:complexType mixed="true">
-      <xs:attribute name="locale" type="mmd-2.0:def_iso-3166-2-code"/>
+      <xs:attribute name="locale" type="mmd-2.0:def_locale"/>
       <xs:attribute name="sort-name"/>
       <xs:attribute name="type"/>
       <xs:attribute name="primary"/>
@@ -541,30 +582,31 @@
         <xs:element minOccurs="0" ref="mmd-2.0:position"/>
         <xs:element minOccurs="0" ref="mmd-2.0:format"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disc-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:pregap"/>
         <xs:group ref="mmd-2.0:def_track-list"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="position" type="xs:nonNegativeInteger"/>
   <xs:element name="format" type="xs:string"/>
+  <xs:complexType name="def_track-data">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="mmd-2.0:position"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:number"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:title"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:length"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
+      <xs:element minOccurs="0" ref="mmd-2.0:recording"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:anyURI"/>
+  </xs:complexType>
+  <xs:element name="number" type="xs:string"/>
+  <xs:element name="pregap" type="mmd-2.0:def_track-data"/>
   <xs:group name="def_track">
     <xs:sequence>
-      <xs:element name="track">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" ref="mmd-2.0:position"/>
-            <xs:element minOccurs="0" ref="mmd-2.0:number"/>
-            <xs:element minOccurs="0" ref="mmd-2.0:title"/>
-            <xs:element minOccurs="0" ref="mmd-2.0:length"/>
-            <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
-            <xs:element minOccurs="0" ref="mmd-2.0:recording"/>
-          </xs:sequence>
-          <xs:attribute name="id" type="xs:anyURI"/>
-        </xs:complexType>
-      </xs:element>
+      <xs:element name="track" type="mmd-2.0:def_track-data"/>
     </xs:sequence>
   </xs:group>
-  <xs:element name="number" type="xs:string"/>
   <xs:element name="annotation">
     <xs:complexType>
       <xs:sequence>
@@ -777,6 +819,11 @@
       <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
     </xs:sequence>
   </xs:group>
+  <xs:group name="def_event-element_extension">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
+    </xs:sequence>
+  </xs:group>
   <xs:group name="def_puid-element_extension">
     <xs:sequence>
       <xs:group minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:def_extension_element"/>
@@ -825,6 +872,9 @@
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="def_series-attribute_extension">
+    <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="def_event-attribute_extension">
     <xs:attributeGroup ref="mmd-2.0:def_extension_attribute"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="def_editor-attribute_extension">
@@ -999,6 +1049,14 @@
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
   </xs:element>
+  <xs:element name="event-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:event"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="url-list">
     <xs:complexType>
       <xs:sequence>
@@ -1135,6 +1193,7 @@
         <xs:element ref="mmd-2.0:place"/>
         <xs:element ref="mmd-2.0:instrument"/>
         <xs:element ref="mmd-2.0:series"/>
+        <xs:element ref="mmd-2.0:event"/>
       </xs:sequence>
       <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
     </xs:complexType>
@@ -1145,7 +1204,12 @@
       <xs:element name="attribute-list">
         <xs:complexType>
           <xs:sequence>
-            <xs:element maxOccurs="unbounded" name="attribute" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" name="attribute">
+              <xs:complexType mixed="true">
+                <xs:attribute name="value" type="xs:string"/>
+                <xs:attribute name="credited-as" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -1225,6 +1289,13 @@
       </xs:restriction>
     </xs:simpleType>
   </xs:element>
+  <xs:element name="cancelled">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
   <xs:element name="video">
     <xs:simpleType>
       <xs:restriction base="xs:token">
@@ -1232,6 +1303,16 @@
       </xs:restriction>
     </xs:simpleType>
   </xs:element>
+  <xs:simpleType name="def_locale">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-z]{2}(_[A-Za-z]+)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="def_time">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([01][0-9]|2[0-3]):[0-5][0-9]"/>
+    </xs:restriction>
+  </xs:simpleType>
   <!-- A two-letter country code like 'DE', 'UK', 'FR' etc. -->
   <xs:simpleType name="def_iso-3166-1-code">
     <xs:restriction base="xs:string">
