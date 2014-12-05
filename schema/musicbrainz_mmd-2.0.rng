@@ -1515,6 +1515,11 @@
                     <data type="anyURI"/>
                 </attribute>
             </optional>
+            <optional>
+                <attribute name="entity-type">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
             <element name="name">
                 <text/>
             </element>
