@@ -2042,6 +2042,9 @@
             <ref name="def_list-attributes"/>
             <zeroOrMore>
                 <element name="offset">
+                    <attribute name="position">
+                        <data type="nonNegativeInteger"/>
+                    </attribute>
                     <data type="nonNegativeInteger"/>
                 </element>
             </zeroOrMore>
