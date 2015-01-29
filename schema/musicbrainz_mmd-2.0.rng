@@ -1092,6 +1092,9 @@
                 </element>
             </optional>
             <optional>
+                <ref name="def_offset-list"/>
+            </optional>
+	    <optional>
                 <ref name="def_release-list"/>
             </optional>
             <ref name="def_disc-element_extension"/>
@@ -1510,6 +1513,16 @@
                     <data type="anyURI"/>
                 </attribute>
             </optional>
+            <optional>
+                <attribute name="type">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="entity-type">
+                    <data type="anyURI"/>
+                </attribute>
+            </optional>
             <element name="name">
                 <text/>
             </element>
@@ -1518,7 +1531,12 @@
                     <text/>
                 </element>
             </optional>
-            <ref name="def_release-list"/>
+            <optional>
+                <ref name="def_release-list"/>
+            </optional>
+            <optional>
+                <ref name="def_event-list"/>
+            </optional>
         </element>
     </define>
 
@@ -2016,6 +2034,20 @@
             <oneOrMore>
                 <ref name="def_track"/>
             </oneOrMore>
+        </element>
+    </define>
+
+    <define name="def_offset-list">
+        <element name="offset-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <element name="offset">
+                    <attribute name="position">
+                        <data type="nonNegativeInteger"/>
+                    </attribute>
+                    <data type="nonNegativeInteger"/>
+                </element>
+            </zeroOrMore>
         </element>
     </define>
 
