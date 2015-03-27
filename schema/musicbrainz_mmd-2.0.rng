@@ -345,6 +345,9 @@
                 <ref name="def_artist-credit"/>
             </optional>
             <optional>
+                <ref name="def_alias-list"/>
+            </optional>
+            <optional>
                 <ref name="def_release-group-element"/>
             </optional>
 
@@ -456,6 +459,9 @@
             <optional>
                 <ref name="def_release-list"/>
             </optional>
+            <optional>
+                <ref name="def_alias-list"/>
+            </optional>
             <zeroOrMore>
                 <ref name="def_relation-list"/>
             </zeroOrMore>
@@ -514,6 +520,9 @@
 
             <optional>
                 <ref name="def_release-list"/>
+            </optional>
+            <optional>
+                <ref name="def_alias-list"/>
             </optional>
             <optional>
                 <ref name="def_puid-list"/>
