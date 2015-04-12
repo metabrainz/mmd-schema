@@ -1227,6 +1227,17 @@
                     <ref name="def_relation-element_extension"/>
                 </choice>
             </optional>
+
+            <optional>
+                <element name="source-credit">
+                    <text />
+                </element>
+            </optional>
+            <optional>
+                <element name="target-credit">
+                    <text />
+                </element>
+            </optional>
         </element>
     </define>
 
