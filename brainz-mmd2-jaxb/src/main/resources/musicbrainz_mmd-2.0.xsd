@@ -26,8 +26,9 @@
            targetNamespace="http://musicbrainz.org/ns/mmd-2.0#"
            xmlns:ext="http://musicbrainz.org/ns/ext#-2.0"
            xmlns:mmd-2.0="http://musicbrainz.org/ns/mmd-2.0#">
-  <xs:import schemaLocation="local.xsd"/>
-  <xs:import namespace="http://musicbrainz.org/ns/ext#-2.0" schemaLocation="extensions.xsd"/>
+   <xs:import schemaLocation="local.xsd"/>
+   <xs:import namespace="http://musicbrainz.org/ns/ext#-2.0" schemaLocation="extensions.xsd"/>
+
   <xs:element name="metadata">
     <xs:complexType>
       <xs:sequence>
@@ -140,6 +141,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:packaging"/>
         <xs:element minOccurs="0" ref="mmd-2.0:text-representation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-group"/>
         <xs:element minOccurs="0" ref="mmd-2.0:date"/>
         <xs:element minOccurs="0" ref="mmd-2.0:country"/>
@@ -192,6 +194,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:secondary-type-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
@@ -224,6 +227,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:video"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:puid-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
@@ -428,6 +432,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:sectors"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:offset-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:group ref="mmd-2.0:def_disc-element_extension"/>
       </xs:sequence>
@@ -584,6 +589,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:disc-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:pregap"/>
         <xs:group ref="mmd-2.0:def_track-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:data-track-list"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -688,9 +694,12 @@
       <xs:sequence>
         <xs:element ref="mmd-2.0:name"/>
         <xs:element minOccurs="0" name="editor" type="xs:string"/>
-        <xs:element ref="mmd-2.0:release-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:event-list"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
+      <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attribute name="entity-type" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="editor">
@@ -993,6 +1002,29 @@
       </xs:element>
     </xs:sequence>
   </xs:group>
+  <xs:element name="data-track-list">
+    <xs:complexType>
+      <xs:group maxOccurs="unbounded" ref="mmd-2.0:def_track"/>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="offset-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:offset"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="offset">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:nonNegativeInteger">
+          <xs:attribute name="position" use="required" type="xs:nonNegativeInteger"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="label-list">
     <xs:complexType>
       <xs:sequence>

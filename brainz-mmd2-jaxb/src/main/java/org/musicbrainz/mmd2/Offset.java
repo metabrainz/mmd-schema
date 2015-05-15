@@ -8,6 +8,7 @@
 
 package org.musicbrainz.mmd2;
 
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -25,8 +26,8 @@ import javax.xml.bind.annotation.XmlValue;
  * <pre>
  * &lt;complexType>
  *   &lt;simpleContent>
- *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>anyURI">
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
+ *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>nonNegativeInteger">
+ *       &lt;attribute name="position" use="required" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" />
  *     &lt;/extension>
  *   &lt;/simpleContent>
  * &lt;/complexType>
@@ -38,25 +39,25 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlType(name = "", propOrder = {
     "value"
 })
-@XmlRootElement(name = "target")
-public class Target {
+@XmlRootElement(name = "offset")
+public class Offset {
 
     @XmlValue
-    @XmlSchemaType(name = "anyURI")
-    protected String value;
-    @XmlAttribute
-    @XmlSchemaType(name = "anyURI")
-    protected String id;
+    @XmlSchemaType(name = "nonNegativeInteger")
+    protected BigInteger value;
+    @XmlAttribute(required = true)
+    @XmlSchemaType(name = "nonNegativeInteger")
+    protected BigInteger position;
 
     /**
      * Gets the value of the value property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public String getValue() {
+    public BigInteger getValue() {
         return value;
     }
 
@@ -65,35 +66,35 @@ public class Target {
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public void setValue(String value) {
+    public void setValue(BigInteger value) {
         this.value = value;
     }
 
     /**
-     * Gets the value of the id property.
+     * Gets the value of the position property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public String getId() {
-        return id;
+    public BigInteger getPosition() {
+        return position;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the position property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public void setId(String value) {
-        this.id = value;
+    public void setPosition(BigInteger value) {
+        this.position = value;
     }
 
 }

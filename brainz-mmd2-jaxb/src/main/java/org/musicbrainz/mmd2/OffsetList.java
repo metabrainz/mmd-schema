@@ -14,6 +14,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
@@ -29,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}disc" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}offset" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/>
  *     &lt;/restriction>
@@ -41,12 +42,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "disc","count","offset"
+    "offsetElement"
 })
-@XmlRootElement(name = "disc-list")
-public class DiscList {
+@XmlRootElement(name = "offset-list")
+public class OffsetList {
 
-    protected List<Disc> disc;
+    @XmlElement(name = "offset")
+    protected List<Offset> offsetElement;
     @XmlAttribute
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger count;
@@ -55,32 +57,32 @@ public class DiscList {
     protected BigInteger offset;
 
     /**
-     * Gets the value of the disc property.
+     * Gets the value of the offsetElement property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the disc property.
+     * This is why there is not a <CODE>set</CODE> method for the offsetElement property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getDisc().add(newItem);
+     *    getOffsetElement().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Disc }
+     * {@link Offset }
      * 
      * 
      */
-    public List<Disc> getDisc() {
-        if (disc == null) {
-            disc = new ArrayList<Disc>();
+    public List<Offset> getOffsetElement() {
+        if (offsetElement == null) {
+            offsetElement = new ArrayList<Offset>();
         }
-        return this.disc;
+        return this.offsetElement;
     }
 
     /**
