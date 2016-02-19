@@ -1552,10 +1552,37 @@
                 </element>
             </optional>
             <optional>
-                <ref name="def_release-list"/>
+                <ref name="def_area-list"/>
+            </optional>
+            <optional>
+                <ref name="def_artist-list"/>
             </optional>
             <optional>
                 <ref name="def_event-list"/>
+            </optional>
+            <optional>
+                <ref name="def_instrument-list"/>
+            </optional>
+            <optional>
+                <ref name="def_label-list"/>
+            </optional>
+            <optional>
+                <ref name="def_place-list"/>
+            </optional>
+            <optional>
+                <ref name="def_recording-list"/>
+            </optional>
+            <optional>
+                <ref name="def_release-list"/>
+            </optional>
+            <optional>
+                <ref name="def_release-group-list"/>
+            </optional>
+            <optional>
+                <ref name="def_series-list"/>
+            </optional>
+            <optional>
+                <ref name="def_work-list"/>
             </optional>
         </element>
     </define>
