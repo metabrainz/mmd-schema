@@ -14,6 +14,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
@@ -29,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}series" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}offset" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/&gt;
  *     &lt;/restriction&gt;
@@ -41,12 +42,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "series"
+    "offsetElement"
 })
-@XmlRootElement(name = "series-list")
-public class SeriesList {
+@XmlRootElement(name = "offset-list")
+public class OffsetList {
 
-    protected List<Series> series;
+    @XmlElement(name = "offset")
+    protected List<Offset> offsetElement;
     @XmlAttribute(name = "count")
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger count;
@@ -55,32 +57,32 @@ public class SeriesList {
     protected BigInteger offset;
 
     /**
-     * Gets the value of the series property.
+     * Gets the value of the offsetElement property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the series property.
+     * This is why there is not a <CODE>set</CODE> method for the offsetElement property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getSeries().add(newItem);
+     *    getOffsetElement().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Series }
+     * {@link Offset }
      * 
      * 
      */
-    public List<Series> getSeries() {
-        if (series == null) {
-            series = new ArrayList<Series>();
+    public List<Offset> getOffsetElement() {
+        if (offsetElement == null) {
+            offsetElement = new ArrayList<Offset>();
         }
-        return this.series;
+        return this.offsetElement;
     }
 
     /**

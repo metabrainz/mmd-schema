@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==================================================================
-  $Id$
-  
+  $Id: 3d5874f513d5aef33eab61ecb84badc4ea2ec96a $
+
   Relax NG Schema for MusicBrainz XML Metadata Version 2.0
-  
-  
+
+
   This XML schema has been designed to represent music metadata.
   Documentation and the latest revision can be found at
-  
+
      http://musicbrainz.org/development/mmd/
-  
-  
+
+
   Copyright (c) 2006 Robert Kaye, Matthias Friedrich
-  
+
   The schema is released under the Creative Commons
   Attribution-ShareAlike 2.5 license.
-  
+
   http://creativecommons.org/licenses/by-sa/2.5/
-  
+
   ==================================================================
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           elementFormDefault="qualified"
-           targetNamespace="http://musicbrainz.org/ns/mmd-2.0#"
-           xmlns:ext="http://musicbrainz.org/ns/ext#-2.0"
-           xmlns:mmd-2.0="http://musicbrainz.org/ns/mmd-2.0#">
+          elementFormDefault="qualified"
+          targetNamespace="http://musicbrainz.org/ns/mmd-2.0#"
+          xmlns:ext="http://musicbrainz.org/ns/ext#-2.0"
+          xmlns:mmd-2.0="http://musicbrainz.org/ns/mmd-2.0#">
   <xs:import schemaLocation="local.xsd"/>
   <xs:import namespace="http://musicbrainz.org/ns/ext#-2.0" schemaLocation="extensions.xsd"/>
   <xs:element name="metadata">
@@ -107,6 +107,7 @@
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
       <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attribute name="type-id" type="mmd-2.0:def_uuid"/>
       <xs:attributeGroup ref="mmd-2.0:def_artist-attribute_extension"/>
     </xs:complexType>
   </xs:element>
@@ -140,6 +141,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:packaging"/>
         <xs:element minOccurs="0" ref="mmd-2.0:text-representation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-group"/>
         <xs:element minOccurs="0" ref="mmd-2.0:date"/>
         <xs:element minOccurs="0" ref="mmd-2.0:country"/>
@@ -160,7 +162,11 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="title" type="xs:string"/>
-  <xs:element name="status" type="xs:string"/>
+  <xs:element name="status">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="quality" type="mmd-2.0:def_quality"/>
   <xs:element name="packaging" type="xs:string"/>
   <xs:element name="text-representation">
@@ -192,6 +198,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:secondary-type-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:user-tag-list"/>
@@ -201,11 +208,16 @@
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
       <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attribute name="type-id" type="mmd-2.0:def_uuid"/>
       <xs:attributeGroup ref="mmd-2.0:def_release-group-attribute_extension"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="first-release-date" type="mmd-2.0:def_incomplete-date"/>
-  <xs:element name="primary-type" type="xs:string"/>
+  <xs:element name="primary-type">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="secondary-type-list">
     <xs:complexType>
       <xs:sequence>
@@ -213,7 +225,11 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="secondary-type" type="xs:string"/>
+  <xs:element name="secondary-type">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="recording">
     <xs:complexType>
       <xs:sequence>
@@ -224,6 +240,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:video"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:puid-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
@@ -262,6 +279,7 @@
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
       <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attribute name="type-id" type="mmd-2.0:def_uuid"/>
       <xs:attributeGroup ref="mmd-2.0:def_label-attribute_extension"/>
     </xs:complexType>
   </xs:element>
@@ -287,6 +305,7 @@
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
       <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attribute name="type-id" type="mmd-2.0:def_uuid"/>
       <xs:attributeGroup ref="mmd-2.0:def_work-attribute_extension"/>
     </xs:complexType>
   </xs:element>
@@ -309,6 +328,7 @@
     </xs:sequence>
     <xs:attribute name="id" type="xs:anyURI"/>
     <xs:attribute name="type" type="xs:anyURI"/>
+    <xs:attribute name="type-id" type="mmd-2.0:def_uuid"/>
     <xs:attributeGroup ref="mmd-2.0:def_area-attribute_extension"/>
   </xs:complexType>
   <xs:element name="place">
@@ -329,6 +349,7 @@
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
       <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attribute name="type-id" type="mmd-2.0:def_uuid"/>
       <xs:attributeGroup ref="mmd-2.0:def_place-attribute_extension"/>
     </xs:complexType>
   </xs:element>
@@ -358,6 +379,7 @@
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
       <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attribute name="type-id" type="mmd-2.0:def_uuid"/>
       <xs:attributeGroup ref="mmd-2.0:def_instrument-attribute_extension"/>
     </xs:complexType>
   </xs:element>
@@ -377,6 +399,7 @@
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
       <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attribute name="type-id" type="mmd-2.0:def_uuid"/>
       <xs:attributeGroup ref="mmd-2.0:def_series-attribute_extension"/>
     </xs:complexType>
   </xs:element>
@@ -408,6 +431,7 @@
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
       <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attribute name="type-id" type="mmd-2.0:def_uuid"/>
       <xs:attributeGroup ref="mmd-2.0:def_event-attribute_extension"/>
     </xs:complexType>
   </xs:element>
@@ -428,6 +452,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:sectors"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:offset-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:group ref="mmd-2.0:def_disc-element_extension"/>
       </xs:sequence>
@@ -502,9 +527,11 @@
           <xs:element ref="mmd-2.0:event"/>
           <xs:group ref="mmd-2.0:def_relation-element_extension"/>
         </xs:choice>
+        <xs:element minOccurs="0" ref="mmd-2.0:source-credit"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:target-credit"/>
       </xs:sequence>
       <xs:attribute name="type" use="required" type="xs:anyURI"/>
-      <xs:attribute name="type-id" use="required" type="xs:anyURI"/>
+      <xs:attribute name="type-id" use="required" type="mmd-2.0:def_uuid"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="target">
@@ -518,11 +545,14 @@
   </xs:element>
   <xs:element name="ordering-key" type="xs:nonNegativeInteger"/>
   <xs:element name="direction" type="mmd-2.0:def_direction"/>
+  <xs:element name="source-credit" type="xs:string"/>
+  <xs:element name="target-credit" type="xs:string"/>
   <xs:element name="alias">
     <xs:complexType mixed="true">
       <xs:attribute name="locale" type="mmd-2.0:def_locale"/>
       <xs:attribute name="sort-name"/>
       <xs:attribute name="type"/>
+      <xs:attribute name="type-id" type="mmd-2.0:def_uuid"/>
       <xs:attribute name="primary"/>
       <xs:attribute name="begin-date" type="mmd-2.0:def_incomplete-date"/>
       <xs:attribute name="end-date" type="mmd-2.0:def_incomplete-date"/>
@@ -584,11 +614,16 @@
         <xs:element minOccurs="0" ref="mmd-2.0:disc-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:pregap"/>
         <xs:group ref="mmd-2.0:def_track-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:data-track-list"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="position" type="xs:nonNegativeInteger"/>
-  <xs:element name="format" type="xs:string"/>
+  <xs:element name="format">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
+    </xs:complexType>
+  </xs:element>
   <xs:complexType name="def_track-data">
     <xs:sequence>
       <xs:element minOccurs="0" ref="mmd-2.0:position"/>
@@ -688,9 +723,22 @@
       <xs:sequence>
         <xs:element ref="mmd-2.0:name"/>
         <xs:element minOccurs="0" name="editor" type="xs:string"/>
-        <xs:element ref="mmd-2.0:release-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:area-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:artist-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:event-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:instrument-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:label-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:place-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:recording-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:release-group-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:series-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:work-list"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:anyURI"/>
+      <xs:attribute name="type" type="xs:anyURI"/>
+      <xs:attribute name="type-id" type="mmd-2.0:def_uuid"/>
+      <xs:attribute name="entity-type" type="xs:anyURI"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="editor">
@@ -993,6 +1041,29 @@
       </xs:element>
     </xs:sequence>
   </xs:group>
+  <xs:element name="data-track-list">
+    <xs:complexType>
+      <xs:group maxOccurs="unbounded" ref="mmd-2.0:def_track"/>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="offset-list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:offset"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="mmd-2.0:def_list-attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="offset">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:nonNegativeInteger">
+          <xs:attribute name="position" use="required" type="xs:nonNegativeInteger"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="label-list">
     <xs:complexType>
       <xs:sequence>
@@ -1425,6 +1496,8 @@
             <xs:element maxOccurs="unbounded" name="attribute">
               <xs:complexType mixed="true">
                 <xs:attribute name="type" use="required" type="xs:string"/>
+                <xs:attribute name="type-id" use="required" type="mmd-2.0:def_uuid"/>
+                <xs:attribute name="value-id" type="mmd-2.0:def_uuid"/>
               </xs:complexType>
             </xs:element>
           </xs:sequence>
