@@ -26,8 +26,8 @@ import javax.xml.bind.annotation.XmlValue;
  * <pre>
  * &lt;complexType&gt;
  *   &lt;simpleContent&gt;
- *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;float"&gt;
- *       &lt;attribute name="votes-count" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" /&gt;
+ *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;nonNegativeInteger"&gt;
+ *       &lt;attribute name="position" use="required" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" /&gt;
  *     &lt;/extension&gt;
  *   &lt;/simpleContent&gt;
  * &lt;/complexType&gt;
@@ -39,53 +39,62 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlType(name = "", propOrder = {
     "value"
 })
-@XmlRootElement(name = "rating")
-public class Rating {
+@XmlRootElement(name = "offset")
+public class Offset {
 
     @XmlValue
-    protected float value;
-    @XmlAttribute(name = "votes-count")
     @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger votesCount;
+    protected BigInteger value;
+    @XmlAttribute(name = "position", required = true)
+    @XmlSchemaType(name = "nonNegativeInteger")
+    protected BigInteger position;
 
     /**
      * Gets the value of the value property.
-     * 
-     */
-    public float getValue() {
-        return value;
-    }
-
-    /**
-     * Sets the value of the value property.
-     * 
-     */
-    public void setValue(float value) {
-        this.value = value;
-    }
-
-    /**
-     * Gets the value of the votesCount property.
      * 
      * @return
      *     possible object is
      *     {@link BigInteger }
      *     
      */
-    public BigInteger getVotesCount() {
-        return votesCount;
+    public BigInteger getValue() {
+        return value;
     }
 
     /**
-     * Sets the value of the votesCount property.
+     * Sets the value of the value property.
      * 
      * @param value
      *     allowed object is
      *     {@link BigInteger }
      *     
      */
-    public void setVotesCount(BigInteger value) {
-        this.votesCount = value;
+    public void setValue(BigInteger value) {
+        this.value = value;
+    }
+
+    /**
+     * Gets the value of the position property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getPosition() {
+        return position;
+    }
+
+    /**
+     * Sets the value of the position property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setPosition(BigInteger value) {
+        this.position = value;
     }
 
 }
