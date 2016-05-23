@@ -182,6 +182,11 @@
                     <data type="anyURI"/>
                 </attribute>
             </optional>
+            <optional>
+                <attribute name="type-id">
+                    <ref name="def_uuid"/>
+                </attribute>
+            </optional>
             <ref name="def_artist-attribute_extension"/>
 
             <optional>
@@ -306,6 +311,9 @@
             </optional>
             <optional>
                 <element name="status">
+                    <attribute name="id">
+                        <ref name="def_uuid"/>
+                    </attribute>
                     <text/>
                 </element>
             </optional>
@@ -417,6 +425,11 @@
                     <data type="anyURI"/>
                 </attribute>
             </optional>
+            <optional>
+                <attribute name="type-id">
+                    <ref name="def_uuid"/>
+                </attribute>
+            </optional>
             <ref name="def_release-group-attribute_extension"/>
             <optional>
                 <element name="title">
@@ -438,6 +451,9 @@
             </optional>
             <optional>
                 <element name="primary-type">
+                    <attribute name="id">
+                        <ref name="def_uuid"/>
+                    </attribute>
                     <text/>
                 </element>
             </optional>
@@ -446,6 +462,9 @@
                 <optional>
                   <zeroOrMore>
                     <element name="secondary-type">
+                      <attribute name="id">
+                        <ref name="def_uuid"/>
+                      </attribute>
                       <text />
                     </element>
                   </zeroOrMore>
@@ -564,6 +583,11 @@
                     <data type="anyURI"/>
                 </attribute>
             </optional>
+            <optional>
+                <attribute name="type-id">
+                    <ref name="def_uuid"/>
+                </attribute>
+            </optional>
             <ref name="def_label-attribute_extension"/>
 
             <optional>
@@ -662,6 +686,11 @@
                     <data type="anyURI"/>
                 </attribute>
             </optional>
+            <optional>
+                <attribute name="type-id">
+                    <ref name="def_uuid"/>
+                </attribute>
+            </optional>
             <ref name="def_work-attribute_extension"/>
 
             <optional>
@@ -740,6 +769,11 @@
                 <data type="anyURI"/>
             </attribute>
         </optional>
+        <optional>
+            <attribute name="type-id">
+                <ref name="def_uuid"/>
+            </attribute>
+        </optional>
         <ref name="def_area-attribute_extension"/>
 
         <optional>
@@ -813,6 +847,11 @@
             <optional>
                 <attribute name="type">
                     <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="type-id">
+                    <ref name="def_uuid"/>
                 </attribute>
             </optional>
             <ref name="def_place-attribute_extension"/>
@@ -901,6 +940,11 @@
                     <data type="anyURI"/>
                 </attribute>
             </optional>
+            <optional>
+                <attribute name="type-id">
+                    <ref name="def_uuid"/>
+                </attribute>
+            </optional>
             <ref name="def_instrument-attribute_extension"/>
 
             <optional>
@@ -951,6 +995,11 @@
                     <data type="anyURI"/>
                 </attribute>
             </optional>
+            <optional>
+                <attribute name="type-id">
+                    <ref name="def_uuid"/>
+                </attribute>
+            </optional>
             <ref name="def_series-attribute_extension"/>
 
             <optional>
@@ -999,6 +1048,11 @@
             <optional>
                 <attribute name="type">
                     <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="type-id">
+                    <ref name="def_uuid"/>
                 </attribute>
             </optional>
             <ref name="def_event-attribute_extension"/>
@@ -1174,7 +1228,7 @@
                 <data type="anyURI"/>
             </attribute>
             <attribute name="type-id">
-                <data type="anyURI"/>
+                <ref name="def_uuid"/>
             </attribute>
             <element name="target">
                 <optional>
@@ -1257,6 +1311,11 @@
             <optional>
               <attribute name="type">
                 <text />
+              </attribute>
+            </optional>
+            <optional>
+              <attribute name="type-id">
+                <ref name="def_uuid"/>
               </attribute>
             </optional>
             <optional>
@@ -1357,6 +1416,9 @@
             </optional>
             <optional>
                 <element name="format">
+                    <attribute name="id">
+                        <ref name="def_uuid"/>
+                    </attribute>
                     <text/>
                 </element>
             </optional>
@@ -1536,6 +1598,11 @@
             <optional>
                 <attribute name="type">
                     <data type="anyURI"/>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="type-id">
+                    <ref name="def_uuid"/>
                 </attribute>
             </optional>
             <optional>
@@ -2562,6 +2629,14 @@
                     <attribute name="type">
                         <data type="string"/>
                     </attribute>
+                    <attribute name="type-id">
+                        <ref name="def_uuid"/>
+                    </attribute>
+                    <optional>
+                        <attribute name="value-id">
+                            <ref name="def_uuid"/>
+                        </attribute>
+                    </optional>
                     <text />
                 </element>
             </oneOrMore>
