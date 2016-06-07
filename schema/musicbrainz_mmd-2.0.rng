@@ -201,6 +201,9 @@
             </optional>
             <optional>
                 <element name="gender">
+                    <attribute name="id">
+                        <ref name="def_uuid"/>
+                    </attribute>
                     <text/>
                 </element>
             </optional>
@@ -1677,6 +1680,9 @@
             </optional>
             <optional>
                 <element name="gender">
+                    <attribute name="id">
+                        <ref name="def_uuid"/>
+                    </attribute>
                     <text/>
                 </element>
             </optional>
