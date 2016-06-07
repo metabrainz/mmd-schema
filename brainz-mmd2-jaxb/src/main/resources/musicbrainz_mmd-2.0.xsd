@@ -113,7 +113,11 @@
   </xs:element>
   <xs:element name="name" type="xs:string"/>
   <xs:element name="sort-name" type="xs:string"/>
-  <xs:element name="gender" type="xs:string"/>
+  <xs:element name="gender">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="country" type="mmd-2.0:def_iso-3166-1-code"/>
   <xs:element name="begin-area" type="mmd-2.0:def_area-element_inner"/>
   <xs:element name="end-area" type="mmd-2.0:def_area-element_inner"/>

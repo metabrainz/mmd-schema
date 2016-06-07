@@ -10,8 +10,10 @@ package org.musicbrainz.mmd2;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -23,10 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}date" minOccurs="0"/&gt;
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}area" minOccurs="0"/&gt;
- *       &lt;/sequence&gt;
+ *       &lt;attribute name="id" use="required" type="{http://musicbrainz.org/ns/mmd-2.0#}def_uuid" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -36,61 +35,62 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "date",
-    "area"
+    "content"
 })
-@XmlRootElement(name = "release-event")
-public class ReleaseEvent {
+@XmlRootElement(name = "gender")
+public class Gender {
 
-    protected String date;
-    protected DefAreaElementInner area;
+    @XmlValue
+    protected String content;
+    @XmlAttribute(name = "id", required = true)
+    protected String id;
 
     /**
-     * Gets the value of the date property.
+     * Gets the value of the content property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getDate() {
-        return date;
+    public String getContent() {
+        return content;
     }
 
     /**
-     * Sets the value of the date property.
+     * Sets the value of the content property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setDate(String value) {
-        this.date = value;
+    public void setContent(String value) {
+        this.content = value;
     }
 
     /**
-     * Gets the value of the area property.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
-     *     {@link DefAreaElementInner }
+     *     {@link String }
      *     
      */
-    public DefAreaElementInner getArea() {
-        return area;
+    public String getId() {
+        return id;
     }
 
     /**
-     * Sets the value of the area property.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
-     *     {@link DefAreaElementInner }
+     *     {@link String }
      *     
      */
-    public void setArea(DefAreaElementInner value) {
-        this.area = value;
+    public void setId(String value) {
+        this.id = value;
     }
 
 }
