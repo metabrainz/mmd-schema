@@ -21,7 +21,7 @@ but there are a couple of manual steps.
 4. Generate java classes from xsd
    mvn org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:generate
 
-5. Edit DiscList.java and MediumList.java adding "count","offset" to prop order
+5. Edit DiscList.java and MediumList.java, adding "count", "offset" to the prop order for those classes. Do the same for the TrackList class in Medium.java.
 
 6. Build package and then install locally so visible to search server project
    mvn install
