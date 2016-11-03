@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==================================================================
-  $Id: 3d5874f513d5aef33eab61ecb84badc4ea2ec96a $
+  $Id: d6d06b3129de2ae626c85933898a07bf90a1101e $
 
   Relax NG Schema for MusicBrainz XML Metadata Version 2.0
 
@@ -393,7 +393,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:name"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
-        <xs:element minOccurs="0" ref="mmd-2.0:ordering-attribute"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:ordering-type"/>
         <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
@@ -407,7 +407,11 @@
       <xs:attributeGroup ref="mmd-2.0:def_series-attribute_extension"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ordering-attribute" type="xs:string"/>
+  <xs:element name="ordering-type">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="event">
     <xs:complexType>
       <xs:sequence>

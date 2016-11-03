@@ -1016,7 +1016,10 @@
                 </element>
             </optional>
             <optional>
-                <element name="ordering-attribute">
+                <element name="ordering-type">
+                    <attribute name="id">
+                        <ref name="def_uuid"/>
+                    </attribute>
                     <text/>
                 </element>
             </optional>
