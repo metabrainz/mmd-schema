@@ -272,9 +272,6 @@
                 <ref name="def_release-group-list"/>
             </optional>
             <optional>
-                <ref name="def_label-list"/>
-            </optional>
-            <optional>
                 <ref name="def_work-list"/>
             </optional>
             <zeroOrMore>
