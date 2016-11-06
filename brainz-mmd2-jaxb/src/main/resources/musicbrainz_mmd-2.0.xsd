@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==================================================================
-  $Id: 3d5874f513d5aef33eab61ecb84badc4ea2ec96a $
-
+  $Id: d6d06b3129de2ae626c85933898a07bf90a1101e $
+  
   Relax NG Schema for MusicBrainz XML Metadata Version 2.0
-
-
+  
+  
   This XML schema has been designed to represent music metadata.
   Documentation and the latest revision can be found at
-
+  
      http://musicbrainz.org/development/mmd/
-
-
+  
+  
   Copyright (c) 2006 Robert Kaye, Matthias Friedrich
-
+  
   The schema is released under the Creative Commons
   Attribution-ShareAlike 2.5 license.
-
+  
   http://creativecommons.org/licenses/by-sa/2.5/
-
+  
   ==================================================================
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-          elementFormDefault="qualified"
-          targetNamespace="http://musicbrainz.org/ns/mmd-2.0#"
-          xmlns:ext="http://musicbrainz.org/ns/ext#-2.0"
-          xmlns:mmd-2.0="http://musicbrainz.org/ns/mmd-2.0#">
+           elementFormDefault="qualified"
+           targetNamespace="http://musicbrainz.org/ns/mmd-2.0#"
+           xmlns:ext="http://musicbrainz.org/ns/ext#-2.0"
+           xmlns:mmd-2.0="http://musicbrainz.org/ns/mmd-2.0#">
   <xs:import schemaLocation="local.xsd"/>
   <xs:import namespace="http://musicbrainz.org/ns/ext#-2.0" schemaLocation="extensions.xsd"/>
   <xs:element name="metadata">
@@ -96,7 +96,6 @@
         <xs:element minOccurs="0" ref="mmd-2.0:recording-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-group-list"/>
-        <xs:element minOccurs="0" ref="mmd-2.0:label-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:work-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>
