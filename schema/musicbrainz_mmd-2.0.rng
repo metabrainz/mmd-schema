@@ -709,6 +709,10 @@
             </optional>
 
             <optional>
+                <ref name="def_language-list" />
+            </optional>
+
+            <optional>
                 <ref name="def_artist-credit"/>
             </optional>
 
