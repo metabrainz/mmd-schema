@@ -52,7 +52,6 @@ import org.w3c.dom.Element;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}recording-list" minOccurs="0"/&gt;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}release-list" minOccurs="0"/&gt;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}release-group-list" minOccurs="0"/&gt;
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}label-list" minOccurs="0"/&gt;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}work-list" minOccurs="0"/&gt;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}relation-list" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}tag-list" minOccurs="0"/&gt;
@@ -90,7 +89,6 @@ import org.w3c.dom.Element;
     "recordingList",
     "releaseList",
     "releaseGroupList",
-    "labelList",
     "workList",
     "relationList",
     "tagList",
@@ -127,8 +125,6 @@ public class Artist {
     protected ReleaseList releaseList;
     @XmlElement(name = "release-group-list")
     protected ReleaseGroupList releaseGroupList;
-    @XmlElement(name = "label-list")
-    protected LabelList labelList;
     @XmlElement(name = "work-list")
     protected WorkList workList;
     @XmlElement(name = "relation-list")
@@ -538,30 +534,6 @@ public class Artist {
      */
     public void setReleaseGroupList(ReleaseGroupList value) {
         this.releaseGroupList = value;
-    }
-
-    /**
-     * Gets the value of the labelList property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link LabelList }
-     *     
-     */
-    public LabelList getLabelList() {
-        return labelList;
-    }
-
-    /**
-     * Sets the value of the labelList property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link LabelList }
-     *     
-     */
-    public void setLabelList(LabelList value) {
-        this.labelList = value;
     }
 
     /**
