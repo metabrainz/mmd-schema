@@ -292,6 +292,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:title"/>
         <xs:element minOccurs="0" name="language" type="mmd-2.0:def_iso-639"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:language-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
         <xs:element minOccurs="0" ref="mmd-2.0:iswc"/>
         <xs:element minOccurs="0" ref="mmd-2.0:iswc-list"/>
