@@ -338,9 +338,7 @@
             <optional>
                 <element name="text-representation">
                     <optional>
-                        <element name="language">
-                            <ref name="def_iso-639"/>
-                        </element>
+                        <ref name="def_language"/>
                     </optional>
                     <optional>
                         <element name="script">
@@ -700,9 +698,7 @@
             </optional>
 
             <optional>
-                <element name="language">
-                    <ref name="def_iso-639"/>
-                </element>
+                <ref name="def_language"/>
             </optional>
 
             <optional>
@@ -1161,7 +1157,7 @@
             <optional>
                 <ref name="def_offset-list"/>
             </optional>
-	    <optional>
+            <optional>
                 <ref name="def_release-list"/>
             </optional>
             <ref name="def_disc-element_extension"/>
@@ -1727,23 +1723,27 @@
         </element>
     </define>
 
+    <define name="def_language">
+        <element name="language">
+            <optional>
+                <attribute name="fluency">
+                    <choice>
+                        <value>basic</value>
+                        <value>intermediate</value>
+                        <value>advanced</value>
+                        <value>native</value>
+                    </choice>
+                </attribute>
+            </optional>
+            <ref name="def_iso-639"/>
+        </element>
+    </define>
+
     <define name="def_language-list">
         <element name="language-list">
             <ref name="def_list-attributes"/>
             <zeroOrMore>
-                <element name="language">
-                    <optional>
-                        <attribute name="fluency">
-                            <choice>
-                                <value>basic</value>
-                                <value>intermediate</value>
-                                <value>advanced</value>
-                                <value>native</value>
-                            </choice>
-                        </attribute>
-                    </optional>
-                    <ref name="def_iso-639"/>
-                </element>
+                <ref name="def_language"/>
             </zeroOrMore>
         </element>
     </define>
