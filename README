@@ -7,7 +7,7 @@ that can serve as test cases. MMD has been designed to represent
 music metadata and is used by the MusicBrainz web service.
 
 Some older versions of the schema are included, too, but only
-schema/musicbrainz_mmd-1.0.rng is the official, final version.
+schema/musicbrainz_mmd-2.0.rng is the official, current version.
 
 Documentation and the latest revision can be found at
 
@@ -15,9 +15,8 @@ Documentation and the latest revision can be found at
 
 
 Questions about this format should be posted to the MusicBrainz
-development mailing list (mb-devel):
-
-	http://musicbrainz.org/list.html
+forums (http://community.metabrainz.org) or brought up on the 
+#metabrainz IRC channel on Freenode.
 
 --
 $Id$
