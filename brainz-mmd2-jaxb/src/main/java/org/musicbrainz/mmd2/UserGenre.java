@@ -32,7 +32,7 @@ import javax.xml.namespace.QName;
  *       &lt;sequence&gt;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}name"/&gt;
  *       &lt;/sequence&gt;
- *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_tag-attribute_extension"/&gt;
+ *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_genre-attribute_extension"/&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -44,8 +44,8 @@ import javax.xml.namespace.QName;
 @XmlType(name = "", propOrder = {
     "name"
 })
-@XmlRootElement(name = "user-tag")
-public class UserTag {
+@XmlRootElement(name = "user-genre")
+public class UserGenre {
 
     @XmlElement(required = true)
     protected String name;

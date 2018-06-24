@@ -157,6 +157,12 @@
                 <ref name="def_user-tag-list"/>
             </optional>
             <optional>
+                <ref name="def_genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-genre-list"/>
+            </optional>
+            <optional>
                 <ref name="def_collection-list"/>
             </optional>
             <optional>
@@ -284,6 +290,12 @@
                 <ref name="def_user-tag-list"/>
             </optional>
             <optional>
+                <ref name="def_genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-genre-list"/>
+            </optional>
+            <optional>
                 <ref name="def_rating"/>
             </optional>
             <optional>
@@ -405,6 +417,12 @@
                 <ref name="def_user-tag-list"/>
             </optional>
             <optional>
+                <ref name="def_genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-genre-list"/>
+            </optional>
+            <optional>
                 <ref name="def_collection-list"/>
             </optional>
 
@@ -491,6 +509,12 @@
                 <ref name="def_user-tag-list"/>
             </optional>
             <optional>
+                <ref name="def_genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-genre-list"/>
+            </optional>
+            <optional>
                 <ref name="def_rating"/>
             </optional>
             <optional>
@@ -558,6 +582,12 @@
             </optional>
             <optional>
                 <ref name="def_user-tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-genre-list"/>
             </optional>
             <optional>
                 <ref name="def_rating"/>
@@ -664,6 +694,12 @@
                 <ref name="def_user-tag-list"/>
             </optional>
             <optional>
+                <ref name="def_genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-genre-list"/>
+            </optional>
+            <optional>
                 <ref name="def_rating"/>
             </optional>
             <optional>
@@ -744,6 +780,12 @@
             </optional>
             <optional>
                 <ref name="def_user-tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-genre-list"/>
             </optional>
             <optional>
                 <ref name="def_rating"/>
@@ -837,6 +879,13 @@
         <optional>
             <ref name="def_user-tag-list"/>
         </optional>
+        <optional>
+            <ref name="def_genre-list"/>
+        </optional>
+        <optional>
+            <ref name="def_user-genre-list"/>
+        </optional>
+
 
         <ref name="def_area-element_extension"/>
     </define>
@@ -926,6 +975,12 @@
             <optional>
                 <ref name="def_user-tag-list"/>
             </optional>
+            <optional>
+                <ref name="def_genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-genre-list"/>
+            </optional>
 
 
             <ref name="def_place-element_extension"/>
@@ -982,6 +1037,12 @@
             <optional>
                 <ref name="def_user-tag-list"/>
             </optional>
+            <optional>
+                <ref name="def_genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-genre-list"/>
+            </optional>
 
             <ref name="def_instrument-element_extension"/>
         </element>
@@ -1036,6 +1097,12 @@
             </optional>
             <optional>
                 <ref name="def_user-tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-genre-list"/>
             </optional>
 
             <ref name="def_series-element_extension"/>
@@ -1113,6 +1180,12 @@
             </optional>
             <optional>
                 <ref name="def_user-tag-list"/>
+            </optional>
+            <optional>
+                <ref name="def_genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-genre-list"/>
             </optional>
             <optional>
                 <ref name="def_rating"/>
@@ -1367,6 +1440,30 @@
     <define name="def_user-tag">
         <element name="user-tag">
             <ref name="def_tag-attribute_extension"/>
+            <element name="name">
+                <text/>
+            </element>
+        </element>
+    </define>
+
+    <define name="def_genre">
+        <element name="genre">
+            <optional>
+                <attribute name="count">
+                    <data type="nonNegativeInteger"/>
+                </attribute>
+            </optional>
+            <ref name="def_genre-attribute_extension"/>
+            <element name="name">
+                <text/>
+            </element>
+        </element>
+    </define>
+
+
+    <define name="def_user-genre">
+        <element name="user-genre">
+            <ref name="def_genre-attribute_extension"/>
             <element name="name">
                 <text/>
             </element>
@@ -2022,6 +2119,12 @@
         </zeroOrMore>
     </define>
 
+    <define name="def_genre-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
     <define name="def_extension_element">
         <element>
             <anyName>
@@ -2348,6 +2451,15 @@
         </element>
     </define>
 
+    <define name="def_genre-list">
+        <element name="genre-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_genre"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
     <define name="def_iswc-list">
       <element name="iswc-list">
         <ref name="def_list-attributes"/>
@@ -2362,6 +2474,15 @@
             <ref name="def_list-attributes"/>
             <zeroOrMore>
                 <ref name="def_user-tag"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="def_user-genre-list">
+        <element name="user-genre-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_user-genre"/>
             </zeroOrMore>
         </element>
     </define>
