@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}puid" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}genre" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/&gt;
  *     &lt;/restriction&gt;
@@ -41,12 +41,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "puid"
+    "genre"
 })
-@XmlRootElement(name = "puid-list")
-public class PuidList {
+@XmlRootElement(name = "genre-list")
+public class GenreList {
 
-    protected List<Puid> puid;
+    protected List<Genre> genre;
     @XmlAttribute(name = "count")
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger count;
@@ -55,32 +55,32 @@ public class PuidList {
     protected BigInteger offset;
 
     /**
-     * Gets the value of the puid property.
+     * Gets the value of the genre property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the puid property.
+     * This is why there is not a <CODE>set</CODE> method for the genre property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPuid().add(newItem);
+     *    getGenre().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Puid }
+     * {@link Genre }
      * 
      * 
      */
-    public List<Puid> getPuid() {
-        if (puid == null) {
-            puid = new ArrayList<Puid>();
+    public List<Genre> getGenre() {
+        if (genre == null) {
+            genre = new ArrayList<Genre>();
         }
-        return this.puid;
+        return this.genre;
     }
 
     /**
