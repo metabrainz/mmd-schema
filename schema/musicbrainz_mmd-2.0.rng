@@ -2600,10 +2600,10 @@
       </element>
     </define>
 
-    <!-- An ISNI code -->
+    <!-- An ISNI code (last digit is a MOD 11 check digit, so can be X for 10. -->
     <define name="def_isni">
         <data type="string">
-            <param name="pattern">[0-9]{16}</param>
+            <param name="pattern">[0-9]{15}[0-9X]</param>
         </data>
     </define>
 
