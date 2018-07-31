@@ -248,6 +248,9 @@
               <ref name="def_ipi-list" />
             </optional>
             <optional>
+              <ref name="def_isni-list" />
+            </optional>
+            <optional>
                 <element name="life-span">
                     <optional>
                         <element name="begin">
@@ -642,6 +645,9 @@
             </optional>
             <optional>
               <ref name="def_ipi-list" />
+            </optional>
+            <optional>
+              <ref name="def_isni-list" />
             </optional>
             <optional>
               <ref name="def_annotation" />
@@ -2589,6 +2595,23 @@
         <zeroOrMore>
           <element name="ipi">
             <ref name="def_ipi" />
+          </element>
+        </zeroOrMore>
+      </element>
+    </define>
+
+    <!-- An ISNI code (last digit is a MOD 11 check digit, so can be X for 10. -->
+    <define name="def_isni">
+        <data type="string">
+            <param name="pattern">[0-9]{15}[0-9X]</param>
+        </data>
+    </define>
+
+    <define name="def_isni-list">
+      <element name="isni-list">
+        <zeroOrMore>
+          <element name="isni">
+            <ref name="def_isni" />
           </element>
         </zeroOrMore>
       </element>
