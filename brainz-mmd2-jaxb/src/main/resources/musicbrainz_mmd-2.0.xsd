@@ -1343,6 +1343,7 @@
           <xs:sequence>
             <xs:element maxOccurs="unbounded" name="attribute">
               <xs:complexType mixed="true">
+                <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
                 <xs:attribute name="value" type="xs:string"/>
                 <xs:attribute name="credited-as" type="xs:string"/>
               </xs:complexType>
