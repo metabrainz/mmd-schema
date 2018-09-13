@@ -2535,6 +2535,9 @@
         <element name="attribute-list">
             <oneOrMore>
                 <element name="attribute">
+                    <attribute name="id">
+                        <ref name="def_uuid"/>
+                    </attribute>
                     <optional>
                         <attribute name="value">
                             <data type="string"/>
