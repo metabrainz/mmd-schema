@@ -347,6 +347,9 @@
             </optional>
             <optional>
                 <element name="packaging">
+                    <attribute name="id">
+                        <ref name="def_uuid"/>
+                    </attribute>
                     <text/>
                 </element>
             </optional>
