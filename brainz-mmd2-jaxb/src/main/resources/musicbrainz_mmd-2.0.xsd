@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==================================================================
-  $Id: d124a019526eca7ea2895b94f84f3c45138a66fc $
+  $Id: 39a176ccf5820844668e5cd55dd21e1904fce2dd $
   
   Relax NG Schema for MusicBrainz XML Metadata Version 2.0
   
@@ -46,6 +46,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:puid"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disc"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:cdstub"/>
         <xs:element minOccurs="0" ref="mmd-2.0:rating"/>
         <xs:element minOccurs="0" ref="mmd-2.0:user-rating"/>
         <xs:element minOccurs="0" ref="mmd-2.0:collection"/>
@@ -178,7 +179,11 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="quality" type="mmd-2.0:def_quality"/>
-  <xs:element name="packaging" type="xs:string"/>
+  <xs:element name="packaging">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="text-representation">
     <xs:complexType>
       <xs:sequence>
@@ -709,7 +714,7 @@
         <xs:element ref="mmd-2.0:title"/>
         <xs:element minOccurs="0" name="artist" type="xs:string"/>
         <xs:element minOccurs="0" ref="mmd-2.0:barcode"/>
-        <xs:element minOccurs="0" ref="mmd-2.0:comment"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:group ref="mmd-2.0:def_nonmb-track-list"/>
         <xs:group ref="mmd-2.0:def_cdstub-element_extension"/>
       </xs:sequence>
@@ -723,7 +728,6 @@
       <xs:attributeGroup ref="mmd-2.0:def_cdstub-attribute_extension"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="comment" type="xs:string"/>
   <xs:element name="freedb-disc">
     <xs:complexType>
       <xs:sequence>
@@ -1343,7 +1347,7 @@
           <xs:sequence>
             <xs:element maxOccurs="unbounded" name="attribute">
               <xs:complexType mixed="true">
-                <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
+                <xs:attribute name="type-id" use="required" type="mmd-2.0:def_uuid"/>
                 <xs:attribute name="value" type="xs:string"/>
                 <xs:attribute name="credited-as" type="xs:string"/>
               </xs:complexType>
