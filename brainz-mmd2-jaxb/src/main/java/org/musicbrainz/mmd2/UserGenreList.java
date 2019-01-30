@@ -14,6 +14,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
@@ -29,7 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}collection" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}user-genre" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_list-attributes"/&gt;
  *     &lt;/restriction&gt;
@@ -41,12 +42,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "collection"
+    "userGenre"
 })
-@XmlRootElement(name = "collection-list")
-public class CollectionList {
+@XmlRootElement(name = "user-genre-list")
+public class UserGenreList {
 
-    protected List<Collection> collection;
+    @XmlElement(name = "user-genre")
+    protected List<UserGenre> userGenre;
     @XmlAttribute(name = "count")
     @XmlSchemaType(name = "nonNegativeInteger")
     protected BigInteger count;
@@ -55,32 +57,32 @@ public class CollectionList {
     protected BigInteger offset;
 
     /**
-     * Gets the value of the collection property.
+     * Gets the value of the userGenre property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the collection property.
+     * This is why there is not a <CODE>set</CODE> method for the userGenre property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getCollection().add(newItem);
+     *    getUserGenre().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Collection }
+     * {@link UserGenre }
      * 
      * 
      */
-    public List<Collection> getCollection() {
-        if (collection == null) {
-            collection = new ArrayList<Collection>();
+    public List<UserGenre> getUserGenre() {
+        if (userGenre == null) {
+            userGenre = new ArrayList<UserGenre>();
         }
-        return this.collection;
+        return this.userGenre;
     }
 
     /**

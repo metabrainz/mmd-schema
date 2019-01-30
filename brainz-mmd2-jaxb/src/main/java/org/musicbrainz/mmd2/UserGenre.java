@@ -8,7 +8,6 @@
 
 package org.musicbrainz.mmd2;
 
-import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -17,7 +16,6 @@ import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 
@@ -34,8 +32,7 @@ import javax.xml.namespace.QName;
  *       &lt;sequence&gt;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}name"/&gt;
  *       &lt;/sequence&gt;
- *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_tag-attribute_extension"/&gt;
- *       &lt;attribute name="count" type="{http://www.w3.org/2001/XMLSchema}nonNegativeInteger" /&gt;
+ *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_genre-attribute_extension"/&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -47,14 +44,11 @@ import javax.xml.namespace.QName;
 @XmlType(name = "", propOrder = {
     "name"
 })
-@XmlRootElement(name = "tag")
-public class Tag {
+@XmlRootElement(name = "user-genre")
+public class UserGenre {
 
     @XmlElement(required = true)
     protected String name;
-    @XmlAttribute(name = "count")
-    @XmlSchemaType(name = "nonNegativeInteger")
-    protected BigInteger count;
     @XmlAttribute(name = "score", namespace = "http://musicbrainz.org/ns/ext#-2.0")
     protected Integer score;
     @XmlAnyAttribute
@@ -82,30 +76,6 @@ public class Tag {
      */
     public void setName(String value) {
         this.name = value;
-    }
-
-    /**
-     * Gets the value of the count property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getCount() {
-        return count;
-    }
-
-    /**
-     * Sets the value of the count property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setCount(BigInteger value) {
-        this.count = value;
     }
 
     /**
