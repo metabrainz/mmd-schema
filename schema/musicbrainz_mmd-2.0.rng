@@ -79,6 +79,9 @@
                 <ref name="def_event-element"/>
             </optional>
             <optional>
+                <ref name="def_genre-element"/>
+            </optional>
+            <optional>
                 <ref name="def_url-element"/>
             </optional>
             <optional>
@@ -1458,27 +1461,43 @@
         </element>
     </define>
 
-    <define name="def_genre">
+    <define name="def_genre-element">
         <element name="genre">
             <optional>
                 <attribute name="count">
                     <data type="nonNegativeInteger"/>
                 </attribute>
             </optional>
+            <attribute name="id">
+                <ref name="def_uuid"/>
+            </attribute>
             <ref name="def_genre-attribute_extension"/>
             <element name="name">
                 <text/>
             </element>
+            <optional>
+                <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
         </element>
     </define>
 
 
     <define name="def_user-genre">
         <element name="user-genre">
+            <attribute name="id">
+                <ref name="def_uuid"/>
+            </attribute>
             <ref name="def_genre-attribute_extension"/>
             <element name="name">
                 <text/>
             </element>
+            <optional>
+                <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
         </element>
     </define>
 
@@ -2467,7 +2486,7 @@
         <element name="genre-list">
             <ref name="def_list-attributes"/>
             <zeroOrMore>
-                <ref name="def_genre"/>
+                <ref name="def_genre-element"/>
             </zeroOrMore>
         </element>
     </define>
