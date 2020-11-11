@@ -177,6 +177,11 @@
             <optional>
                 <ref name="def_entity-list"/>
             </optional>
+            <optional>
+                <element name="edit-note">
+                    <text/>
+                </element>
+            </optional>
             <ref name="def_metadata-element_extension"/>
         </element>
     </define>
