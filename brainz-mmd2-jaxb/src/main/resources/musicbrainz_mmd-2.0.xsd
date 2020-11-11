@@ -257,6 +257,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:video"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-credit"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:first-release-date"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:puid-list"/>
