@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==================================================================
-  $Id: 8707e5dbb04e8e282225222457309f222932a8d8 $
+  $Id: dab77021ba8a60624b94299b4c89b2f25932ec1a $
   
   Relax NG Schema for MusicBrainz XML Metadata Version 2.0
   
@@ -75,12 +75,14 @@
         <xs:element minOccurs="0" ref="mmd-2.0:collection-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:editor-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:entity-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:edit-note"/>
         <xs:group ref="mmd-2.0:def_metadata-element_extension"/>
       </xs:sequence>
       <xs:attribute name="generator" type="xs:anyURI"/>
       <xs:attribute name="created" type="xs:dateTime"/>
     </xs:complexType>
   </xs:element>
+  <xs:element name="edit-note" type="xs:string"/>
   <xs:element name="artist">
     <xs:complexType>
       <xs:sequence>
