@@ -455,16 +455,6 @@
                     <data type="anyURI"/>
                 </attribute>
             </optional>
-            <optional>
-                <attribute name="type">
-                    <data type="anyURI"/>
-                </attribute>
-            </optional>
-            <optional>
-                <attribute name="type-id">
-                    <ref name="def_uuid"/>
-                </attribute>
-            </optional>
             <ref name="def_release-group-attribute_extension"/>
             <optional>
                 <element name="title">
