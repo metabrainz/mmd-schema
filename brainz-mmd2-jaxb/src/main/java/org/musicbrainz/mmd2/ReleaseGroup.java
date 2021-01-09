@@ -56,8 +56,6 @@ import org.w3c.dom.Element;
  *       &lt;/sequence&gt;
  *       &lt;attGroup ref="{http://musicbrainz.org/ns/mmd-2.0#}def_release-group-attribute_extension"/&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}anyURI" /&gt;
- *       &lt;attribute name="type" type="{http://www.w3.org/2001/XMLSchema}anyURI" /&gt;
- *       &lt;attribute name="type-id" type="{http://musicbrainz.org/ns/mmd-2.0#}def_uuid" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -122,11 +120,6 @@ public class ReleaseGroup {
     @XmlAttribute(name = "id")
     @XmlSchemaType(name = "anyURI")
     protected String id;
-    @XmlAttribute(name = "type")
-    @XmlSchemaType(name = "anyURI")
-    protected String type;
-    @XmlAttribute(name = "type-id")
-    protected String typeId;
     @XmlAttribute(name = "score", namespace = "http://musicbrainz.org/ns/ext#-2.0")
     protected Integer score;
     @XmlAnyAttribute
@@ -572,54 +565,6 @@ public class ReleaseGroup {
      */
     public void setId(String value) {
         this.id = value;
-    }
-
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setType(String value) {
-        this.type = value;
-    }
-
-    /**
-     * Gets the value of the typeId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTypeId() {
-        return typeId;
-    }
-
-    /**
-     * Sets the value of the typeId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTypeId(String value) {
-        this.typeId = value;
     }
 
     /**
