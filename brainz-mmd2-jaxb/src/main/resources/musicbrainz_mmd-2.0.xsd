@@ -424,7 +424,6 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:name"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
-        <xs:element minOccurs="0" ref="mmd-2.0:ordering-attribute"/>
         <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
@@ -440,7 +439,6 @@
       <xs:attributeGroup ref="mmd-2.0:def_series-attribute_extension"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ordering-attribute" type="xs:string"/>
   <xs:element name="event">
     <xs:complexType>
       <xs:sequence>
