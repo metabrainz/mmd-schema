@@ -531,6 +531,7 @@
       <xs:sequence>
         <xs:element maxOccurs="unbounded" ref="mmd-2.0:name-credit"/>
       </xs:sequence>
+      <xs:attribute name="id" type="mmd-2.0:def_uuid"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="name-credit">

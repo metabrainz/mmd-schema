@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -29,6 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}name-credit" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
+ *       &lt;attribute name="id" type="{http://musicbrainz.org/ns/mmd-2.0#}def_uuid" /&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -45,6 +47,8 @@ public class ArtistCredit {
 
     @XmlElement(name = "name-credit", required = true)
     protected List<NameCredit> nameCredit;
+    @XmlAttribute(name = "id")
+    protected String id;
 
     /**
      * Gets the value of the nameCredit property.
@@ -73,6 +77,30 @@ public class ArtistCredit {
             nameCredit = new ArrayList<NameCredit>();
         }
         return this.nameCredit;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setId(String value) {
+        this.id = value;
     }
 
 }
