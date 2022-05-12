@@ -1489,6 +1489,17 @@
                     <text/>
                 </element>
             </optional>
+
+            <optional>
+              <ref name="def_annotation" />
+            </optional>
+
+            <optional>
+                <ref name="def_alias-list"/>
+            </optional>
+            <zeroOrMore>
+                <ref name="def_relation-list"/>
+            </zeroOrMore>
         </element>
     </define>
 
