@@ -1304,6 +1304,11 @@
 
     <define name="def_artist-credit">
         <element name="artist-credit">
+            <optional>
+                <attribute name="id">
+                    <ref name="def_uuid"/>
+                </attribute>
+            </optional>
             <oneOrMore>
                 <element name="name-credit">
                     <optional>
