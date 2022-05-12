@@ -37,7 +37,6 @@ import org.w3c.dom.Element;
  *       &lt;sequence&gt;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}name" minOccurs="0"/&gt;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}disambiguation" minOccurs="0"/&gt;
- *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}ordering-attribute" minOccurs="0"/&gt;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}annotation" minOccurs="0"/&gt;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}alias-list" minOccurs="0"/&gt;
  *         &lt;element ref="{http://musicbrainz.org/ns/mmd-2.0#}relation-list" maxOccurs="unbounded" minOccurs="0"/&gt;
@@ -62,7 +61,6 @@ import org.w3c.dom.Element;
 @XmlType(name = "", propOrder = {
     "name",
     "disambiguation",
-    "orderingAttribute",
     "annotation",
     "aliasList",
     "relationList",
@@ -77,8 +75,6 @@ public class Series {
 
     protected String name;
     protected String disambiguation;
-    @XmlElement(name = "ordering-attribute")
-    protected String orderingAttribute;
     protected Annotation annotation;
     @XmlElement(name = "alias-list")
     protected AliasList aliasList;
@@ -153,30 +149,6 @@ public class Series {
      */
     public void setDisambiguation(String value) {
         this.disambiguation = value;
-    }
-
-    /**
-     * Gets the value of the orderingAttribute property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getOrderingAttribute() {
-        return orderingAttribute;
-    }
-
-    /**
-     * Sets the value of the orderingAttribute property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setOrderingAttribute(String value) {
-        this.orderingAttribute = value;
     }
 
     /**

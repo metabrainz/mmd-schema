@@ -1102,11 +1102,6 @@
                 </element>
             </optional>
             <optional>
-                <element name="ordering-attribute">
-                    <text/>
-                </element>
-            </optional>
-            <optional>
               <ref name="def_annotation" />
             </optional>
 

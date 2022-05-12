@@ -63,7 +63,6 @@ public class ObjectFactory {
     private final static QName _Latitude_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "latitude");
     private final static QName _Longitude_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "longitude");
     private final static QName _Description_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "description");
-    private final static QName _OrderingAttribute_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "ordering-attribute");
     private final static QName _Cancelled_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "cancelled");
     private final static QName _Time_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "time");
     private final static QName _Setlist_QNAME = new QName("http://musicbrainz.org/ns/mmd-2.0#", "setlist");
@@ -1252,19 +1251,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://musicbrainz.org/ns/mmd-2.0#", name = "description")
     public JAXBElement<String> createDescription(String value) {
         return new JAXBElement<String>(_Description_QNAME, String.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link String }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://musicbrainz.org/ns/mmd-2.0#", name = "ordering-attribute")
-    public JAXBElement<String> createOrderingAttribute(String value) {
-        return new JAXBElement<String>(_OrderingAttribute_QNAME, String.class, null, value);
     }
 
     /**
