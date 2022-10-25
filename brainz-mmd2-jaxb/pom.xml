@@ -39,13 +39,13 @@
     <dependency>
 	  <groupId>com.sun.xml.bind</groupId>
       <artifactId>jaxb-impl</artifactId>
-      <version>2.3.3</version>
+      <version>4.0.1</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>jakarta.xml.bind</groupId>
       <artifactId>jakarta.xml.bind-api</artifactId>
-      <version>2.3.3</version>
+      <version>4.0.0</version>
     </dependency>
   </dependencies>
   <build>
