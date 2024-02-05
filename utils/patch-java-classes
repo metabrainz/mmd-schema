@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+#
+# Add "count" and "offset" to the prop order for the following classes:
+#
+# * DiscList (in DiscList.java)
+# * Tracklist (in Medium.java)
+# * MediumList (in MediumList.java)
+
+set -e -u
+
+MMD_SCHEMA_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/../" && pwd)
+
+cd "$MMD_SCHEMA_ROOT/brainz-mmd2-jaxb/src/main/java/org/musicbrainz/mmd2"
+
+echo 'Patching the generated Java class files...'
+
+printf '* '
+sed '/^@XmlType/{N;s/"disc"$/&,/;T;a\
+    "count",\
+    "offset"
+}' -i DiscList.java
+grep -Pzl '@XmlType\(name = "", propOrder = {\n\s*"disc",\n\s*"count",\n\s*"offset"\n\s*}\)' DiscList.java || (
+  echo >&2 'Error while patching DiscList.java'
+  exit 201
+)
+
+printf '* '
+sed '/^    @XmlType/{N;s/"defTrack"$/&,/;T;a\
+        "count",\
+        "offset"
+}' -i Medium.java
+grep -Pzl '@XmlType\(name = "", propOrder = {\n\s*"defTrack",\n\s*"count",\n\s*"offset"\n\s*}\)' Medium.java || (
+  echo >&2 'Error while patching Medium.java'
+  exit 202
+)
+
+printf '* '
+sed '/^@XmlType/{N;N;s/"medium"$/&,/;T;a\
+    "count",\
+    "offset"
+}' -i MediumList.java
+grep -Pzl '@XmlType\(name = "", propOrder = {\n\s*"trackCount",\n\s*"medium",\n\s*"count",\n\s*"offset"\n\s*}\)' MediumList.java || (
+  echo >&2 'Error while patching MediumList.java'
+  exit 203
+)
+
+echo 'Done patching Java classes.'
