@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+#
+# Regenerate the intermediate XSD schema and the final JAXB classes,
+# for use when the RELAX NG definition under mmd-schema/ is modified.
+
+set -e -u
+
+MMD_SCHEMA_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/../" && pwd)
+
+cd "$MMD_SCHEMA_ROOT/brainz-mmd2-jaxb"
+
+echo 'Converting schema from RELAX NG to XSD...'
+trang ../schema/musicbrainz_mmd-2.0.rng src/main/resources/musicbrainz_mmd-2.0.xsd \
+  2> >(
+    # Delete innocuous warnings from stderr
+    sed '
+      /warning: cannot represent required wildcard attribute; approximating/d
+      /warning: choice between attributes and children cannot be represented; approximating/d
+    '
+  )
+echo 'Done converting to XSD.'
+
+../utils/patch-xsd-schema
+
+echo 'Generating Java classes...'
+mvn org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:generate
+echo 'Done generating Java classes.'
+
+../utils/patch-java-classes
+
+echo 'Restoring files changed by timestamp only...'
+mapfile -t any_diff_files < <(git diff --no-color src/main | grep -o 'brainz-mmd2-jaxb/[^ ]*' | sort -u)
+mapfile -t actual_diff_files < <(git diff --ignore-matching-lines='Generated on:' --no-color src/main | grep -o 'brainz-mmd2-jaxb/[^ ]*' | sort -u)
+mapfile -t timestamp_diff_files < <(comm -23 <(IFS=$'\n'; echo "${any_diff_files[*]}") <(IFS=$'\n'; echo "${actual_diff_files[*]}"))
+git checkout -- "${timestamp_diff_files[@]/brainz-mmd2-jaxb/.}"
+echo 'Done restoring files changed by timestamp only.'
+
+if git diff --exit-code --stat src/main
+then
+  echo 'Regenerating JAXB files made no difference beyond timestamps.'
+else
+  cat <<EOF
+
+Please review the above changed files in details with:
+
+    git diff brainz-mmd2-jaxb/src/main/
+
+Once satisfied, you can commit with:
+
+    git commit brainz-mmd2-jaxb/src/main/ -m 'Regenerate XSD schema and JAXB classes'
+EOF
+fi

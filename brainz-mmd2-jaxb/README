@@ -4,17 +4,11 @@ but there are a couple of manual steps.
 1. Ensure Trang installed  (linux ubuntu apt-get install trang, or available from http://www.thaiopensource.com/relaxng/trang.html)
 
 2. Convert rng to xsd
-(Ubuntu)trang ../schema/musicbrainz_mmd-2.0.rng src/main/resources/musicbrainz_mmd-2.0.xsd
-(Other) java -jar trang.jar ../schema/musicbrainz_mmd-2.0.rng src/main/resources/musicbrainz_mmd-2.0.xsd
-
 3. Amend the XSD schema
-   ../utils/patch-xsd-schema
-
 4. Generate java classes from xsd
-   mvn org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:generate
-
 5. Amend the Java classes
-   ../utils/patch-java-classes
+   Ignore files with timestamp change only
+   ../utils/regenerate-jaxb-files
 
 6. Build package and then install locally so visible to search server project
    mvn install
