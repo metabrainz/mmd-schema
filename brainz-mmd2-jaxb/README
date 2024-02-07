@@ -14,7 +14,7 @@ Whenever the MMD RELAX NG definition is modified,
 regenerate the XSD schema and the Java classes with:
 
 ```sh
-docker-compose --project-directory=docker/brainz-mmd2-jaxb run --rm builder
+docker compose --project-directory=docker/brainz-mmd2-jaxb run --rm builder
 ```
 
 == Maven artifact ==
