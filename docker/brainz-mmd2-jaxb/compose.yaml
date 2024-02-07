@@ -1,0 +1,10 @@
+services:
+
+  builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./bash_history/:/root/.bash_history.d:z
+      - ./maven_cache/:/root/.m2/repository:z
+      - ../../:/code:z

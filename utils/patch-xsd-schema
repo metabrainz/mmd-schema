@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+#
+# Change schema, add namespaces and import as follows:
+#
+# ```
+# <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+#            elementFormDefault="qualified"
+#            targetNamespace="http://musicbrainz.org/ns/mmd-2.0#"
+#            xmlns:ext="http://musicbrainz.org/ns/ext#-2.0"
+#            xmlns:mmd-2.0="http://musicbrainz.org/ns/mmd-2.0#">
+# <xs:import schemaLocation="local.xsd"/>
+# <xs:import namespace="http://musicbrainz.org/ns/ext#-2.0" schemaLocation="extensions.xsd"/>
+# <xs:element name="metadata">
+# ```
+#
+# And add:
+#
+# ```
+#     <xs:attribute ref="ext:score"/>
+# ```
+#
+# to:
+#
+# ```
+#   <xs:attributeGroup name="def_extension_attribute">
+# ```
+
+set -e -u
+
+MMD_SCHEMA_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/../" && pwd)
+
+cd "$MMD_SCHEMA_ROOT/brainz-mmd2-jaxb/src/main/resources"
+
+echo 'Patching the generated XML Schema Definition (XSD) schema...'
+
+printf '* '
+sed '/<xs:schema xmlns:xs="http:\/\/www.w3.org\/2001\/XMLSchema" elementFormDefault="qualified" targetNamespace="http:\/\/musicbrainz.org\/ns\/mmd-2.0#" xmlns:mmd-2.0="http:\/\/musicbrainz.org\/ns\/mmd-2.0#">/{N;N;s/.*//;a\
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"\
+           elementFormDefault="qualified"\
+           targetNamespace="http://musicbrainz.org/ns/mmd-2.0#"\
+           xmlns:ext="http://musicbrainz.org/ns/ext#-2.0"\
+           xmlns:mmd-2.0="http://musicbrainz.org/ns/mmd-2.0#">\
+  <xs:import schemaLocation="local.xsd"/>\
+  <xs:import namespace="http://musicbrainz.org/ns/ext#-2.0" schemaLocation="extensions.xsd"/>\
+  <xs:element name="metadata">
+};/<xs:attributeGroup name="def_extension_attribute">/a\
+    <xs:attribute ref="ext:score"/>' -i musicbrainz_mmd-2.0.xsd
+grep -Pzl '<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"\n\s*elementFormDefault="qualified"\n\s*targetNamespace="http://musicbrainz.org/ns/mmd-2.0#"\n\s*xmlns:ext="http://musicbrainz.org/ns/ext#-2.0"\n\s*xmlns:mmd-2.0="http://musicbrainz.org/ns/mmd-2.0#">\n\s*<xs:import schemaLocation="local.xsd"/>\n\s*<xs:import namespace="http://musicbrainz.org/ns/ext#-2.0" schemaLocation="extensions.xsd"/>\n\s*<xs:element name="metadata">(\n|.)*<xs:attributeGroup name="def_extension_attribute">\n\s*<xs:attribute ref="ext:score"/>\n\s*<xs:anyAttribute namespace="##other" processContents="skip"/>' musicbrainz_mmd-2.0.xsd || (
+  echo >&2 'Error while patching musicbrainz_mmd-2.0.xsd'
+  exit 200
+)
+
+echo 'Done patching XSD schema.'
