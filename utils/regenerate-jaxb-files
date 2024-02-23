@@ -23,7 +23,7 @@ echo 'Done converting to XSD.'
 ../utils/patch-xsd-schema
 
 echo 'Generating Java classes...'
-mvn org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:generate
+mvn org.jvnet.jaxb:jaxb-maven-plugin:generate
 echo 'Done generating Java classes.'
 
 ../utils/patch-java-classes
