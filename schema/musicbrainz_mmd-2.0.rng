@@ -1780,6 +1780,9 @@
                 <ref name="def_event-list"/>
             </optional>
             <optional>
+                <ref name="def_genre-list"/>
+            </optional>
+            <optional>
                 <ref name="def_instrument-list"/>
             </optional>
             <optional>

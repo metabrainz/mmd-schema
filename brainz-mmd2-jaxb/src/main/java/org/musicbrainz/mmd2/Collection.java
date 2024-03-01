@@ -31,6 +31,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element ref="{http://musicbrainz.org/ns/mmd-2.0#}area-list" minOccurs="0"/>
  *         <element ref="{http://musicbrainz.org/ns/mmd-2.0#}artist-list" minOccurs="0"/>
  *         <element ref="{http://musicbrainz.org/ns/mmd-2.0#}event-list" minOccurs="0"/>
+ *         <element ref="{http://musicbrainz.org/ns/mmd-2.0#}genre-list" minOccurs="0"/>
  *         <element ref="{http://musicbrainz.org/ns/mmd-2.0#}instrument-list" minOccurs="0"/>
  *         <element ref="{http://musicbrainz.org/ns/mmd-2.0#}label-list" minOccurs="0"/>
  *         <element ref="{http://musicbrainz.org/ns/mmd-2.0#}place-list" minOccurs="0"/>
@@ -58,6 +59,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "areaList",
     "artistList",
     "eventList",
+    "genreList",
     "instrumentList",
     "labelList",
     "placeList",
@@ -79,6 +81,8 @@ public class Collection {
     protected ArtistList artistList;
     @XmlElement(name = "event-list")
     protected EventList eventList;
+    @XmlElement(name = "genre-list")
+    protected GenreList genreList;
     @XmlElement(name = "instrument-list")
     protected InstrumentList instrumentList;
     @XmlElement(name = "label-list")
@@ -225,6 +229,30 @@ public class Collection {
      */
     public void setEventList(EventList value) {
         this.eventList = value;
+    }
+
+    /**
+     * Gets the value of the genreList property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link GenreList }
+     *     
+     */
+    public GenreList getGenreList() {
+        return genreList;
+    }
+
+    /**
+     * Sets the value of the genreList property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link GenreList }
+     *     
+     */
+    public void setGenreList(GenreList value) {
+        this.genreList = value;
     }
 
     /**
