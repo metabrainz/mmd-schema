@@ -788,6 +788,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:area-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:event-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:genre-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:instrument-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:label-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:place-list"/>
