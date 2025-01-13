@@ -1766,6 +1766,11 @@
                 <text/>
             </element>
             <optional>
+                <element name="description">
+                    <text/>
+                </element>
+            </optional>
+            <optional>
                 <element name="editor">
                     <text/>
                 </element>
