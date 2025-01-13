@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==================================================================
-  $Id: 9b44987ba812c058a5e79359a0b6f0f4370a3786 $
+  $Id: a00eba6318ee46201d4495da0a4608a8f61985e3 $
   
   Relax NG Schema for MusicBrainz XML Metadata Version 2.0
   
@@ -784,6 +784,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="mmd-2.0:name"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:description"/>
         <xs:element minOccurs="0" name="editor" type="xs:string"/>
         <xs:element minOccurs="0" ref="mmd-2.0:area-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-list"/>
