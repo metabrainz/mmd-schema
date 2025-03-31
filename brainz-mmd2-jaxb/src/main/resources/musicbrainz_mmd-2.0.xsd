@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==================================================================
-  $Id: 9b44987ba812c058a5e79359a0b6f0f4370a3786 $
+  $Id: a00eba6318ee46201d4495da0a4608a8f61985e3 $
   
   Relax NG Schema for MusicBrainz XML Metadata Version 2.0
   
@@ -679,6 +679,7 @@
         <xs:group ref="mmd-2.0:def_track-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:data-track-list"/>
       </xs:sequence>
+      <xs:attribute name="id" type="mmd-2.0:def_uuid"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="position" type="xs:nonNegativeInteger"/>
