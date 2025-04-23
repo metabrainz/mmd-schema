@@ -679,6 +679,7 @@
         <xs:group ref="mmd-2.0:def_track-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:data-track-list"/>
       </xs:sequence>
+      <xs:attribute name="id" type="mmd-2.0:def_uuid"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="position" type="xs:nonNegativeInteger"/>

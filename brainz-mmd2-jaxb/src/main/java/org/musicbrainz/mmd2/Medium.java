@@ -37,6 +37,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <group ref="{http://musicbrainz.org/ns/mmd-2.0#}def_track-list"/>
  *         <element ref="{http://musicbrainz.org/ns/mmd-2.0#}data-track-list" minOccurs="0"/>
  *       </sequence>
+ *       <attribute name="id" type="{http://musicbrainz.org/ns/mmd-2.0#}def_uuid" />
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -68,6 +69,8 @@ public class Medium {
     protected Medium.TrackList trackList;
     @XmlElement(name = "data-track-list")
     protected DataTrackList dataTrackList;
+    @XmlAttribute(name = "id")
+    protected String id;
 
     /**
      * Gets the value of the title property.
@@ -235,6 +238,30 @@ public class Medium {
      */
     public void setDataTrackList(DataTrackList value) {
         this.dataTrackList = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setId(String value) {
+        this.id = value;
     }
 
 
