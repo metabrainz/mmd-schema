@@ -27,6 +27,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
  *         <element ref="{http://musicbrainz.org/ns/mmd-2.0#}name"/>
+ *         <element ref="{http://musicbrainz.org/ns/mmd-2.0#}description" minOccurs="0"/>
  *         <element name="editor" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element ref="{http://musicbrainz.org/ns/mmd-2.0#}area-list" minOccurs="0"/>
  *         <element ref="{http://musicbrainz.org/ns/mmd-2.0#}artist-list" minOccurs="0"/>
@@ -55,6 +56,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "name",
+    "description",
     "editor",
     "areaList",
     "artistList",
@@ -74,6 +76,7 @@ public class Collection {
 
     @XmlElement(required = true)
     protected String name;
+    protected String description;
     protected String editor;
     @XmlElement(name = "area-list")
     protected AreaList areaList;
@@ -133,6 +136,30 @@ public class Collection {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Gets the value of the description property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Sets the value of the description property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDescription(String value) {
+        this.description = value;
     }
 
     /**
