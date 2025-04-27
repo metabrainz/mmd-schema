@@ -169,6 +169,12 @@
                 <ref name="def_user-genre-list"/>
             </optional>
             <optional>
+                <ref name="def_mood-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-mood-list"/>
+            </optional>
+            <optional>
                 <ref name="def_collection-list"/>
             </optional>
             <optional>
@@ -310,6 +316,12 @@
                 <ref name="def_user-genre-list"/>
             </optional>
             <optional>
+                <ref name="def_mood-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-mood-list"/>
+            </optional>
+            <optional>
                 <ref name="def_rating"/>
             </optional>
             <optional>
@@ -440,6 +452,12 @@
                 <ref name="def_user-genre-list"/>
             </optional>
             <optional>
+                <ref name="def_mood-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-mood-list"/>
+            </optional>
+            <optional>
                 <ref name="def_collection-list"/>
             </optional>
 
@@ -532,6 +550,12 @@
                 <ref name="def_user-genre-list"/>
             </optional>
             <optional>
+                <ref name="def_mood-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-mood-list"/>
+            </optional>
+            <optional>
                 <ref name="def_rating"/>
             </optional>
             <optional>
@@ -609,6 +633,12 @@
             </optional>
             <optional>
                 <ref name="def_user-genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_mood-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-mood-list"/>
             </optional>
             <optional>
                 <ref name="def_rating"/>
@@ -724,6 +754,12 @@
                 <ref name="def_user-genre-list"/>
             </optional>
             <optional>
+                <ref name="def_mood-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-mood-list"/>
+            </optional>
+            <optional>
                 <ref name="def_rating"/>
             </optional>
             <optional>
@@ -810,6 +846,12 @@
             </optional>
             <optional>
                 <ref name="def_user-genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_mood-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-mood-list"/>
             </optional>
             <optional>
                 <ref name="def_rating"/>
@@ -909,6 +951,12 @@
         <optional>
             <ref name="def_user-genre-list"/>
         </optional>
+        <optional>
+            <ref name="def_mood-list"/>
+        </optional>
+        <optional>
+            <ref name="def_user-mood-list"/>
+        </optional>
 
 
         <ref name="def_area-element_extension"/>
@@ -1005,6 +1053,12 @@
             <optional>
                 <ref name="def_user-genre-list"/>
             </optional>
+            <optional>
+                <ref name="def_mood-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-mood-list"/>
+            </optional>
 
 
             <ref name="def_place-element_extension"/>
@@ -1067,6 +1121,12 @@
             <optional>
                 <ref name="def_user-genre-list"/>
             </optional>
+            <optional>
+                <ref name="def_mood-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-mood-list"/>
+            </optional>
 
             <ref name="def_instrument-element_extension"/>
         </element>
@@ -1122,6 +1182,12 @@
             </optional>
             <optional>
                 <ref name="def_user-genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_mood-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-mood-list"/>
             </optional>
 
             <ref name="def_series-element_extension"/>
@@ -1205,6 +1271,12 @@
             </optional>
             <optional>
                 <ref name="def_user-genre-list"/>
+            </optional>
+            <optional>
+                <ref name="def_mood-list"/>
+            </optional>
+            <optional>
+                <ref name="def_user-mood-list"/>
             </optional>
             <optional>
                 <ref name="def_rating"/>
@@ -1520,6 +1592,59 @@
             </optional>
         </element>
     </define>
+
+
+    <define name="def_mood-element">
+        <element name="mood">
+            <optional>
+                <attribute name="count">
+                    <data type="nonNegativeInteger"/>
+                </attribute>
+            </optional>
+            <attribute name="id">
+                <ref name="def_uuid"/>
+            </attribute>
+            <ref name="def_mood-attribute_extension"/>
+            <element name="name">
+                <text/>
+            </element>
+            <optional>
+                <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
+
+            <optional>
+              <ref name="def_annotation" />
+            </optional>
+
+            <optional>
+                <ref name="def_alias-list"/>
+            </optional>
+            <zeroOrMore>
+                <ref name="def_relation-list"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+
+    <define name="def_user-mood">
+        <element name="user-mood">
+            <attribute name="id">
+                <ref name="def_uuid"/>
+            </attribute>
+            <ref name="def_mood-attribute_extension"/>
+            <element name="name">
+                <text/>
+            </element>
+            <optional>
+                <element name="disambiguation">
+                    <text/>
+                </element>
+            </optional>
+        </element>
+    </define>
+
 
     <define name="def_rating">
         <element name="rating">
@@ -2189,6 +2314,12 @@
         </zeroOrMore>
     </define>
 
+    <define name="def_mood-attribute_extension">
+        <zeroOrMore>
+            <ref name="def_extension_attribute"/>
+        </zeroOrMore>
+    </define>
+
     <define name="def_extension_element">
         <element>
             <anyName>
@@ -2524,6 +2655,15 @@
         </element>
     </define>
 
+    <define name="def_mood-list">
+        <element name="mood-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_mood-element"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
     <define name="def_iswc-list">
       <element name="iswc-list">
         <ref name="def_list-attributes"/>
@@ -2547,6 +2687,15 @@
             <ref name="def_list-attributes"/>
             <zeroOrMore>
                 <ref name="def_user-genre"/>
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="def_user-mood-list">
+        <element name="user-mood-list">
+            <ref name="def_list-attributes"/>
+            <zeroOrMore>
+                <ref name="def_user-mood"/>
             </zeroOrMore>
         </element>
     </define>
