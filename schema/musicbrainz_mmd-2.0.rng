@@ -1434,6 +1434,11 @@
                 <ref name="def_incomplete-date"/>
               </attribute>
             </optional>
+            <optional>
+              <attribute name="ended">
+                <text />
+              </attribute>
+            </optional>
             <text/>
         </element>
     </define>

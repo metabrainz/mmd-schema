@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==================================================================
-  $Id: a00eba6318ee46201d4495da0a4608a8f61985e3 $
+  $Id: b64a047e85d0628c4d0b2b8f2bfa814c12550df4 $
   
   Relax NG Schema for MusicBrainz XML Metadata Version 2.0
   
@@ -595,6 +595,7 @@
       <xs:attribute name="primary"/>
       <xs:attribute name="begin-date" type="mmd-2.0:def_incomplete-date"/>
       <xs:attribute name="end-date" type="mmd-2.0:def_incomplete-date"/>
+      <xs:attribute name="ended"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="iswc">

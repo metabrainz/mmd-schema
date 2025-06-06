@@ -32,6 +32,7 @@ import jakarta.xml.bind.annotation.XmlValue;
  *       <attribute name="primary" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
  *       <attribute name="begin-date" type="{http://musicbrainz.org/ns/mmd-2.0#}def_incomplete-date" />
  *       <attribute name="end-date" type="{http://musicbrainz.org/ns/mmd-2.0#}def_incomplete-date" />
+ *       <attribute name="ended" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" />
  *     </restriction>
  *   </complexContent>
  * </complexType>
@@ -65,6 +66,9 @@ public class Alias {
     protected String beginDate;
     @XmlAttribute(name = "end-date")
     protected String endDate;
+    @XmlAttribute(name = "ended")
+    @XmlSchemaType(name = "anySimpleType")
+    protected String ended;
 
     /**
      * Gets the value of the content property.
@@ -256,6 +260,30 @@ public class Alias {
      */
     public void setEndDate(String value) {
         this.endDate = value;
+    }
+
+    /**
+     * Gets the value of the ended property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getEnded() {
+        return ended;
+    }
+
+    /**
+     * Sets the value of the ended property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEnded(String value) {
+        this.ended = value;
     }
 
 }
